@@ -11,7 +11,10 @@ const Header = () => {
         <div className='text'>木犀</div>
       </div>
       <div className='avatar'>
-          
+          <div className="guide">
+            <div className="home">个人主页</div>
+            <div className="back">退出登录</div>
+          </div>
       </div>
    </div>
   </div>

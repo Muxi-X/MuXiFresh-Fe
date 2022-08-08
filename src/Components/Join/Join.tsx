@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import J_progress from '../J_progress';
+import J_work from '../J_work';
 import './Join.less';
 
 const Join = () => {
@@ -21,7 +22,7 @@ function setClickedDiv(id:string):void{
         setFlag('b')
     if(id=='c')
         setFlag('c')
-    console.log(flag=='b')
+        
 }
 
   return (
@@ -30,10 +31,11 @@ function setClickedDiv(id:string):void{
     <div className="top">
         <div className={flag=='a'?'selected':"title"} id='a' onClick={(event)=>Select(event)} >报名表查看</div>
         <div className={flag=='b'?'selected':"title"} id='b' onClick={(event)=>Select(event)} >进度查询</div>
-        <div className={flag=='c'?'selected':"title"} id='c' onClick={(event)=>Select(event)} >作业</div>
+        <div className={flag=='c'?'selected':"title"} id='c' onClick={(event)=>Select(event)} >作业查询</div>
     </div>
     {/* 组件  */} 
-      <J_progress/>
+    {flag=='b'? <J_progress/>:' '}
+    {flag=='c'?<J_work/>:' '}
   
     </div>
    </div>

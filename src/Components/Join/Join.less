@@ -1,53 +1,54 @@
 
-.body
-{
+.body {
     width: 100%;
     height: auto;
     background-color: #152025;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    .box{
-        display: flex;
+
+    .box {
         background-color: #FFFFFF;
-        width: 70vw;//考虑适应性 改auto
-        height: 80vh;
-        margin-top: 5vh;
-        margin-bottom: 7vh;
-        border-radius: 20px 20px 20px 20px;
-        border: 1px solid #707070; 
+        width: 85vw;
+        min-height: 90vh;
+        margin-top: 1.04rem;
+        margin-bottom: 2.05rem;
+        border-radius: 0.2rem;
+        border: 1px solid #707070;
+        flex-flow: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+
     }
 }
 
-.top{
-    width: 70vw;
-    height: 46px;
-    display:flex;
-    flex-direction:row ;
-    justify-content:flex-start;
-    gap: 40px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color: #FFFFFF;
+.top {
+    width: 85vw;
+    height: 1.04rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    // background-color: #FFFFFF;
     border-bottom: 1px solid #CBCBCB;
-    .title{
+
+    .title {
         width: auto;
-        height: 46px;
+        height: 1.04rem;
         display: flex;
-        background-color: #FFFFFF;
-        font-size: 20px;
+        background-color: transparent;
+        font-size: 0.36rem;
         font-family: Microsoft YaHei-Bold, Microsoft YaHei;
         font-weight: bold;
         color: #272727;
-        line-height: 46px;
-        margin-left: 20px;
-        /* -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; */
+        margin-left: 0.48rem;
+        align-items: center
     }
-    .selected{
-       .title();
-        border-bottom:3px solid #FEAB21;
+
+    .selected {
+        .title();
+        border-bottom: 0.08rem solid #FEAB21;
     }
 }
-
-
