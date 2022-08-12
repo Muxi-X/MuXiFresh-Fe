@@ -1,8 +1,8 @@
 .work{
     width: 85vw;
-    height: 14.55rem;
+    height: /* 14.55rem */auto;
     .title{
-        width: 1rem;
+        width: /* 1rem */max-content;
         height: 0.64rem;
         font-size: 0.48rem;
         font-family: Microsoft YaHei-Bold, Microsoft YaHei;
@@ -36,16 +36,19 @@
     margin: 0.4rem auto;
 
     .a{
-        width: 9.5rem;
-        height: 0.74rem;
         font-size: 0.28rem;
         font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-        font-weight: 400;
+        width: 9.5rem;
+        height: 0.64rem;
+        background: #FFFFFF;
+        border-radius: 0.08rem 0.08rem 0.08rem 0.08rem;
+        border: 0.01rem solid #707070;
         color: #3c3c3c;
-        line-height: 0.3rem;
+        line-height: 0.64rem;
         flex-wrap: wrap;
         margin-top: 0.13rem;
     }
+    
     input::placeholder{
         font-size: 0.28rem;
         font-family: Microsoft YaHei-Regular, Microsoft YaHei;
@@ -171,6 +174,7 @@
     width: min-content;
     height: 0.64rem;
     margin: 0.8rem auto;
+    margin-bottom: 2rem;
 }
 .submit{
     width: 3.2rem;
