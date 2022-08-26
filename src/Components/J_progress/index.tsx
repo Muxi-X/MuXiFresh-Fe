@@ -15,7 +15,6 @@ const J_progress = () => {
         getJson('/schedule')
         .then(
             data=>{
-                console.log(data);
                 setAdmission(data.data.admission_status);
                 setForm(data.data.form_status);
                 setGroup(data.data.group);

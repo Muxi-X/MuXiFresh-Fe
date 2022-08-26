@@ -2,7 +2,7 @@
 export  async function postData (url = '', data = {},method: 'POST'){
     // Default options are marked with *
     const preurl='http://119.3.2.168:2022/api/v1';
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsImVtYWlsIjoibGFsYWxhdGVzdEBxcS5jb20iLCJyb2xlIjoxLCJleHBpcmVzX2F0IjoxNjYyODY1Mjg3fQ.3EGqugxW4liI_b6Pcu3w3Za2XIFTSc1W1eUMYU5JzVQ'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjUsImVtYWlsIjoibGFsYWxhQHFxLmNvbSIsInJvbGUiOjQsImV4cGlyZXNfYXQiOjE2NjM4MzcxMjZ9.1tC1FL8D4rGoM_tk4YfaN25pxwNcESx0J8CEYlg-hqk'
     const response = await fetch(preurl+url, {
       method, 
       headers: {
@@ -20,7 +20,7 @@ export  async function postData (url = '', data = {},method: 'POST'){
   export  async function getJson (url = ''){
     // Default options are marked with *
     const preurl='http://119.3.2.168:2022/api/v1';
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsImVtYWlsIjoibGFsYWxhdGVzdEBxcS5jb20iLCJyb2xlIjoxLCJleHBpcmVzX2F0IjoxNjYyODY1Mjg3fQ.3EGqugxW4liI_b6Pcu3w3Za2XIFTSc1W1eUMYU5JzVQ'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjUsImVtYWlsIjoibGFsYWxhQHFxLmNvbSIsInJvbGUiOjQsImV4cGlyZXNfYXQiOjE2NjM4MzcxMjZ9.1tC1FL8D4rGoM_tk4YfaN25pxwNcESx0J8CEYlg-hqk'
     const response = await fetch(preurl+url, {
       method:'GET', 
       headers: {
