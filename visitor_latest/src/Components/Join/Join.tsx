@@ -12,7 +12,7 @@ const Join = () => {
     function Select(e: React.MouseEvent<HTMLDivElement>): any {
         e.preventDefault();
         const div: HTMLDivElement = e.currentTarget;
-        console.log(div.id)
+        // console.log(div.id)
         setClickedDiv(div.id);
     }
 

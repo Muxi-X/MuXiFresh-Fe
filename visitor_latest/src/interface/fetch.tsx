@@ -1,8 +1,8 @@
 // Example POST method implementation:
-export  async function postData (url = '', data = {},method: 'POST'){
+export  async function postData (url = '', data = {},method){
     // Default options are marked with *
     const preurl='http://119.3.2.168:2022/api/v1';
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsImVtYWlsIjoibGFsYWxhdGVzdEBxcS5jb20iLCJyb2xlIjoxLCJleHBpcmVzX2F0IjoxNjYyODY1Mjg3fQ.3EGqugxW4liI_b6Pcu3w3Za2XIFTSc1W1eUMYU5JzVQ'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzgsImVtYWlsIjoicC5nZ3VtcWpAcXEuY29tIiwicm9sZSI6MSwiZXhwaXJlc19hdCI6MTY2NDE4NTY2MH0.qab0tWSiBw8zCuByk3HWxEXambaxY4NQ5wS4MvybU9g'
     const response = await fetch(preurl+url, {
       method, 
       headers: {
@@ -20,7 +20,7 @@ export  async function postData (url = '', data = {},method: 'POST'){
   export  async function getJson (url = ''){
     // Default options are marked with *
     const preurl='http://119.3.2.168:2022/api/v1';
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsImVtYWlsIjoibGFsYWxhdGVzdEBxcS5jb20iLCJyb2xlIjoxLCJleHBpcmVzX2F0IjoxNjYyODY1Mjg3fQ.3EGqugxW4liI_b6Pcu3w3Za2XIFTSc1W1eUMYU5JzVQ'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzgsImVtYWlsIjoicC5nZ3VtcWpAcXEuY29tIiwicm9sZSI6MSwiZXhwaXJlc19hdCI6MTY2NDE4NTY2MH0.qab0tWSiBw8zCuByk3HWxEXambaxY4NQ5wS4MvybU9g'
     const response = await fetch(preurl+url, {
       method:'GET', 
       headers: {

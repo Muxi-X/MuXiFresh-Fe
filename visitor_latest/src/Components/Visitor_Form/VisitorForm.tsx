@@ -1,9 +1,12 @@
 // 游客提交、查看、修改报名表页面组件
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './VisitorForm.less'
 import './bootstrap.min.css'
 import Tittle from '../Visitor_Tittle/tittle'
-import initialFigure from '../../images/null.png'
+import { getJson, postData } from "../../interface/fetch";
+import * as qiniu from 'qiniu-js';
+import defaultFigure from '../../images/figure.png'
+
 function VisitorForm() {
   // 姓名
   const [name, setName] = useState('')
@@ -85,7 +88,150 @@ function VisitorForm() {
   const [figure, setFigure] = useState('')
   // 修改资料
   const [update, setUpdate] = useState(0)
+  //qiniu-token
+  const [token, setToken] = useState('');
+  const [filename, setFilename] = useState('');
+  const [complete, setComplete] = useState(false);
+  const [fileurl, setFileurl] = useState('');
 
+  // 获取数据
+  useEffect(() => {
+    getJson('/form/view')
+      .then(
+        data => {
+          console.log("[Get] Basic Data BE");
+          console.log(data);
+          setName(data.data.name);
+          setId(data.data.student_id);
+          setSchool(data.data.college);
+          setMajor(data.data.major);
+          setGrade(data.data.grade);
+          setGender(data.data.gender);
+          setMail(data.data.email);
+          setApproach(data.data.contact_way);
+          setDetail(data.data.contact_number);
+          // 在这里需要进行组和数字的转换
+          // console.log("The intitial intention is (should be a number) " + intention);
+          // console.log("the data.data.group is" + data.data.group);
+          switch (data.data.group) {
+            case '1': { setIntention('设计组'); break; }
+            case '2': { setIntention('产品组'); break; }
+            case '3': { setIntention('安卓组'); break; }
+            case '4': { setIntention('前端组'); break; }
+            case '5': { setIntention('后端组'); break; }
+            default: { setIntention(data.data.group); break; }
+          };
+          console.log(intention);
+          console.log("the intention in state is (cn) " + intention);
+          // setIntention(data.data.group);
+          setReason(data.data.reason);
+          setGrasp(data.data.understand);
+          setIntro(data.data.self_introduction);
+          setWork(data.data.if_other_organization);
+          setFigure(data.data.avatar);
+          setUpdate(1);
+        }
+      )
+      .catch(error => console.log(error));
+    getJson('/user/info')
+      .then(
+        data => {
+          console.log("[Get] Figure Data BE");
+          console.log(data);
+          setFigure(data.data.avatar);
+        }
+      )
+      .catch(error => console.log(error));
+    //获取qiniu-token
+    getJson('/user/qiniu_token')
+      .then(
+        data => {
+          setToken(data.data.Token);
+        }
+      )
+  }, []
+  )
+
+  // const refUpload = useRef(null);
+  // const handleFigureUpload = (e) => {
+  //   alert("handle func works properly");
+  //   refUpload.current.onChange(e);
+  // };
+
+  function upload(): any {
+    console.log("the intention to upload is " + intention);
+    let transferredGroup = '0';
+    switch (intention) {
+      case '设计组': { transferredGroup = '1'; console.log("设计组 the transferred intention is " + transferredGroup); break; }
+      case '产品组': { transferredGroup = '2'; console.log("产品组 the transferred intention is " + transferredGroup); break; }
+      case '安卓组': { transferredGroup = '3'; console.log("安卓组 the transferred intention is " + transferredGroup); break; }
+      case '前端组': { transferredGroup = '4'; console.log("前端组 the transferred intention is " + transferredGroup); break; }
+      case '后端组': { transferredGroup = '5'; console.log("后端组 the transferred intention is " + transferredGroup); break; }
+    };
+    console.log("The final intention is " + transferredGroup + " (should be a number)");
+    const data = {
+      avatar: 'http://ossfresh-test.muxixyz.com/' + filename,
+      college: school,
+      contact_number: detail,
+      contact_way: approach,
+      gender: gender,
+      grade: grade,
+      group: transferredGroup,
+      if_other_organization: work,
+      major: major,
+      name: name,
+      reason: reason,
+      self_introduction: intro,
+      student_id: id,
+      understand: grasp
+    }
+    postData(
+      '/form',
+      data,
+      'PUT')
+      .then(data => {
+        console.log("[Upload] all data successfully");
+        console.log(data);
+        alert('上传成功!')
+      })
+      .catch(error => {
+        console.log(error);
+        alert('上传失败!')
+      })
+
+  }
+  //上传文件
+  function selectFile(e: React.ChangeEvent<HTMLInputElement>): any {
+    const files = e.target.files;
+    const key = files[0].name;
+    const file = files[0];
+    // console.log(file)
+    setFilename(key);
+    const putExtra = {};
+    const config = {
+      useCdnDomain: true,
+      region: qiniu.region.z2
+    };
+
+    //选择并上传文件到七牛云
+    const observable = qiniu.upload(file, key, token, putExtra, config);
+    const observer = {
+      next(res) {
+        // ...
+      },
+      error(err) {
+        // ...
+        console.log(err)
+      },
+      complete(res) {
+        // ...
+        // console.log('http://ossfresh-test.muxixyz.com/' + res.key)
+        setFileurl('http://ossfresh-test.muxixyz.com/' + res.key)
+      }
+    }
+    const subscription = observable.subscribe(observer) // 上传开始
+    setComplete(true);  //上传完成后显示文件名
+  }
 
   return (
     <div>
@@ -95,7 +241,17 @@ function VisitorForm() {
         {/* 个人信息 */}
         <Tittle tittleName='个人信息' />
         <div className='tt-5 formBlock d-flex flex-wrap justify-content-between w-50'>
-          <img className='info-figure mx-1' src={figure ? figure : initialFigure}></img>
+          {/* 接下来需要修改优化这个部分的样式 */}
+          <div className="upload-figure">
+            <img className='left-figure-image' id="my-figure"
+              src={figure == 'http://ossfresh-test.muxixyz.com/' ? defaultFigure :
+                figure == '' ? defaultFigure :
+                  figure == 'http://dummyimage.com/100x100' ? defaultFigure :
+                    figure} />
+            {/* <img className='left-figure-image' id="my-figure" src={figure} /> */}
+            <input type="file" id="figure-upload" onChange={(e) => { selectFile(e) }} />
+          </div>
+          {/* <div style={{ color: "transparent" }}>{figure}</div> */}
           <div className="form-group w-50" id='info-group'>
             <div className='d-flex justify-content-center align-items-center'>
               <label htmlFor="comment">姓名:</label>
@@ -120,24 +276,24 @@ function VisitorForm() {
             <div className='d-flex justify-content-center align-items-center'>
               <label htmlFor="comment">性别:</label>
               <select className="form-control w-100" onChange={handleGenderChange}>
-                <option className='tt-5'>请选择</option>
+                <option className='tt-5'>{gender == '' ? '请选择' : gender}</option>
                 <option className='tt-5'>男</option>
                 <option className='tt-5'>女</option>
               </select>
             </div>
             <div className='d-flex justify-content-center align-items-center'>
               <label htmlFor="comment">邮箱:</label>
-              <input type="text" className="form-control" value={mail} onChange={handleMailChange} />
+              <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} disabled={true} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
               <label htmlFor="comment">其它:</label>
               <div className='w-100 m-0 d-flex justify-content-between'>
                 <select className="form-control" id="others-select" onChange={handleApproachChange}>
-                  <option className='tt-5'>请选择</option>
+                  <option className='tt-5'>{approach == '' ? '请选择' : approach}</option>
                   <option className='tt-5'>QQ</option>
                   <option className='tt-5'>Tel</option>
                 </select>
-                <input type="text" className="form-control" id='others-label' />
+                <input type="text" className="form-control text-center" id='others-label' value={detail} onChange={handleDetailChange} />
 
               </div>
             </div>
@@ -148,12 +304,12 @@ function VisitorForm() {
         <div className="tt-5 form-group w-50">
           <label htmlFor="sel1">心动组别:</label>
           <select className="form-control" onChange={handleIntentionChange}>
-            <option className='tt-5'>请选择</option>
-            <option className='tt-5'>产品组</option>
+            <option className='tt-5'>{intention == '' ? '请选择' : intention}</option>
             <option className='tt-5'>设计组</option>
+            <option className='tt-5'>产品组</option>
+            <option className='tt-5'>安卓组</option>
             <option className='tt-5'>前端组</option>
             <option className='tt-5'>后端组</option>
-            <option className='tt-5'>安卓组</option>
           </select>
           <label htmlFor="comment">心动理由:</label>
           <textarea className="form-control self-introduction" rows={3}
@@ -179,13 +335,13 @@ function VisitorForm() {
         </span>
         <div className='tt-5 input-group d-flex justify-content-center p-2'>
           <div className="radio mx-1">
-            <label><input type="radio" name="optradio" value='YES' onChange={handleWorkChange} />是</label>
+            <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>
           </div>
           <div className="radio mx-1">
-            <label><input type="radio" name="optradio" value='NO' onClick={handleWorkChange} />否</label>
+            <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
           </div>
         </div>
-        <button className='olol button-submit' onClick={() => setUpdate(1)}>{update ? '更新资料' : '提交资料'}</button>
+        <button className='olol button-submit' onClick={() => { setUpdate(1); upload() }}>{update ? '更新资料' : '提交资料'}</button>
       </div>
     </div>
   )
