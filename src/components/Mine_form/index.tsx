@@ -49,7 +49,7 @@ const Mine_form:React.FC = ()=>{
                     <div className="title">个人信息</div>
                     <div className="highlight"></div>
                 </div>
-                <div className="body">
+                <div className="body1">
                     <div className="picture"><img src={avatar==''? default_avatar : avatar} alt="" className='avatar'/></div>
                     <div className="detail">
                         <div className="line">姓名：<span className='circle_one'>{name}</span></div>
@@ -72,7 +72,7 @@ const Mine_form:React.FC = ()=>{
                     <div className="title">报名信息</div>
                     <div className="highlight"></div>
                 </div>
-                <div className="body">
+                <div className="body2">
                     <div className="row"><span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;心动组别：</span><span className='circle_two'>{group}</span></div>
                     <div className="row"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心动理由：</span><span className='circle_three'>{reason}</span></div>
                     <div className="row_1"><span>对组别的了解：</span><span className='circle_three'>{understand}</span></div>
@@ -83,7 +83,7 @@ const Mine_form:React.FC = ()=>{
                     <div className="title">自述部分</div>
                     <div className="highlight"></div>
             </div>
-            <div className="body">
+            <div className="body3">
                 <div className="intro"><span>自我介绍：</span><span className='circle_three'>{self_introduction}</span></div>
             </div>
             </div>

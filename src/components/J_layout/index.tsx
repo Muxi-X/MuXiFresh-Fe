@@ -14,7 +14,7 @@ export default function J_layout() {
         <div className="body">
             <div className="box">
                 <ul className="nav">                  
-                        <li><NavLink className={computedName} to="/visitor/">报名表查看</NavLink></li>
+                        <li><NavLink className={computedName} to="/visitor/form">报名表查看</NavLink></li>
                         <li><NavLink className={computedName} to="/visitor/progress">进度查询</NavLink></li>
                         <li><NavLink className={computedName} to="/visitor/work">作业查询</NavLink></li>
                 </ul>
