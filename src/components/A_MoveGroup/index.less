@@ -1,0 +1,63 @@
+.move_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(51, 51, 51, 0.5);
+  width: 100%;
+  height: 100%;
+
+  .move_admin {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8rem;
+
+
+    .move_title {
+      width: 8rem;
+      height: 1.04rem;
+      background: #FFC76B;
+      border-radius: 0.24rem 0.24rem 0 0;
+      font-size: 0.42rem;
+      font-weight: bold;
+      color: #272727;
+      text-align: center;
+      line-height: 1.04rem;
+    }
+
+    .move_box {
+      width: 8rem;
+      height: 3.3rem;
+      background: #FFFFFF;
+      border-radius: 0 0 0.24rem 0.24rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .move_select {
+        width: 3.6rem;
+        height: 0.48rem;
+        background: #FFFFFF;
+        border-radius: 0.08rem 0.08rem 0.08rem 0.08rem;
+        border: 0.01rem solid #707070;
+        margin-top: 0.8rem;
+        font-size: 0.25rem;
+      }
+
+      .move_button {
+        width: 2.4rem;
+        height: 0.48rem;
+        background: #FFC76B;
+        border-radius: 0.16rem;
+        border: none;
+        margin: 0.6rem;
+        font-size: 0.32rem;
+      }
+
+      .move_button:hover {
+        cursor: pointer
+      }
+    }
+  }
+}
