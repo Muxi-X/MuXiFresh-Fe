@@ -40,7 +40,7 @@ const ManageLists = (props: any) => {
             </div>
             <div className="manage_info">
                 {data.map((data) => {
-                    return <div>
+                    return <div key={data.email}>
                         <A_listInfo email={data.email} name={data.name} grade={data.grade} college={data.college}
                                     group={props.group} move={move}/>
                     </div>
