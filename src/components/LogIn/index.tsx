@@ -63,11 +63,13 @@ const LogIn = (props: any) => {
                    const toVisitor = ()=>{
                     navigate('/visitor')
                    }
+                   toVisitor()
                 }
                 else if(data.data.role===3||data.data.role===4){
                     const toManager = ()=>{
                         navigate('/manager')
                     }
+                    toManager()
                 }
             }
         )
