@@ -14,11 +14,11 @@ import Others_work from "../components/Others_work";
 
 
 // 注册路由表
-const router:RouteObject[] = [
+const router: RouteObject[] = [
     {
-		path:'/',
-		element:<Navigate to="/login"/>//默认跳到login
-	},
+        path: '/',
+        element: <Navigate to="/login" />//默认跳到login
+    },
     {//新生 J
         path:"/visitor",
         element:<J_layout />,
