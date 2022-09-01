@@ -1,0 +1,108 @@
+.body {
+    position: absolute;
+    font-size: medium;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    .box{
+        display: flex;
+        flex-direction: column;
+        background-color: #FFFFFF;
+        width: 85vh;
+        height: 50vh;
+        margin-top: 17vh;
+        margin-bottom: 21.5vh;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+        border: 1px solid #707070;
+        .back {
+            display: flex;
+            flex-direction: row;
+            margin-top: 2.5vh;
+            img {
+                margin-top: 0.95vh;
+                margin-left: 4vw;
+                height: 3.4vh;
+                width: 2vh;
+                cursor: pointer;
+            }
+            button {
+                margin-top: 0rem;
+                margin-left: 2vh;
+                font-family: Microsoft YaHei-Bold;
+                font-weight: bold;
+                font-size: 3.5vh;
+                color: #FFC76BFF;
+                background-color: #FFFFFF;
+                border: none;
+                cursor: pointer;
+            }
+        }
+        .title {
+            font-size: x-large;
+            font-weight: bold;
+            font-family: Microsoft YaHei-Bold;
+            color: #272727FF;
+            margin: 0 auto;
+            margin-top: 3vh;
+        }
+        .content {
+            display: flex;
+            justify-content: baseline;
+            margin-top: 4vh;
+            height: 12vh;
+            .avatar {
+                margin-left: 8vw;
+                img {
+                    width: 12vh;
+                    height: 12vh;
+                    border-radius: 50%;
+                }
+            }
+            .title {
+                font-size: x-large;
+                font-weight: bold;
+                font-family: Microsoft YaHei-Bold;
+                color: #272727FF;
+                margin: auto 0;
+                margin-left: 5vh;
+            }
+            .editName {
+                margin: auto 0;
+                margin-left: 2.5vw;
+                input {
+                    height: 3.5vh;
+                    outline: none;
+                }
+            }
+        }
+        .changeAvatar {
+            margin-top: 2vh;
+            margin-left: 8vw;
+            input {
+                display: none;
+            }
+            label {
+               
+                font-weight: bold;
+                font-size:small;
+                color: #AFB0B4FF;
+                cursor: pointer;
+            }
+        }
+        .submit {
+            margin: 0 auto;
+            margin-top: 3vh;
+            button {
+                width: 15vh;
+                height: 3.5vh;
+                border: none;
+                border-radius: 7px 7px 7px 7px;
+                background-color: #FFC76BFF;
+                font-family: Microsoft YaHei-Bold;
+                cursor: pointer;
+            }
+        }
+    }
+}
