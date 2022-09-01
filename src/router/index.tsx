@@ -6,11 +6,11 @@ import A_layout from "../components/A_layout"
 import AJ_form from "../components/AJ_form/form";
 import AJ_work from "../components/AJ_work";
 import AJ_progress from "../components/AJ_progress";
-import A_check from "../components/A_check/index";
-import A_publish from "../components/A_publish";
+import A_check from "../components/A_check";
+import A_publish from "../components/A_publish/index";
 import A_admin from "../components/A_admin/index";
 import Others_form from "../components/Others_form";
-import Others_work from "../components/Others_work";
+import Others_work from "../components/Others_work/index";
 
 
 // 注册路由表
