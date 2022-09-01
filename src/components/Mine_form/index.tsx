@@ -42,9 +42,9 @@ const Mine_form:React.FC = ()=>{
         })
     },[])
     return (
-        <div className="container">
+        <div className="my-container">
             <div className="theme">我的简历</div>
-            <div className="one">
+            <div className="form-one">
                 <div className="head">
                     <div className="title">个人信息</div>
                     <div className="highlight"></div>
@@ -67,7 +67,7 @@ const Mine_form:React.FC = ()=>{
                     </div>
                 </div>
             </div>
-            <div className="two">
+            <div className="form-two">
                 <div className="head">
                     <div className="title">报名信息</div>
                     <div className="highlight"></div>
@@ -78,7 +78,7 @@ const Mine_form:React.FC = ()=>{
                     <div className="row_1"><span>对组别的了解：</span><span className='circle_three'>{understand}</span></div>
                 </div>
             </div>
-            <div className="three">
+            <div className="form-three">
             <div className="head">
                     <div className="title">自述部分</div>
                     <div className="highlight"></div>
@@ -87,7 +87,7 @@ const Mine_form:React.FC = ()=>{
                 <div className="intro"><span>自我介绍：</span><span className='circle_three'>{self_introduction}</span></div>
             </div>
             </div>
-            <div className="four">
+            <div className="form-four">
                 <div className="head">
                     <div className="title">一些小问题</div>
                     <div className="highlight"></div>
@@ -110,7 +110,7 @@ const Mine_form:React.FC = ()=>{
                     </div>
                 </div>
             </div>
-            <button className='btn'>修改资料</button>
+            <button className='form-btn'>修改资料</button>
         </div>
     )
 }
