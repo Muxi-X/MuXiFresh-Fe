@@ -96,12 +96,12 @@ const LogIn = (props: any) => {
     return(
         <div className='login-container'>
             <div className="pic"><img className='background' src={Join}/></div>
-            <div className='login did'>
+            <div className='login'>
                 <div className='form' >
                     <div className='_title'>登录</div>
-                    <div className='yourEmail did'><label className='lab' htmlFor="useremail">邮箱:</label><input className='login-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete='off'/>{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='yourPassWord did'><label className='lab' htmlFor='password'>密码:</label><input className='login-put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='_end did'><button onClick={logIn}>登录</button><button onClick={()=>setIsLogIn(false)}>注册</button><button onClick={back}>官网</button></div>
+                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='login-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete='off'/>{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='yourPassWord'><label className='lab' htmlFor='password'>密码:</label><input className='login-put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='_end'><button onClick={logIn}>登录</button><button onClick={()=>setIsLogIn(false)}>注册</button><button onClick={back}>官网</button></div>
                 </div>
             </div>
         </div>
