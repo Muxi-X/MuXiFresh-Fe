@@ -25,15 +25,16 @@ html {
 .did {
     margin: 0 auto;
     margin-top: 0.29rem;
-    margin-bottom: 0.29rem;
+    margin-bottom: 0.20rem;
     width: 9.6rem;
 }
 
-.put {
+.login-put {
     border-radius: 5px 5px 5px 5px;
-    height: 0.54rem;
+    min-height: 2.8vh;
     border: 0.01rem solid #707070;
     outline: none;
+    min-width: 20vw;
 }
 
 .background {
@@ -44,53 +45,66 @@ html {
 .login {
     border-radius: 10px 10px 10px 10px;
     border: 1px;
-    background-color: aliceblue;
-    width: 8.12rem;
+    min-width: 80vw;
+    //width: 8.12rem;
     //height: 9.32rem;
     .form {
+        min-width: 80vw;
+        background-color: antiquewhite;
+        border-radius: 10px 10px 10px 10px;
         display: flex;
         flex-direction: column;
         ._title {
             background-color: rgba(255, 199, 107, 1);
             //width: 8.12rem;
-            height: 1.34rem;
+            height: /* 1.34rem */40px;
             margin-top: 0;
             border-radius: 10px 10px 0px 0px;
             text-align: center;
-            line-height: 1.34rem;
+            line-height: /* 1.34rem */40px;
             font-size: larger;
             font-family: Microsoft YaHei-Bold, Microsoft YaHei;
             font-weight: bolder;
         }
         .yourEmail {
+            margin: 0 auto;
+            margin-top: 0.29rem;
+            margin-bottom: 0.20rem;
+            width: 60%;
+            
             label {
-                margin-left: 75px;
+                margin-left: 0;
             }
             .attention {
                 font-family: Microsoft YaHei-Regular;
                 font-size: small;
                 color: red;
-                padding-left: 1vh;
+                padding-left: 1vw;
             }
     
         }
         .yourPassWord {
+            margin: 0 auto;
+            margin-top: 0.29rem;
+            margin-bottom: 0.50rem;
+            width: 60%;
+
             label {
-                margin-left: 75px;
+                margin-left:0;
             }
             .attention {
                 font-family: Microsoft YaHei-Regular;
                 font-size: small;
                 color: red;
-                padding-left: 1vh;
+                padding-left: 2vw;
             }
         }
         ._end {
             text-align: center;
-            //margin-bottom: 1rem;
+            margin-bottom: 20px;
             button {
-                width: 12vh;//2.4rem
-                height: 3vh;
+                min-width: 12vh;//2.4rem
+                min-height: 3vh;
                 margin-left: 1vw;
                 background-color: rgba(255, 199, 107, 1);
                 border: none;

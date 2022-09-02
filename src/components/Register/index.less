@@ -5,6 +5,11 @@ html{
 .reg-body {
     width: 100%;
     font-size: medium;
+    //background-color: #1b3037;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .lab {
@@ -21,10 +26,10 @@ html{
     width: 50vh;
 }
 
-.put {
+.reg-put {
     border-radius: 5px 5px 5px 5px;
-    height: 2.8vh;
-    width: 20vh;
+    min-height: 2.8vh;
+    min-width: 20vh;
     border: 0.01rem solid #707070;
     outline: none;
 }
@@ -37,10 +42,14 @@ html{
 .register {
     border-radius: 10px 10px 10px 10px;
     border: 1px;
-    background-color: aliceblue;
+    //background-color: aliceblue;
+    //min-width: 80vw;
     .form {
         display: flex;
         flex-direction: column;
+        background-color: antiquewhite;
+        border-radius: 10px 10px 10px 10px;
+        //min-width: 80vw;
         .title {
             background-color: rgba(255, 199, 107, 1);
             width: 50vh;
@@ -79,8 +88,8 @@ html{
             text-align: center;
             margin-bottom: 5vh;
             button {
-                width: 12vh;
-                height: 3vh;
+                min-width: 12vh;
+                min-height: 3vh;
                 background-color: rgba(255, 199, 107, 1);
                 border: none;
                 border-radius: 5px 5px 5px 5px;

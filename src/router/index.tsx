@@ -11,14 +11,15 @@ import A_publish from "../components/A_publish/index";
 import A_admin from "../components/A_admin/index";
 import Others_form from "../components/Others_form";
 import Others_work from "../components/Others_work/index";
+import VisitorForm from "../components/Visitor_Form/VisitorForm";
 
 
 // 注册路由表
-const router:RouteObject[] = [
+const router: RouteObject[] = [
     {
-		path:'/',
-		element:<Navigate to="/login"/>//默认跳到login
-	},
+        path: '/',
+        element: <Navigate to="/login" />//默认跳到login
+    },
     {//新生 J
         path:"/visitor",
         element:<J_layout />,
@@ -45,6 +46,7 @@ const router:RouteObject[] = [
         ]
     },
     {path:"/login",element:<First />},
+    {path:"/edit",element:<VisitorForm />}
     
 ]
 export default router

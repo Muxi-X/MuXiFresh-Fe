@@ -95,10 +95,10 @@ const Register = (props: any) => {
             <div className='register did'>
                 <div className='form did' >
                     <div className='title did'>注册</div>
-                    <div className='yourEmail did'><label className='lab' htmlFor="useremail">邮箱:</label><input className='put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete="off" required/>{check.checkEmail?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='studentId did'><label className='lab' htmlFor="userId">学号:</label><input className='put' onBlur={handleChange2} type="text" id='userId' name="userId"  autoComplete="off"/></div>
-                    <div className='yourPassWord did'><label className='lab' htmlFor='password'>密码:</label><input className='put' onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='checkPassWord did'><label className='lab' htmlFor='password1'>确认密码:</label><input className='put' onChange={handleChange4}  type="password" id='password1' />{check.checkPassword?"":<span className='attention'>*密码不一致</span>}</div>
+                    <div className='yourEmail did'><label className='lab' htmlFor="useremail">邮箱:</label><input className='reg-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete="off" required/>{check.checkEmail?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='studentId did'><label className='lab' htmlFor="userId">学号:</label><input className='reg-put' onBlur={handleChange2} type="text" id='userId' name="userId"  autoComplete="off"/></div>
+                    <div className='yourPassWord did'><label className='lab' htmlFor='password'>密码:</label><input className='reg-put' onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='checkPassWord did'><label className='lab' htmlFor='password1'>确认密码:</label><input className='reg-put' onChange={handleChange4}  type="password" id='password1' />{check.checkPassword?"":<span className='attention'>*密码不一致</span>}</div>
                     <div className='confirm did'><button onClick={()=>setIsLogIn(true)}>登录</button><button onClick={register}>注册</button><button onClick={back}>官网</button></div>
                 </div>
             </div>
