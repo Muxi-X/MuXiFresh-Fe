@@ -8,20 +8,7 @@ import Join from '../../images/join.png'
 const LogIn = (props: any) => {
     const [form,setForm]=useState();//报名表状态
 
-   /*  useEffect(()=>{
-        getJson('/schedule')
-        .then(
-            data=>{
-                //0表示未提交 1表示提交
-                setForm(data.data.form_status);
-                console.log(data.data)
-                console.log('##',data.data.form_status)
-            }
-        )
-   .catch(error=>console.log(error))
-    },[]
-    )
- */
+
     const {setIsLogIn} = props
 
     const [user,setUser] = useState({
@@ -78,12 +65,11 @@ const LogIn = (props: any) => {
             data=>{
                 //0表示未提交 1表示提交
                 setForm(data.data.form_status);
-                console.log(data.data)
                 console.log('##',data.data.form_status)
             }
         )
-   .catch(error=>console.log(error))
-   
+        .catch(error=>console.log(error))
+
         getJson('/user/info')
         .then(
             data => {

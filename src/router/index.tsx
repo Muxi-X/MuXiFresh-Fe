@@ -12,6 +12,7 @@ import A_admin from "../components/A_admin/index";
 import Others_form from "../components/Others_form";
 import Others_work from "../components/Others_work/index";
 import VisitorForm from "../components/Visitor_Form/VisitorForm";
+import MyHomePage from "../components/MyHomePage";
 
 
 // 注册路由表
@@ -46,7 +47,8 @@ const router: RouteObject[] = [
         ]
     },
     {path:"/login",element:<First />},
-    {path:"/edit",element:<VisitorForm />}
+    {path:"/edit",element:<VisitorForm />},
+    {path:'/home',element:<MyHomePage />}
     
 ]
 export default router

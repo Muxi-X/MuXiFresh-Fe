@@ -4,8 +4,10 @@ import "./index.less"
 import back from "/src/images/back.png"
 import { getJson,putData } from '../../interface/fetch'
 import * as qiniu from 'qiniu-js'
-const MyHomePage = (props: any) => {
+import { useNavigate } from 'react-router-dom'
 
+const MyHomePage = (props: any) => {
+    const navigate=useNavigate()
     const {setComplete,setShowHome,setAvatar,avatar} = props
 
     const [msg,setmsg] = useState({
@@ -102,31 +104,36 @@ const MyHomePage = (props: any) => {
 
     const handleSubmit = () => {
         updateInfo();
+        navigate(-1)
+    }
+    const backBefore=()=>{
+        navigate(-1)
     }
 
-
     return(
-        <div className='body'>
-            <div className='box'>
+        <div className='home-body'>
+            <div className='home-box'>
                 <div className='back'>
                     <img src={back} onClick={()=>setShowHome(false)}/>
-                    <button className='back' onClick={()=>setShowHome(false)}>返回</button>
+                    <button className='back' onClick={backBefore}>返回</button>
                 </div>
-                <div className='title'>修改信息</div>
-                <div className='content'>
+                <div className='home-title'>修改信息</div>
+                <div className='home-content'>
                     <div className='avatar'>
                         <img src={msg.avatar} alt="#" />
                     </div>
-                    <div className='title'>名称:</div>
+                    <div className='right-home'>
+                    <div className='home-title home-name'>名称:</div>
                     <div className='editName'>
                         <input type="text" onBlur={editName}/>
+                    </div>
                     </div>
                 </div>
                 <div className='changeAvatar'>
                     <input  type="file" id='upload' accept='/image*' onChange={(e)=>selectAvatar(e)}/>
                     <label htmlFor="upload">点击修改头像</label>
                 </div>
-                <div className='submit'><button onClick={handleSubmit}>确认修改</button></div>
+                <div className='home-submit'><button onClick={handleSubmit} className='home-btn'>确认修改</button></div>
             </div>
         </div>
     )

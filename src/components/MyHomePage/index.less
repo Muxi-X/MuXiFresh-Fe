@@ -1,13 +1,18 @@
-.body {
-    position: absolute;
+.home-body {
+    //position: absolute;
     font-size: medium;
     width: 100%;
     height: auto;
+    //min-height: 100vh;
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
-    .box{
+    background-color: #1b3037;
+    .home-box{
         display: flex;
+        box-sizing: border-box;
+        min-height: 60vh;
+        padding: 5px;
         flex-direction: column;
         background-color: #FFFFFF;
         width: 85vh;
@@ -39,7 +44,7 @@
                 cursor: pointer;
             }
         }
-        .title {
+        .home-title {
             font-size: x-large;
             font-weight: bold;
             font-family: Microsoft YaHei-Bold;
@@ -47,18 +52,28 @@
             margin: 0 auto;
             margin-top: 3vh;
         }
-        .content {
+
+        .home-content {
             display: flex;
-            justify-content: baseline;
+            justify-content: space-around;
             margin-top: 4vh;
             height: 12vh;
             .avatar {
-                margin-left: 8vw;
+                width: 12vh;
+                height: 12vh;
+                background-color: #ffffff;
+                border-radius: 50%;
+                //margin-left: 8vw;
+                margin-bottom: 2vh;
+                background-color: #c6c4c4;
                 img {
-                    width: 12vh;
-                    height: 12vh;
+                    width: 100%;//12vh
+                    height: 100%;
                     border-radius: 50%;
                 }
+            }
+            .right-home{
+                display: flex;
             }
             .title {
                 font-size: x-large;
@@ -72,14 +87,14 @@
                 margin: auto 0;
                 margin-left: 2.5vw;
                 input {
-                    height: 3.5vh;
+                    min-height: 3.5vh;
                     outline: none;
                 }
             }
         }
         .changeAvatar {
             margin-top: 2vh;
-            margin-left: 8vw;
+            margin-left: 4vw;
             input {
                 display: none;
             }
@@ -91,12 +106,15 @@
                 cursor: pointer;
             }
         }
-        .submit {
+        .home-submit {
             margin: 0 auto;
             margin-top: 3vh;
-            button {
-                width: 15vh;
-                height: 3.5vh;
+            .home-btn {
+                min-width: 10vw;
+                min-height: 3.5vh;
+                //margin-bottom: 5vh;
+                padding: 5px;
+                text-align: center;
                 border: none;
                 border-radius: 7px 7px 7px 7px;
                 background-color: #FFC76BFF;
