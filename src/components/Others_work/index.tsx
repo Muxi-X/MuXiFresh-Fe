@@ -5,7 +5,7 @@ import React, { useState,useEffect, Component }from "react";
 import './index.less';
 import muxi from  '/src/images/muxi-logo.png' 
 import {getJson, postData} from '../../interface/fetch';
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import A_xiangqing from '../Check_detail'
 
 // interface childProps {
@@ -13,6 +13,10 @@ import A_xiangqing from '../Check_detail'
 // }
 
 const J_check : React.FC = (props) => {
+    const navigate=useNavigate()
+    const backto=()=>{
+        navigate(-1)
+    }
     const {email} = useParams()//拿到 从审阅跳转到查看作业，携带的email参数
 
     const [homeworks, setHomeworks] = useState([])
@@ -44,7 +48,7 @@ const J_check : React.FC = (props) => {
             ):''}
         </div>
         
-        <div className="btn">返回</div>
+        <div className="btn" onClick={backto}>返回</div>
     </div>
         
   )};

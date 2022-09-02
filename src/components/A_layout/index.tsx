@@ -10,11 +10,11 @@ export default function J_layout() {
     }
     
   return (
-    <div className='container'>
+    <div className='A-container'>
         <Header></Header>
-        <div className="body">
-            <div className="box">
-                <ul className="nav">                  
+        <div className="A-body">
+            <div className="A-box">
+                <ul className="A-nav">                  
                         <li><NavLink className={computedName} to="/manager/form">报名表查看</NavLink></li>
                         <li><NavLink className={computedName} to="/manager/progress">进度查询</NavLink></li>
                         <li><NavLink className={computedName} to="/manager/work">作业</NavLink></li>
@@ -22,7 +22,7 @@ export default function J_layout() {
                         <li><NavLink className={computedName} to="/manager/publish">作业发布</NavLink></li>
                         <li><NavLink className={computedName} to="/manager/admin">权限管理</NavLink></li>
                 </ul>
-                <div className="content">
+                <div className="A-content">
                     <Outlet></Outlet>
                 </div>
             </div>

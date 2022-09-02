@@ -53,7 +53,7 @@ const Others_form:React.FC = ()=> {
     },[])
 
     return (   
-        <div className="container">
+        <div className="other-container">
             <div className="theme">{name}的简历</div>
             <div className="one1">
                 <div className="head">
@@ -84,9 +84,9 @@ const Others_form:React.FC = ()=> {
                     <div className="highlight"></div>
                 </div>
                 <div className="body2">
-                    <div className="row"><span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;心动组别：</span><span className='circle_two'>{group}</span></div>
-                    <div className="row"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心动理由：</span><span className='circle_three'>{reason}</span></div>
-                    <div className="row_1"><span>对组别的了解：</span><span className='circle_three'>{understand}</span></div>
+                    <div className="other-row"><span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;心动组别：</span><span className='circle_two'>{group}</span></div>
+                    <div className="other-row"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心动理由：</span><span className='circle_three'>{reason}</span></div>
+                    <div className="other-row_1"><span>对组别的了解：</span><span className='circle_three'>{understand}</span></div>
                 </div>
             </div>
             <div className="three3">
@@ -121,7 +121,7 @@ const Others_form:React.FC = ()=> {
                     </div>
                 </div>
             </div>
-            <button className='btn' onClick={back}>返回</button>
+            <button className='other-btn' onClick={back}>返回</button>
         </div>
     
     )

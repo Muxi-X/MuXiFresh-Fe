@@ -4,7 +4,6 @@ import { getJson, postData } from '../../interface/fetch';
 import cmp from '../../images/complete.png';
 import * as qiniu from 'qiniu-js';
 import A_comment from '../A_comment';
-
 //import { finished } from 'stream';
 //提交作业
 
@@ -212,9 +211,7 @@ const J_work = () =>{
    
     return(
         <div className='work'>
-
             <div className='title_'>作业</div>
-
             <div className='divide'>{group}作业</div>
             <div className='one'>
                 <div className='t' >标题：</div>
@@ -270,6 +267,4 @@ const J_work = () =>{
     )
 }
 
-
 export default J_work;
-

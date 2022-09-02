@@ -3,8 +3,10 @@ import React ,{useState,useEffect}from 'react'
 import default_avatar from '../../images/default_avatar.png'
 import { getJson } from '../../interface/fetch'
 import './index.less'
+import { useNavigate } from 'react-router-dom'
 
 const Mine_form:React.FC = ()=>{
+    const navigate=useNavigate()
     const [name,setName]=useState('')
     const [student_id,setStudent_id]=useState('')
     const [college,setCollege]=useState('')
@@ -41,10 +43,15 @@ const Mine_form:React.FC = ()=>{
             setAvatar(res.data.avatar)
         })
     },[])
+
+    const toEdit=()=>{
+        navigate('/edit')
+    }
+    
     return (
-        <div className="container">
+        <div className="my-container">
             <div className="theme">我的简历</div>
-            <div className="one">
+            <div className="form-one">
                 <div className="head">
                     <div className="title">个人信息</div>
                     <div className="highlight"></div>
@@ -67,18 +74,18 @@ const Mine_form:React.FC = ()=>{
                     </div>
                 </div>
             </div>
-            <div className="two">
+            <div className="form-two">
                 <div className="head">
                     <div className="title">报名信息</div>
                     <div className="highlight"></div>
                 </div>
                 <div className="body2">
-                    <div className="row"><span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;心动组别：</span><span className='circle_two'>{group}</span></div>
-                    <div className="row"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心动理由：</span><span className='circle_three'>{reason}</span></div>
-                    <div className="row_1"><span>对组别的了解：</span><span className='circle_three'>{understand}</span></div>
+                    <div className="my-row"><span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;心动组别：</span><span className='circle_two'>{group}</span></div>
+                    <div className="my-row"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心动理由：</span><span className='circle_three'>{reason}</span></div>
+                    <div className="my-row_1"><span>对组别的了解：</span><span className='circle_three'>{understand}</span></div>
                 </div>
             </div>
-            <div className="three">
+            <div className="form-three">
             <div className="head">
                     <div className="title">自述部分</div>
                     <div className="highlight"></div>
@@ -87,7 +94,7 @@ const Mine_form:React.FC = ()=>{
                 <div className="intro"><span>自我介绍：</span><span className='circle_three'>{self_introduction}</span></div>
             </div>
             </div>
-            <div className="four">
+            <div className="form-four">
                 <div className="head">
                     <div className="title">一些小问题</div>
                     <div className="highlight"></div>
@@ -110,7 +117,7 @@ const Mine_form:React.FC = ()=>{
                     </div>
                 </div>
             </div>
-            <button className='btn'>修改资料</button>
+            <button className='form-btn' onClick={toEdit}>修改资料</button>
         </div>
     )
 }

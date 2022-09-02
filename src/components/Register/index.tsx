@@ -1,6 +1,8 @@
 import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
 import "./index.less"
+import Join from '../../images/join.png'
+
 const Register = (props: any) => {
 
     const {setIsLogIn} = props
@@ -88,16 +90,16 @@ const Register = (props: any) => {
     }
 
     return(
-        <div className='body' >
-            <img className='background' src='https://static.muxixyz.com/index_site/join2.png'/>
-            <div className='register'>
-                <div className='form' >
-                    <div className='title'>注册</div>
-                    <div className='yourEmail'><label htmlFor="useremail">邮箱:</label><input onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete="off" required/>{check.checkEmail?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='studentId'><label htmlFor="userId">学号:</label><input onBlur={handleChange2} type="text" id='userId' name="userId"  autoComplete="off"/></div>
-                    <div className='yourPassWord'><label htmlFor='password'>密码:</label><input onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='checkPassWord'><label htmlFor='password1'>确认密码:</label><input onChange={handleChange4}  type="password" id='password1' />{check.checkPassword?"":<span className='attention'>*密码不一致</span>}</div>
-                    <div className='confirm'><button onClick={()=>setIsLogIn(true)}>登录</button><button onClick={register}>注册</button><button onClick={back}>返回官网</button></div>
+        <div className='reg-body did' >
+            <img className='background' src={Join}/>
+            <div className='register did'>
+                <div className='form did' >
+                    <div className='title did'>注册</div>
+                    <div className='yourEmail did'><label className='lab' htmlFor="useremail">邮箱:</label><input className='reg-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete="off" required/>{check.checkEmail?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='studentId did'><label className='lab' htmlFor="userId">学号:</label><input className='reg-put' onBlur={handleChange2} type="text" id='userId' name="userId"  autoComplete="off"/></div>
+                    <div className='yourPassWord did'><label className='lab' htmlFor='password'>密码:</label><input className='reg-put' onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='checkPassWord did'><label className='lab' htmlFor='password1'>确认密码:</label><input className='reg-put' onChange={handleChange4}  type="password" id='password1' />{check.checkPassword?"":<span className='attention'>*密码不一致</span>}</div>
+                    <div className='confirm did'><button onClick={()=>setIsLogIn(true)}>登录</button><button onClick={register}>注册</button><button onClick={back}>官网</button></div>
                 </div>
             </div>
         </div>
