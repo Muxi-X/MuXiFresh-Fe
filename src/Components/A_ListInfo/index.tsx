@@ -5,6 +5,7 @@ import { postData, putData } from "../../interface/fetch";
 import MoveGroup from "../A_MoveGroup";
 import { Link } from "react-router-dom";
 
+
 export default function A_listInfo(props: any) {
 
     const name = props.name;

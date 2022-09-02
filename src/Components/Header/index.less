@@ -1,135 +1,135 @@
 .header {
-  background-color: #FEAB21;
-  width: 100vw;
-  height: 1.04rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  //overflow-x: hidden;
-
-  .muxi {
-    width: 2.21rem;
-    height: 0.72rem;
-    background: #152025;
-    border-radius: 0.36rem;
-    opacity: 1;
+    background-color: #FEAB21;
+    width: 100vw;
+    height: 1.04rem;
     display: flex;
     flex-direction: row;
-    margin-left: 0.2rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
-    img {
+    //overflow-x: hidden;
+  
+    .muxi {
+      width: 2.21rem;
+      height: 0.72rem;
+      background: #152025;
+      border-radius: 0.36rem;
+      opacity: 1;
       display: flex;
-      width: 0.56rem;
-      height: 0.56rem;
-      //margin: auto 0;
-      //margin-left: 2vh;
-    }
-
-    .text {
-      display: flex;
-      width: auto;
-      height: auto;
-      align-items: center;
-      font-size: 0.36rem;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: bold;
-      color: #FFFFFF;
+      flex-direction: row;
       margin-left: 0.2rem;
+      justify-content: center;
+      align-items: center;
+  
+      img {
+        display: flex;
+        width: 0.56rem;
+        height: 0.56rem;
+        //margin: auto 0;
+        //margin-left: 2vh;
+      }
+  
+      .text {
+        display: flex;
+        width: auto;
+        height: auto;
+        align-items: center;
+        font-size: 0.36rem;
+        font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-left: 0.2rem;
+      }
     }
-  }
-
-  .avatar {
-    display: flex;
-    width: 0.72rem;
-    height: 0.72rem;
-    border-radius: 0.36rem;
-    margin-right: 1.04rem;
-    position: relative;
-    background-color: #fff;
-    cursor: pointer;
-
-    img {
+  
+    .avatar {
+      display: flex;
       width: 0.72rem;
       height: 0.72rem;
-      border-radius: 40px;
+      border-radius: 0.36rem;
+      margin-right: 1.04rem;
+      position: relative;
+      background-color: #fff;
+      cursor: pointer;
+  
+      img {
+        width: 0.72rem;
+        height: 0.72rem;
+        border-radius: 40px;
+      }
+  
+      .guide {
+  
+        .home {
+          display: flex;
+          width: 12vh;
+          height: 5vh;
+          font-size: medium;
+          font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+          font-weight: 400;
+          color: #272727;
+          line-height: 0.85rem;
+          align-items: center;
+          padding-left: 3.5vh;
+          margin-top: 1vh;
+          cursor: pointer;
+        }
+  
+        .division {
+          width: 1.85rem;
+          height: 0rem;
+          opacity: 1;
+          border: 0.01rem solid #AFB0B4;
+          margin: 0.18rem 0rem 0.18rem 0.35rem;
+        }
+  
+        .back {
+          display: flex;
+          width: 12vh;
+          height: 5vh;
+          font-size: medium;
+          font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+          font-weight: 400;
+          color: #272727;
+          line-height: 0.85rem;
+          align-items: center;
+          padding-left: 3.5vh;
+          margin-top: 0.5vh;
+          cursor: pointer;
+        }
+      }
     }
-
-    .guide {
-
-      .home {
-        display: flex;
-        width: 12vh;
-        height: 5vh;
-        font-size: medium;
-        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-        font-weight: 400;
-        color: #272727;
-        line-height: 0.85rem;
-        align-items: center;
-        padding-left: 3.5vh;
-        margin-top: 1vh;
-        cursor: pointer;
-      }
-
-      .division {
-        width: 1.85rem;
-        height: 0rem;
-        opacity: 1;
-        border: 0.01rem solid #AFB0B4;
-        margin: 0.18rem 0rem 0.18rem 0.35rem;
-      }
-
-      .back {
-        display: flex;
-        width: 12vh;
-        height: 5vh;
-        font-size: medium;
-        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-        font-weight: 400;
-        color: #272727;
-        line-height: 0.85rem;
-        align-items: center;
-        padding-left: 3.5vh;
-        margin-top: 0.5vh;
-        cursor: pointer;
-      }
+  }
+  
+  .select {
+    position: absolute;
+    top: 0.93rem;
+    right: 0.8rem;
+    vertical-align: center;
+    width: 2.54rem;
+    height: auto;
+    background: #FFFFFF;
+    box-shadow: 0rem 0.03rem 0.06rem 0.01rem rgba(0, 0, 0, 0.1600);
+    border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+    padding-bottom: 0.36rem;
+  
+    .option {
+      font-size: 0.24rem;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #272727;
+      margin-left: 0.33rem;
+      cursor: pointer;
+    }
+  
+    .mine {
+      margin-top: 0.36rem;
+    }
+  
+    .division {
+      width: 1.85rem;
+      height: 0rem;
+      opacity: 1;
+      border: 0.01rem solid #AFB0B4;
+      margin: 0.18rem 0rem 0.18rem 0.35rem;
     }
   }
-}
-
-.select {
-  position: absolute;
-  top: 0.93rem;
-  right: 0.8rem;
-  vertical-align: center;
-  width: 2.54rem;
-  height: auto;
-  background: #FFFFFF;
-  box-shadow: 0rem 0.03rem 0.06rem 0.01rem rgba(0, 0, 0, 0.1600);
-  border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
-  padding-bottom: 0.36rem;
-
-  .option {
-    font-size: 0.24rem;
-    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-    font-weight: 400;
-    color: #272727;
-    margin-left: 0.33rem;
-    cursor: pointer;
-  }
-
-  .mine {
-    margin-top: 0.36rem;
-  }
-
-  .division {
-    width: 1.85rem;
-    height: 0rem;
-    opacity: 1;
-    border: 0.01rem solid #AFB0B4;
-    margin: 0.18rem 0rem 0.18rem 0.35rem;
-  }
-}

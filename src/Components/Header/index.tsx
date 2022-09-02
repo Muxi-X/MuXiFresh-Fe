@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import MyHomePage from "../MyHomePage/MyHomePage";
+import MyHomePage from "../MyHomePage/index";
 import './index.less';
 import muxi from  '/src/images/muxi-logo.png' 
 import { getJson } from "../../interface/fetch";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const Header = () => {
-
+  const navigate=useNavigate()
   const [showHome,setShowHome] = useState(false)
 
   const [avatar,setAvatar] = useState()
@@ -32,6 +33,7 @@ const Header = () => {
 
   const quit = () => {
     localStorage.removeItem('token')
+    navigate('/login')
   }
 
   return (

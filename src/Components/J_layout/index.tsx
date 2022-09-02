@@ -9,16 +9,16 @@ export default function J_layout() {
         return isActive?'item active':'item';
     }
   return (
-    <div className='container'>
+    <div className='J-container'>
         <Header></Header>
-        <div className="body">
-            <div className="box">
-                <ul className="nav">                  
-                        <li><NavLink className={computedName} to="/visitor/">报名表查看</NavLink></li>
+        <div className="J-body">
+            <div className="J-box">
+                <ul className="J-nav">                  
+                        <li><NavLink className={computedName} to="/visitor/form">报名表查看</NavLink></li>
                         <li><NavLink className={computedName} to="/visitor/progress">进度查询</NavLink></li>
                         <li><NavLink className={computedName} to="/visitor/work">作业查询</NavLink></li>
                 </ul>
-                <div className="content">
+                <div className="J-content">
                     <Outlet></Outlet>
                 </div>
             </div>
