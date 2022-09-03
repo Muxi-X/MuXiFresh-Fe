@@ -37,7 +37,7 @@ const Header = () => {
   }
   const toHome=()=>{
     //setShowHome(true)
-    navigate('/home')
+    navigate('/home');
   }
 
   return (

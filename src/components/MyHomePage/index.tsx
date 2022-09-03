@@ -1,5 +1,6 @@
 import { upload } from 'qiniu-js'
 import React, { useEffect,useState } from 'react'
+import {useLocation} from 'react-router-dom';
 import "./index.less"
 import back from "/src/images/back.png"
 import { getJson,putData } from '../../interface/fetch'
@@ -8,12 +9,15 @@ import { useNavigate } from 'react-router-dom'
 
 const MyHomePage = (props: any) => {
     const navigate=useNavigate()
-    const {setComplete,setShowHome,setAvatar,avatar} = props
+    /* const {setComplete,setShowHome,setAvatar,avatar} = props */
 
-    const [msg,setmsg] = useState({
+    const [username,setUsername]=useState('');
+    const [avatar,setAvatar]=useState('');
+
+   /*  const [msg,setmsg] = useState({
         avatar:avatar,
         name:""
-    })
+    }) */
     const [file,setFile] = useState(new File([],""))
     const [token,setToken] = useState()
 
@@ -25,13 +29,20 @@ const MyHomePage = (props: any) => {
                 setToken(data.data.Token)
             }
         )
+
+        getJson('/user/info').then(data => {
+            setUsername(data.data.name);
+            setAvatar(data.data.avatar);
+          })
+          
     }, [token])
     
 
     //修改名称
     const editName = (e: { target: { value: any } }) => {
         let name = e.target.value
-        setmsg({...msg,name})
+        /* setmsg({...msg,name}) */
+        setUsername(name);
     }
     
     //选择头像
@@ -48,7 +59,7 @@ const MyHomePage = (props: any) => {
         const key = file.name
         
         let avatar = URL.createObjectURL(file)//获取url放在img用于预览图片
-        setmsg({...msg,avatar})
+        /* setmsg({...msg,avatar}) */
         setAvatar(avatar)
     }
 
@@ -74,7 +85,8 @@ const MyHomePage = (props: any) => {
             },
             complete(res: any){
               const avatar = "http://ossfresh-test.muxixyz.com/" + res.key
-              setmsg({...msg,avatar})
+             /*  setmsg({...msg,avatar}) */
+
             }
           }
 
@@ -84,15 +96,14 @@ const MyHomePage = (props: any) => {
     //更新信息
     const updateInfo = () => {
         upload()
-        const {avatar,name} = msg
         const data = {
             avatar_url: avatar,
-            name: name
+            name: username
         }
         putData('/user',data,"PUT")
         .then(
             () => {
-                setComplete(true)
+                /* setComplete(true) */
                 alert("修改成功！")
             }
         ).catch(
@@ -114,25 +125,28 @@ const MyHomePage = (props: any) => {
         <div className='home-body'>
             <div className='home-box'>
                 <div className='back'>
-                    <img src={back} onClick={()=>setShowHome(false)}/>
+                    <img src={back} /* onClick={()=>setShowHome(false)} *//>
                     <button className='back' onClick={backBefore}>返回</button>
                 </div>
                 <div className='home-title'>修改信息</div>
                 <div className='home-content'>
+                    <div className='avatar-box'>
                     <div className='avatar'>
-                        <img src={msg.avatar} alt="#" />
+                        <img src={avatar} alt="#" />
                     </div>
-                    <div className='right-home'>
-                    <div className='home-title home-name'>名称:</div>
-                    <div className='editName'>
-                        <input type="text" onBlur={editName}/>
-                    </div>
-                    </div>
-                </div>
-                <div className='changeAvatar'>
+                    <div className='changeAvatar'>
                     <input  type="file" id='upload' accept='/image*' onChange={(e)=>selectAvatar(e)}/>
                     <label htmlFor="upload">点击修改头像</label>
+                    </div>
+                    </div>
+                    <div className='right-home'>
+                    <div className='home-name'>名称:</div>
+                    <div className='editName'>
+                        <input type="text" placeholder={username} onBlur={editName}/>
+                    </div>
+                    </div>
                 </div>
+                
                 <div className='home-submit'><button onClick={handleSubmit} className='home-btn'>确认修改</button></div>
             </div>
         </div>

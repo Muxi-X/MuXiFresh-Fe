@@ -53,11 +53,21 @@
             margin-top: 3vh;
         }
 
+        .home-name{
+            .home-title();
+            height: min-content;
+            margin: auto 0;
+        }
         .home-content {
             display: flex;
             justify-content: space-around;
             margin-top: 4vh;
-            height: 12vh;
+            height: 18vh;
+
+            .avatar-box{
+                display: flex;
+                flex-direction: column;
+            }
             .avatar {
                 width: 12vh;
                 height: 12vh;
@@ -81,11 +91,11 @@
                 font-family: Microsoft YaHei-Bold;
                 color: #272727FF;
                 margin: auto 0;
-                margin-left: 5vh;
+                margin-left: 4vh;
             }
             .editName {
                 margin: auto 0;
-                margin-left: 2.5vw;
+                margin-left: 2.0vw;
                 input {
                     min-height: 3.5vh;
                     outline: none;
@@ -93,13 +103,16 @@
             }
         }
         .changeAvatar {
-            margin-top: 2vh;
-            margin-left: 4vw;
+            /* margin-top: 2vh; */
+            /* margin-left: 7vw; */
+            width: 12vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
             input {
                 display: none;
             }
             label {
-               
                 font-weight: bold;
                 font-size:small;
                 color: #AFB0B4FF;
