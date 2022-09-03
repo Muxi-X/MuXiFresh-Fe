@@ -39,8 +39,29 @@
     // border-radius: 50%;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+
+    .avatar {
+        margin-left: 10vw;
+        img {
+            width: 100px;
+            height:100px;
+            border-radius: 50%;
+        }
+    }
+
+    input {
+        display: none;
+    }
+    label {
+        margin-left: 3px;
+        font-weight: bold;
+        font-size:small;
+        color: #AFB0B4FF;
+        cursor: pointer;
+    }
 }
 
 .info-figure {

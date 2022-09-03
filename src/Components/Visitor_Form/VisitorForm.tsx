@@ -8,7 +8,7 @@ import * as qiniu from 'qiniu-js';
 import defaultFigure from '../../images/figure.png'
 import { useNavigate } from 'react-router-dom';
 
-function VisitorForm() {
+const VisitorForm=()=> {
   const navigate = useNavigate()
   // 姓名
   const [name, setName] = useState('')
@@ -93,8 +93,23 @@ function VisitorForm() {
   //qiniu-token
   const [token, setToken] = useState('');
   const [filename, setFilename] = useState('');
-  const [complete, setComplete] = useState(false);
-  const [fileurl, setFileurl] = useState('');
+  /* const [complete, setComplete] = useState(false);
+  const [fileurl, setFileurl] = useState(''); */
+
+
+  const [avatar,setAvatar] = useState('')
+
+  /* useEffect(()=>{
+    //获取qiniu-token
+    getJson('/user/qiniu_token')
+      .then(
+        data => {
+          setToken(data.data.Token);
+        }
+      )
+  },[]) */
+
+  
 
   // 获取数据
   useEffect(() => {
@@ -130,7 +145,8 @@ function VisitorForm() {
           setGrasp(data.data.understand);
           setIntro(data.data.self_introduction);
           setWork(data.data.if_other_organization);
-          setFigure(data.data.avatar);
+          /* setFigure(data.data.avatar); */
+          setAvatar(data.data.avatar);
           setUpdate(1);
         }
       )
@@ -159,21 +175,23 @@ function VisitorForm() {
   //   alert("handle func works properly");
   //   refUpload.current.onChange(e);
   // };
+
   function fullfilled() {
     if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && mail != '' && approach != '' && detail != '' && intention != '' && reason != '' && grasp != '' && intro != '' && work != '')
       return 1;
     else return 0;
   }
+
   function upload(): any {
-    // console.log("the intention to upload is " + intention);
-    // let transferredGroup = '0';
-    // switch (intention) {
-    //   case '设计组': { transferredGroup = '1'; console.log("设计组 the transferred intention is " + transferredGroup); break; }
-    //   case '产品组': { transferredGroup = '2'; console.log("产品组 the transferred intention is " + transferredGroup); break; }
-    //   case '安卓组': { transferredGroup = '3'; console.log("安卓组 the transferred intention is " + transferredGroup); break; }
-    //   case '前端组': { transferredGroup = '4'; console.log("前端组 the transferred intention is " + transferredGroup); break; }
-    //   case '后端组': { transferredGroup = '5'; console.log("后端组 the transferred intention is " + transferredGroup); break; }
-    // };
+     console.log("the intention to upload is " + intention);
+     let transferredGroup = '0';
+     switch (intention) {
+      case '设计组': { transferredGroup = '1'; console.log("设计组 the transferred intention is " + transferredGroup); break; }
+      case '产品组': { transferredGroup = '2'; console.log("产品组 the transferred intention is " + transferredGroup); break; }
+     case '安卓组': { transferredGroup = '3'; console.log("安卓组 the transferred intention is " + transferredGroup); break; }
+       case '前端组': { transferredGroup = '4'; console.log("前端组 the transferred intention is " + transferredGroup); break; }
+     case '后端组': { transferredGroup = '5'; console.log("后端组 the transferred intention is " + transferredGroup); break; }
+    };
     // console.log("The final intention is " + transferredGroup + " (should be a number)");
     const data = {
       avatar: 'http://ossfresh-test.muxixyz.com/' + filename,
@@ -193,8 +211,10 @@ function VisitorForm() {
       understand: grasp
     }
     console.log("Check data");
-    console.log(data);
-    if (update == 1) {
+    console.log(data); 
+
+
+    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && mail != '' && approach != '' && detail != '' && intention != '' && reason != '' && grasp != '' && intro != '' && work != '') {
       putData(
         '/form',
         data,
@@ -262,20 +282,25 @@ function VisitorForm() {
         })
 
     }
-
   }
+
+  
   //上传文件
   function selectFile(e: React.ChangeEvent<HTMLInputElement>): any {
     const files = e.target.files;
     const key = files[0].name;
     const file = files[0];
-    // console.log(file)
     setFilename(key);
+    // console.log(file)
     const putExtra = {};
     const config = {
       useCdnDomain: true,
       region: qiniu.region.z2
     };
+
+    let avatar = URL.createObjectURL(file)//获取url放在img用于预览图片
+    console.log('url'+avatar);
+        setAvatar(avatar);
 
     //选择并上传文件到七牛云
     const observable = qiniu.upload(file, key, token, putExtra, config);
@@ -290,11 +315,11 @@ function VisitorForm() {
       complete(res) {
         // ...
         // console.log('http://ossfresh-test.muxixyz.com/' + res.key)
-        setFileurl('http://ossfresh-test.muxixyz.com/' + res.key)
+       /*  setFileurl('http://ossfresh-test.muxixyz.com/' + res.key) */
       }
     }
     const subscription = observable.subscribe(observer) // 上传开始
-    setComplete(true);  //上传完成后显示文件名
+    /* setComplete(true);  */ //上传完成后显示文件名
   }
 
   return (
@@ -307,13 +332,17 @@ function VisitorForm() {
         <div className='tt-5 formBlock d-flex flex-wrap justify-content-between w-50'>
           {/* 接下来需要修改优化这个部分的样式 */}
           <div className="upload-figure">
-            <img className='left-figure-image' id="my-figure"
+{/*             <img className='left-figure-image' id="my-figure"
               src={figure == 'http://ossfresh-test.muxixyz.com/' ? defaultFigure :
                 figure == '' ? defaultFigure :
                   figure == 'http://dummyimage.com/100x100' ? defaultFigure :
-                    figure} />
+                    figure} /> */}
+                    <div className='avatar'>
+                        {avatar?<img src={avatar} alt="#" />:<img src='http://dummyimage.com/100x100'></img>}
+                    </div>
             {/* <img className='left-figure-image' id="my-figure" src={figure} /> */}
-            <input type="file" id="figure-upload" onChange={(e) => { selectFile(e) }} />
+            <input  type="file" id='upload' onChange={(e)=> selectFile(e)}/>
+                    <label htmlFor="upload">点击修改头像</label>
           </div>
           {/* <div style={{ color: "transparent" }}>{figure}</div> */}
           <div className="form-group w-50" id='info-group'>
@@ -405,12 +434,12 @@ function VisitorForm() {
             <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
           </div>
         </div>
-        <button className='olol button-submit' disabled={fullfilled() == 1 ? false : true} onClick={() => { setUpdate(1); upload() }}>{update ? '更新资料' : '提交资料'}</button>
+        <button className='olol button-submit' disabled={fullfilled() == 1 ? false : true} onClick={() => { upload()}}> 提交资料</button>
         {fullfilled() == 1 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
       </div>
     </div>
   )
+  
 }
-
 
 export default VisitorForm
