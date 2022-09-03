@@ -412,9 +412,8 @@ const VisitorForm = () => {
             <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
           </div>
         </div>
-        {/* <button className='olol button-submit' disabled={fullfilled() == 1 ? false : true} onClick={() => { fullfilled() && upload() }}> 提交资料</button> */}
-        <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
         {show == 0 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
+        <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
       </div>
     </div>
   )
