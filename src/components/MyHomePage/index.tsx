@@ -13,7 +13,8 @@ const MyHomePage = (props: any) => {
 
     const [username,setUsername]=useState('');
     const [avatar,setAvatar]=useState('');
-
+    const [url,setUrl]=useState('');
+    const [filename,setFilename]=useState('');
    /*  const [msg,setmsg] = useState({
         avatar:avatar,
         name:""
@@ -32,6 +33,7 @@ const MyHomePage = (props: any) => {
 
         getJson('/user/info').then(data => {
             setUsername(data.data.name);
+          /*   console.log('username '+data.data.name) */
             setAvatar(data.data.avatar);
           })
           
@@ -58,9 +60,10 @@ const MyHomePage = (props: any) => {
 
         const key = file.name
         
-        let avatar = URL.createObjectURL(file)//获取url放在img用于预览图片
+        let pic = URL.createObjectURL(file)//获取url放在img用于预览图片
         /* setmsg({...msg,avatar}) */
-        setAvatar(avatar)
+        console.log('pix'+pic);
+        setAvatar(pic)
     }
 
     //将头像上传到七牛云
@@ -84,9 +87,9 @@ const MyHomePage = (props: any) => {
               // ...
             },
             complete(res: any){
-              const avatar = "http://ossfresh-test.muxixyz.com/" + res.key
+              const avatar_url = "http://ossfresh-test.muxixyz.com/" + res.key
              /*  setmsg({...msg,avatar}) */
-
+             setFilename(res.key);
             }
           }
 
@@ -95,17 +98,23 @@ const MyHomePage = (props: any) => {
 
     //更新信息
     const updateInfo = () => {
-        upload()
-        const data = {
-            avatar_url: avatar,
+        upload();
+        /* console.log(username) */
+        const data_ = {
+            avatar_url: "http://ossfresh-test.muxixyz.com/"+filename,
             name: username
         }
-        putData('/user',data,"PUT")
+        /* console.log(data_+'data');
+        console.log(data_.avatar_url) */
+        putData('/user',data_,"PUT")
         .then(
-            () => {
-                /* setComplete(true) */
-                alert("修改成功！")
-            }
+            /* () => {
+                //setComplete(true)
+                alert("修改成功！")} */
+                data=>{
+                    console.log(data);
+                    alert("修改成功！");
+                }
         ).catch(
             error => {
                 console.log(error);
@@ -115,7 +124,7 @@ const MyHomePage = (props: any) => {
 
     const handleSubmit = () => {
         updateInfo();
-        navigate(-1)
+       /*  navigate(-1) */
     }
     const backBefore=()=>{
         navigate(-1)
@@ -132,7 +141,8 @@ const MyHomePage = (props: any) => {
                 <div className='home-content'>
                     <div className='avatar-box'>
                     <div className='avatar'>
-                        <img src={avatar} alt="#" />
+                       {/*  <img src={avatar} alt="#" /> */}{avatar?<img src={avatar} alt="#" />:<img src='http://dummyimage.com/100x100'></img>}
+                  
                     </div>
                     <div className='changeAvatar'>
                     <input  type="file" id='upload' accept='/image*' onChange={(e)=>selectAvatar(e)}/>

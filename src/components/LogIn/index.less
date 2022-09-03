@@ -44,30 +44,38 @@ html {
 .login {
     border-radius: 10px 10px 10px 10px;
     border: 1px;
-    width: /* 8.12rem */340px;
+    width: 8.12rem/* 340px */;
     //height: 9.32rem;
+    ._title {
+        background-color: rgba(255, 199, 107, 1);
+        //width: 8.12rem;
+        height: /* 1.34rem */40px;
+        margin-top: 0;
+        border-radius: 10px 10px 0px 0px;
+        text-align: center;
+        line-height: /* 1.34rem */40px;
+        font-size: larger;
+        font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+        font-weight: bolder;
+    }
+
     .form {
         background-color: antiquewhite;
-        border-radius: 10px 10px 10px 10px;
+        border-radius: 0px 0px 10px 10px;
         display: flex;
-        flex-direction: column;
-        ._title {
-            background-color: rgba(255, 199, 107, 1);
-            //width: 8.12rem;
-            height: /* 1.34rem */40px;
-            margin-top: 0;
-            border-radius: 10px 10px 0px 0px;
-            text-align: center;
-            line-height: /* 1.34rem */40px;
-            font-size: larger;
-            font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-            font-weight: bolder;
+        flex-direction: row;
+        justify-content: center;
+        
+        .box{
+            width: 70%;
+            height: 100%;
         }
+
         .yourEmail {
             margin: 0 auto;
             margin-top:/*  0.29rem */0.6rem;
             margin-bottom: 0.30rem;
-            width: 80%;
+            width: 100%;
             
             label {
                 margin-left: 0;
@@ -84,7 +92,7 @@ html {
             margin: 0 auto;
             margin-top: 0.29rem;
             margin-bottom: 0.50rem;
-            width: 80%;
+            width: 100%;
 
             label {
                 margin-left:0;
@@ -100,8 +108,8 @@ html {
             text-align: center;
             margin-bottom: 20px;
             button {
-                width: 12vh;//2.4rem
-                height: 4vh;
+                width: 8vw;//2.4rem
+                height: 3vw;
                 margin-left: 1vw;
                 background-color: rgba(255, 199, 107, 1);
                 border: none;
