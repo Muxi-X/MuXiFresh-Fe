@@ -83,14 +83,14 @@ const LogIn = (props: any) => {
 
                 getJson('/user/info')
                 .then(
-                    data => {
-                        if(data.data.role===1){//visitor
+                    datas => {
+                        if(datas.data.role===1){//visitor
                            const toVisitor = ()=>{
                             navigate(data.data.form_status==0?'/edit':'/visitor')
                            }
                            toVisitor()
                         }
-                        else if(data.data.role===3||data.data.role===4){
+                        else if(datas.data.role===3||datas.data.role===4){
                             const toManager = ()=>{//manager
                                 navigate(data.data.form_status==0?'/edit':'/manager')
                             }

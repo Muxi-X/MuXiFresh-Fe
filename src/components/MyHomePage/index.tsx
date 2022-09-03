@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 
 const MyHomePage = (props: any) => {
     const navigate=useNavigate()
-    /* const {setComplete,setShowHome,setAvatar,avatar} = props */
 
     const [username,setUsername]=useState('');
     const [avatar,setAvatar]=useState('');
@@ -20,7 +19,7 @@ const MyHomePage = (props: any) => {
         name:""
     }) */
     const [file,setFile] = useState(new File([],""))
-    const [token,setToken] = useState()
+    const [token,setToken] = useState('')
 
     //获取七牛云token
     useEffect(() => {
@@ -33,7 +32,6 @@ const MyHomePage = (props: any) => {
 
         getJson('/user/info').then(data => {
             setUsername(data.data.name);
-          /*   console.log('username '+data.data.name) */
             setAvatar(data.data.avatar);
           })
           
@@ -50,34 +48,27 @@ const MyHomePage = (props: any) => {
     //选择头像
     const selectAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files
-
+       /*  console.log(files) */
         if(!files){
             return
         }//检测是否有图片
-
-        const file = files[0]
-        setFile(file)
-
-        const key = file.name
+        const key= files[0].name
+        setFilename(key);
+        setFile(files[0])
+        /* console.log(files[0]) */
         
         let pic = URL.createObjectURL(file)//获取url放在img用于预览图片
         /* setmsg({...msg,avatar}) */
-        console.log('pix'+pic);
+       /*  console.log('pix'+pic); */
         setAvatar(pic)
-    }
+        //上传
 
-    //将头像上传到七牛云
-    const upload = () => {
-        if(!file||!token){
-            return
-        }
-        const key = file.name
         const putExtra = {}
         const config = {
             useCdnDomain: true,
             region: qiniu.region.z2
         }
-        const observable = qiniu.upload(file, key, token, putExtra, config)
+        const observable = qiniu.upload(files[0], key, token, putExtra, config)
 
         const observer = {
             next(res: any){
@@ -85,10 +76,13 @@ const MyHomePage = (props: any) => {
             },
             error(err: any){
               // ...
+              console.log(err);
+              alert("选择失败，请再次选择头像");
             },
             complete(res: any){
-              const avatar_url = "http://ossfresh-test.muxixyz.com/" + res.key
-             /*  setmsg({...msg,avatar}) */
+             /*  const avatar_url = "http://ossfresh-test.muxixyz.com/" + res.key
+      */        /*  setmsg({...msg,avatar}) */
+            /*  console.log(res) */
              setFilename(res.key);
             }
           }
@@ -96,10 +90,12 @@ const MyHomePage = (props: any) => {
         const subscription = observable.subscribe(observer)
     }
 
+
     //更新信息
     const updateInfo = () => {
-        upload();
+      
         /* console.log(username) */
+        /* console.log(filename) */
         const data_ = {
             avatar_url: "http://ossfresh-test.muxixyz.com/"+filename,
             name: username
@@ -112,7 +108,7 @@ const MyHomePage = (props: any) => {
                 //setComplete(true)
                 alert("修改成功！")} */
                 data=>{
-                    console.log(data);
+                    /* console.log(data); */
                     alert("修改成功！");
                 }
         ).catch(
