@@ -101,10 +101,10 @@ const LogIn = (props: any) => {
             }
         )
    .catch(error=>console.log(error))
-   
-       
+
+
     }
-    
+
     const back = () => {
         window.location.href = "https://muxi-tech.xyz/"
     }
@@ -115,10 +115,10 @@ const LogIn = (props: any) => {
             <div className='login'>
                 <div className='_title'>登录</div>
                 <div className='form' >
-                    
+
                     <div className='box'>
-                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='login-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete='off'/>{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='yourPassWord'><label className='lab' htmlFor='password'>密码:</label><input className='login-put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete='off'/>{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='yourPassWord'><label className='lab' htmlFor='password'>密码:</label><input className='put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<span className='attention'>*格式错误</span>}</div>
                     <div className='_end'><button onClick={logIn}>登录</button><button onClick={()=>setIsLogIn(false)}>注册</button><button onClick={back}>官网</button></div>
                     </div>
                 </div>

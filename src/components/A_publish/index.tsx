@@ -32,7 +32,7 @@ const A_publish = () => {
     const [over,setOver] = useState(false)
 
     function toPromise():any{
-        
+
         if(group_id!=0){
             getJson('/homework/published?group_id='+group_id+'&limit=100&page=0')
         .then (data => {
@@ -98,7 +98,7 @@ const A_publish = () => {
     //修改作业
     const [GetSearchVal1, SetGetSearchVal1] = useState('');
     const [GetSearchVal2, SetGetSearchVal2] = useState('');
-    
+
     const inputRef1 = React.useRef<HTMLInputElement>(null);
     const textareaRef1 = React.useRef<HTMLTextAreaElement>(null);
     const getIptValue1 = (event: { target: { value: any } }) =>{
@@ -146,7 +146,7 @@ const A_publish = () => {
     //发布新作业
     const [GetSearchVal11, SetGetSearchVal11] = useState('');
     const [GetSearchVal22, SetGetSearchVal22] = useState('');
-    
+
 
     const inputRef = React.useRef<HTMLInputElement>(null);
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
@@ -163,7 +163,7 @@ const A_publish = () => {
     //提交
     function toPublish():any{
         // const group_id = $("input[type='radio']:checked").val();
-        
+
         const data={
             title : inputRef.current?.value,
             content : textareaRef.current?.value,
@@ -205,7 +205,7 @@ const A_publish = () => {
                             <input type="radio" name="组别" value="产品组" id="2" onClick={(e) =>chooseGroup(e)}/><label htmlFor="2">产品组</label>
                             <input type="radio" name="组别" value="设计组" id="1" onClick={(e) =>chooseGroup(e)}/><label htmlFor="1">设计组</label>
                         </form>
-                        
+
                     </td>
                 </tr>
                 <tr>
@@ -219,7 +219,7 @@ const A_publish = () => {
                                 {homework[0]?homework.map((homework) =>{
                                     return(
                                         <option key={homework.ID} value={homework.ID} >{homework.title}</option>
-                                    ) 
+                                    )
                                 }):<option>选择组别后点击加载</option>}
                             </select>
                         </form>
@@ -235,7 +235,7 @@ const A_publish = () => {
                 </tr>
                 </tbody>
             </table>
-        
+
         <div className="mo_bottom">
             <div className="left_btn" onClick={() => toModify()}>完成修改</div>
             <div className="right_btn" id='b' onClick={(event)=>Select(event)}>发布新作业</div>
@@ -256,7 +256,7 @@ const A_publish = () => {
                         <input type="radio" name="组别" value="产品组" id="2" onClick={(e) =>chooseGroup(e)}/><label htmlFor="2">产品组</label>
                         <input type="radio" name="组别" value="设计组" id="1" onClick={(e) =>chooseGroup(e)}/><label htmlFor="1">设计组</label>
                     </form>
-                    
+
                 </td>
             </tr>
             <tr>
@@ -268,10 +268,10 @@ const A_publish = () => {
                 <td><textarea className="textarea" placeholder="请输入多行文字" ref={textareaRef} onChange={getTexValue} value={GetSearchVal22}></textarea></td>
             </tr>
             </table>
-        
+
         <div className="mo_bottom">
-            <div className="left" onClick={() => toPublish()}>发布新作业</div>
-            <div className="right" id='a' onClick={(event)=>Select(event)}>返回</div>
+            <div className="left_btn" onClick={() => toPublish()}>发布新作业</div>
+            <div className="right_btn" id='a' onClick={(event)=>Select(event)}>返回</div>
         </div>
         </div>
     </div>
