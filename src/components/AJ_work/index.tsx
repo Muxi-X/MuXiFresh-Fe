@@ -56,7 +56,10 @@ const J_work = () =>{
                                 //获取评论
                                 getJson('/homework/comment?id='+data.data[0].ID+'&limit=5&page=0')
                                 .then (data => {
-                                    setComments(data.data.comments);
+                                    if(data.data!='')
+                                        setComments(data.data.comments);
+                                    else
+                                        setComments([]);
                                     console.log(data.data.comments)
                                 }).catch (error => console.log(error));
                             }
@@ -120,6 +123,7 @@ const J_work = () =>{
         e.preventDefault();
         setFinished(0);
         setComplete(false);
+        setComment(false)
         //拿到option的value，即ID
         const select:HTMLSelectElement=e.currentTarget;
         const index = select.selectedIndex;
@@ -152,7 +156,10 @@ const J_work = () =>{
                                  //更新评论
                                  getJson('/homework/comment?id='+data.data[0].ID+'&limit=5&page=0')
                                  .then (data => {
-                                     setComments(data.data.comments);
+                                    if(data.data!='')
+                                        setComments(data.data.comments);
+                                    else
+                                        setComments([]);
                                      console.log(data.data.comments)
                                  }).catch (error => console.log(error));
                             }).catch (error => console.log(error));

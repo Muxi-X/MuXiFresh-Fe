@@ -69,7 +69,7 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
                 <div className='comment'>{comment.Content}</div>
            </div>
            </div>
-            )}):Comments.map((comment) => {
+            )}):Comments.length?Comments.map((comment) => {
                 return (
                 <div className="box2">
                 <img className='image' src={muxi} alt="muxi" ></img>
@@ -80,10 +80,12 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
                     <div className='comment'>{comment.Content}</div>
                </div>
                </div>
-                )})}
-            {Comments.length?'':<div className="blank">
+                )}):<div className="blank">
                 还没有人评论哦
             </div>}
+            {/* {Comments.length?'':<div className="blank">
+                还没有人评论哦
+            </div>} */}
     </div>
        
 </div>
