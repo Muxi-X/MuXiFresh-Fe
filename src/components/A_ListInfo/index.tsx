@@ -28,6 +28,7 @@ export default function A_listInfo(props: any) {
         putData(`/schedule/admit`, { "name": name, "admission_status": status }, 'PUT')
             .then(() => {
                 props.move()
+                console.log(status);
             })
     }
 

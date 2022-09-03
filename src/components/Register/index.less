@@ -1,4 +1,4 @@
-html{
+html {
     background-color: #1b3037;
 }
 
@@ -21,80 +21,124 @@ html{
 
 .did {
     margin: 0 auto;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
-    width: 50vh;
+    width: 8rem;
+    min-width: 340px;
 }
 
 .reg-put {
     border-radius: 5px 5px 5px 5px;
-    min-height: 2.8vh;
-    min-width: 20vh;
     border: 0.01rem solid #707070;
     outline: none;
+    border-radius: 5px 5px 5px 5px;
+    height: 0.54rem;
+    min-height: 25px;
+    width: 3.5rem;
+    min-width: 160px;
+    border: 0.01rem solid #707070;
 }
 
-.background {
-    width: 100%;
+.regbackground {
+    width: 7.12rem;
     height: auto;
+    min-width: 340px;
 }
 
 .register {
     border-radius: 10px 10px 10px 10px;
     border: 1px;
+
     //background-color: aliceblue;
     //min-width: 80vw;
-    .form {
+    .regform {
         display: flex;
         flex-direction: column;
         background-color: antiquewhite;
         border-radius: 10px 10px 10px 10px;
+        text-align: center;
+
         //min-width: 80vw;
         .title {
             background-color: rgba(255, 199, 107, 1);
-            width: 50vh;
-            height: 7vh;
+            width: 8rem;
+            height: 6vh;
             margin-top: 0;
             border-radius: 10px 10px 0px 0px;
             text-align: center;
-            line-height: 7vh;
-            font-size:larger;
+            line-height: 6vh;
+            font-size: larger;
             font-family: Microsoft YaHei-Bold, Microsoft YaHei;
             font-weight: bolder;
         }
+
         .yourEmail {
+            margin: 0 auto;
+            margin-top:
+                /*  0.29rem */
+                0.6rem;
+            margin-bottom: 0.30rem;
+            width: 100%;
+
             label {
-                margin-left: 75px;
+                margin-left: 0;
             }
-    
-        }
-        .studentId {
-            label {
-                margin-left: 75px;
+
+            .attention {
+                font-family: Microsoft YaHei-Regular;
+                font-size: small;
+                color: red;
+                padding-left: 1vw;
             }
+
         }
+
         .yourPassWord {
+            margin: 0 auto;
+            margin-bottom: 0.30rem;
+            width: 100%;
+
             label {
-                margin-left: 75px;
+                margin-left: 0;
             }
+
+            .attention {
+                font-family: Microsoft YaHei-Regular;
+                font-size: small;
+                color: red;
+                padding-left: 1vw;
+            }
+
         }
+
+
+        .checkPassWord {
+            margin-bottom: 0.50rem;
+        }
+
+        label {
+            margin-left: 0;
+        }
+
         .attention {
             font-family: Microsoft YaHei-Regular;
             font-size: small;
             color: red;
-            padding-left: 1vh;
+            padding-left: 1vw;
         }
+
         .confirm {
             text-align: center;
             margin-bottom: 5vh;
+
             button {
-                min-width: 12vh;
-                min-height: 3vh;
+                width: 1.6rem; //2.4rem
+                height: 3vw;
+                min-width: 60px; //2.4rem
+                min-height: 30px;
+                margin-left: 1vw;
                 background-color: rgba(255, 199, 107, 1);
                 border: none;
                 border-radius: 5px 5px 5px 5px;
                 cursor: pointer;
-                margin-left: 1vw;
             }
         }
     }
