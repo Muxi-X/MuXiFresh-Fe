@@ -58,7 +58,7 @@ const Mine_form: React.FC = () => {
                 </div>
                 <div className="body1">
                     {/* 增加了用户未上传头像时的default显示 */}
-                    <div className="picture"><img src={avatar == '' || 'http://ossfresh-test.muxixyz.com/' ? default_avatar : avatar} alt="" className='avatar' /></div>
+                    <div className="picture"><img src={(avatar == '' || avatar =='http://ossfresh-test.muxixyz.com/') ? default_avatar : avatar} alt="" className='avatar' /></div>
                     <div className="detail">
                         <div className="line">姓名：<span className='circle_one'>{name}</span></div>
                         <div className="line"><span>学号：</span><span className='circle_one'>{student_id}</span></div>
