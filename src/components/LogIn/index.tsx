@@ -41,6 +41,7 @@ const LogIn = (props: any) => {
 
     const handleChange2 = (e: { target: { value: any } }) => {
         const password = e.target.value
+        setCheckPassword(true)
         setUser({...user,password})
     }
 
@@ -117,7 +118,7 @@ const LogIn = (props: any) => {
                 <div className='form' >
 
                     <div className='box'>
-                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete='off'/>{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='put' onBlur={handleChange1} type="email" id='usermail' name='useremail' />{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
                     <div className='yourPassWord'><label className='lab' htmlFor='password'>密码:</label><input className='put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<span className='attention'>*格式错误</span>}</div>
                     <div className='_end'><button onClick={logIn}>登录</button><button onClick={()=>setIsLogIn(false)}>注册</button><button onClick={back}>官网</button></div>
                     </div>

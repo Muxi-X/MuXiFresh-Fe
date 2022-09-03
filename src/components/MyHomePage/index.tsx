@@ -52,17 +52,19 @@ const MyHomePage = (props: any) => {
         if(!files){
             return
         }//检测是否有图片
-        const key= files[0].name
-        setFilename(key);
-        setFile(files[0])
+        const file = files[0]
+        setFile(file)
+        const key = file.name
+        setFilename(key)
+        // const key= files[0].name
+        // setFilename(key);
+        // setFile(files[0])
         /* console.log(files[0]) */
-        
         let pic = URL.createObjectURL(file)//获取url放在img用于预览图片
         /* setmsg({...msg,avatar}) */
        /*  console.log('pix'+pic); */
         setAvatar(pic)
         //上传
-
         const putExtra = {}
         const config = {
             useCdnDomain: true,
