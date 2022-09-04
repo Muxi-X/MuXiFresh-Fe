@@ -76,16 +76,29 @@ const Register = (props: any) => {
             },
             body: JSON.stringify(usermsg)
         })
-
-        let json = await res.json()
-        // console.log(json);
-        
-        if (json.message === "OK") {
-            setIsLogIn(true)
-            alert("注册成功")
-        } else {
-            alert("注册失败")
-        }
+        let json = res.json()
+        json.then(
+            data => {
+                if(data.message === "OK"){
+                    setIsLogIn(true);
+                    alert("注册成功");
+                } else {
+                    // 获取注册失败信息
+                    const message = data.message.toString()
+                    var error:string = ""
+                    for(var i in message){
+                        if(i>message.indexOf("[")&&i<message.indexOf("]")){
+                            error += message[i]
+                        }
+                    }
+                    alert(error);
+                }
+            }
+        ).catch(
+            error => {
+                console.log(error);
+            }
+        )
 
     }
 
