@@ -37,20 +37,31 @@ const LogIn = (props: any) => {
     const handleChange1 = (e: { target: { value: any } }) => {
         const email = e.target.value
         setUser({...user,email})
+        const isEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-]{2,})+(.[a-zA-Z]{2,3})$/
+        setCheckEmail(isEmail.test(email))
     }
 
     const handleChange2 = (e: { target: { value: any } }) => {
         const password = e.target.value
-        setCheckPassword(true)
         setUser({...user,password})
+        if(password.length<6){
+            setCheckPassword(false)
+        }else{
+            setCheckPassword(true)
+        }
     }
 
     async function logIn() {
+        
         const {email,password} = user
-        const isEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-]{2,})+(.[a-zA-Z]{2,3})$/
-        setCheckEmail(isEmail.test(email))
-        if(password.length<6){
-            setCheckPassword(false)
+
+        if(!email){
+            alert("邮箱不能为空！")
+            if(!password){
+                alert("密码不能为空！")
+                return
+            }
+            return
         }
 
         if(!checkEmail||!checkPassword){
@@ -69,41 +80,50 @@ const LogIn = (props: any) => {
             },
             body: JSON.stringify(usermsg)
         })
-        const json = await res.json()
-        const {data} = json
-        const {token} = data
-        localStorage.setItem('token',token)
+        const json = res.json()
 
-        getJson('/schedule')
-        .then(
-            data=>{
-                //0表示未提交 1表示提交
-                setForm(data.data.form_status);
-                console.log(data.data)
-                console.log('##',data.data.form_status);
+        json.then(
+            data => {
+                // console.log(data);
+                const token = data.data.token
+                localStorage.setItem('token',token)
 
-                getJson('/user/info')
+                getJson('/schedule')
                 .then(
-                    datas => {
-                        if(datas.data.role===1){//visitor
-                           const toVisitor = ()=>{
-                            navigate(data.data.form_status==0?'/edit':'/visitor')
-                           }
-                           toVisitor()
-                        }
-                        else if(datas.data.role===3||datas.data.role===4){
-                            const toManager = ()=>{//manager
-                                navigate(data.data.form_status==0?'/edit':'/manager')
+                    data=>{
+                        //0表示未提交 1表示提交
+                        setForm(data.data.form_status);
+                        // console.log(data.data)
+                        // console.log('##',data.data.form_status);
+        
+                        getJson('/user/info')
+                        .then(
+                            datas => {
+                                if(datas.data.role===1){//visitor
+                                   const toVisitor = ()=>{
+                                    navigate(data.data.form_status==0?'/edit':'/visitor')
+                                   }
+                                   toVisitor()
+                                }
+                                else if(datas.data.role===3||datas.data.role===4){
+                                    const toManager = ()=>{//manager
+                                        navigate(data.data.form_status==0?'/edit':'/manager')
+                                    }
+                                    toManager()
+                                }
                             }
-                            toManager()
-                        }
+                        )
                     }
                 )
+           .catch(error=>console.log(error))
+        
+            }
+        ).catch(
+            error => {
+                console.log(error);
+                alert("邮箱或密码错误")
             }
         )
-   .catch(error=>console.log(error))
-
-
     }
 
     const back = () => {
@@ -116,10 +136,9 @@ const LogIn = (props: any) => {
             <div className='login'>
                 <div className='_title'>登录</div>
                 <div className='form' >
-
                     <div className='box'>
-                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='put' onBlur={handleChange1} type="email" id='usermail' name='useremail' />{checkEmail?"":<span className='attention'>*格式错误</span>}</div>
-                    <div className='yourPassWord'><label className='lab' htmlFor='password'>密码:</label><input className='put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<span className='attention'>*格式错误</span>}</div>
+                    <div className='yourEmail'><label className='lab' htmlFor="useremail">邮箱:</label><input className='put' onBlur={handleChange1} type="email" id='usermail' name='useremail' />{checkEmail?"":<div className='attention'>*格式错误</div>}</div>
+                    <div className='yourPassWord'><label className='lab' htmlFor='password'>密码:</label><input className='put' onBlur={handleChange2} type="password" id='password'/>{checkPassword?"":<div className='attention'>*格式错误</div>}</div>
                     <div className='_end'><button onClick={logIn}>登录</button><button onClick={()=>setIsLogIn(false)}>注册</button><button onClick={back}>官网</button></div>
                     </div>
                 </div>

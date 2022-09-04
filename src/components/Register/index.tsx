@@ -76,9 +76,13 @@ const Register = (props: any) => {
             },
             body: JSON.stringify(usermsg)
         })
+
         let json = await res.json()
+        // console.log(json);
+        
         if (json.message === "OK") {
             setIsLogIn(true)
+            alert("注册成功")
         } else {
             alert("注册失败")
         }
@@ -95,10 +99,10 @@ const Register = (props: any) => {
             <div className='register did'>
                 <div className='regform did' >
                     <div className='title did'>注册</div>
-                    <div className='yourEmail did'><label className='lab' htmlFor="useremail">邮&emsp;&emsp;箱:</label><input className='reg-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete="off" required />{check.checkEmail ? "" : <span className='attention'>*格式错误</span>}</div>
+                    <div className='yourEmail did'><label className='lab' htmlFor="useremail">邮&emsp;&emsp;箱:</label><input className='reg-put' onBlur={handleChange1} type="email" id='usermail' name='useremail' autoComplete="off" required />{check.checkEmail ? "" : <div className='attention'>*格式错误</div>}</div>
                     <div className='yourPassWord did'><label className='lab' htmlFor="userId">学&emsp;&emsp;号:</label><input className='reg-put' onBlur={handleChange2} type="text" id='userId' name="userId" autoComplete="off" /></div>
-                    <div className='yourPassWord did'><label className='lab' htmlFor='password'>密&emsp;&emsp;码:</label><input className='reg-put' onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen ? "" : <span className='attention'>*格式错误</span>}</div>
-                    <div className='checkPassWord did'><label className='lab' htmlFor='password1'>确认密码:</label><input className='reg-put' onBlur={handleChange4} type="password" id='password1' />{check.checkPassword ? "" : <span className='attention'>*密码不一致</span>}</div>
+                    <div className='yourPassWord did'><label className='lab' htmlFor='password'>密&emsp;&emsp;码:</label><input className='reg-put' onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen ? "" : <div className='attention'>*格式错误</div>}</div>
+                    <div className='checkPassWord did'><label className='lab' htmlFor='password1'>确认密码:</label><input className='reg-put' onBlur={handleChange4} type="password" id='password1' />{check.checkPassword ? "" : <div className='attention'>*密码不一致</div>}</div>
                     <div className='confirm did'><button onClick={() => setIsLogIn(true)}>登录</button><button onClick={register}>注册</button><button onClick={back}>官网</button></div>
                 </div>
             </div>
