@@ -48,7 +48,7 @@ const J_check : React.FC = (props) => {
             ):''}
         </div>
         
-        <div className="btn" onClick={backto}>返回</div>
+        <div className="others_btn" onClick={backto}>返回</div>
     </div>
         
   )};

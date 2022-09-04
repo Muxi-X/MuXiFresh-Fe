@@ -6,20 +6,20 @@ import {getJson} from '../../interface/fetch';
 
 const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
 
-    const [file_url,setFileUrl] = useState('')
-    const [comments,setComments]=useState([]);
-    const Comments =  props.comments
+   /*  const [file_url,setFileUrl] = useState('')
+    const [comments,setComments]=useState([]); */
+    const Comments =  props.comments;
     //传内容
-    const [GetSearchVal, SetGetSearchVal] = useState('');
+    /* const [GetSearchVal, SetGetSearchVal] = useState('');
     const inputRef = React.useRef<HTMLTextAreaElement>(null);
     const getIptValue = (event: { target: { value: any } }) =>{
         SetGetSearchVal(event.target.value);
-        /* console.log(GetSearchVal)//会落掉最后一个字 */
-       /*  console.log(inputRef.current?.value) *///传这个
-    }
+        //console.log(GetSearchVal)//会落掉最后一个字 
+       // console.log(inputRef.current?.value) //传这个
+    } */
 
     //提交
-    function toComment():any{
+    /* function toComment():any{
         const data={
             homework_id : props.id,
             content : inputRef.current?.value,
@@ -35,30 +35,28 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
             .then (data => {
                 console.log(data.data);
                 setComments(data.data.comments);
-                /* setName(data.data.comments[0].Name);
-                setContent2(data.data.comments[0].Content); */
             })
         })
         .catch(error=>{
             console.log(error);
         });
-    }
+    } */
 
 
   return (
 <div className="bottom">
     <div className='module'>
     <div className="moduletitle">评语</div>
-    <div className="box_table">
+    {/* <div className="box_table">
         <div className="t">评论：</div>
             <textarea className="m" placeholder="请输入内容" value={GetSearchVal} ref={inputRef} onChange={getIptValue}></textarea>
-        </div>
+    </div>
         <div className="button">
             <button  onClick={()=>toComment()}>发表评论</button>
-        </div>
+        </div> */}
     </div>
     <div className="pinglunqu">
-    {comments[0]?comments.map((comment) => {
+   {/*  {comments[0]?comments.map((comment) => {
             return (
             <div className="box2">
             <img className='image' src={muxi} alt="muxi" ></img>
@@ -69,7 +67,8 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
                 <div className='comment'>{comment.Content}</div>
            </div>
            </div>
-            )}):Comments.length?Comments.map((comment) => {
+            )}): */}
+            {Comments.length?Comments.map((comment) => {
                 return (
                 <div className="box2">
                 <img className='image' src={muxi} alt="muxi" ></img>
