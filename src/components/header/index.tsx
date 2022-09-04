@@ -48,7 +48,8 @@ const Header = () => {
         <div className='text'>木 犀</div>
       </div>
       <div className='avatar' onClick={forMore}>
-          {avatar?<img src={avatar} />:""}
+      {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src='http://dummyimage.com/100x100'></img> :
+                avatar ? <img src={avatar} alt="#" /> : <img src='http://dummyimage.com/100x100'></img>}
       </div>
    </div>
 
