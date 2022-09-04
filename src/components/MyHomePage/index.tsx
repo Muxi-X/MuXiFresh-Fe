@@ -6,6 +6,7 @@ import back from "/src/images/back.png"
 import { getJson,putData } from '../../interface/fetch'
 import * as qiniu from 'qiniu-js'
 import { useNavigate } from 'react-router-dom'
+import defaultFigure from '../../images/default_avatar.png'
 
 const MyHomePage = (props: any) => {
     const navigate=useNavigate()
@@ -139,8 +140,8 @@ const MyHomePage = (props: any) => {
                 <div className='home-content'>
                     <div className='avatar-box'>
                     <div className='avatar'>
-                       {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src='http://dummyimage.com/100x100'></img> :
-                avatar ? <img src={avatar} alt="#" /> : <img src='http://dummyimage.com/100x100'></img>}
+                       {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
+                avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
                     </div>
                     <div className='changeAvatar'>
                     <input  type="file" id='upload' accept='/image*' onChange={(e)=>selectAvatar(e)}/>

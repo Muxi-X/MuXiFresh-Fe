@@ -5,7 +5,7 @@ import './bootstrap.min.css'
 import Tittle from '../Visitor_Tittle/tittle'
 import { getJson, postData, putData } from "../../interface/fetch";
 import * as qiniu from 'qiniu-js';
-import defaultFigure from '../../images/figure.png'
+import defaultFigure from '../../images/default_avatar.png'
 import { useNavigate } from 'react-router-dom';
 
 const VisitorForm = () => {
@@ -185,7 +185,7 @@ const VisitorForm = () => {
     //   case '后端组': { transferredGroup = '5'; console.log("后端组 the transferred intention is " + transferredGroup); break; }
     // };
     const data = {
-      avatar: 'http://ossfresh-test.muxixyz.com/' + filename,
+      avatar: filename == '' ? avatar : 'http://ossfresh-test.muxixyz.com/' + filename,
       college: school,
       contact_number: detail,
       contact_way: approach,
@@ -317,8 +317,8 @@ const VisitorForm = () => {
                     figure} /> */}
             {/* 由于前面之前默认用户可以不上传头像提交报名表，所以为了避免后端返回的是非图片的根链接而导致的默认头像无法显示，这里进行了一些修改 */}
             <div className='avatar center-fix'>
-              {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src='http://dummyimage.com/100x100'></img> :
-                avatar ? <img src={avatar} alt="#" /> : <img src='http://dummyimage.com/100x100'></img>}
+              {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
+                avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
             </div>
             <input type="file" id='upload' onChange={(e) => selectFile(e)} />
             <label htmlFor="upload">点击修改头像</label>

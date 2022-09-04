@@ -4,6 +4,7 @@ import './index.less';
 import muxi from  '/src/images/muxi-logo.png' 
 import { getJson } from "../../interface/fetch";
 import { Navigate, useNavigate } from "react-router-dom";
+import defaultFigure from '../../images/default_avatar.png'
 
 
 const Header = () => {
@@ -48,8 +49,8 @@ const Header = () => {
         <div className='text'>木 犀</div>
       </div>
       <div className='avatar' onClick={forMore}>
-      {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src='http://dummyimage.com/100x100'></img> :
-                avatar ? <img src={avatar} alt="#" /> : <img src='http://dummyimage.com/100x100'></img>}
+      {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
+                avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
       </div>
    </div>
 
