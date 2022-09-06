@@ -272,7 +272,7 @@ const VisitorForm = () => {
 
   //上传文件
   function selectFile(e: React.ChangeEvent<HTMLInputElement>): any {
-    const files = e.target.files;
+    const files:any = e.target.files;
     const key = files[0].name;
     const file = files[0];
     setFilename(key);
@@ -288,14 +288,14 @@ const VisitorForm = () => {
     //选择并上传文件到七牛云
     const observable = qiniu.upload(file, key, token, putExtra, config);
     const observer = {
-      next(res) {
+      next(res:any) {
         // ...
       },
-      error(err) {
+      error(err:any) {
         // ...
         console.log(err)
       },
-      complete(res) {
+      complete(res:any) {
         // ...
       }
     }

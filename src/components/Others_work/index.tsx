@@ -6,7 +6,6 @@ import './index.less';
 import muxi from  '/src/images/muxi-logo.png' 
 import {getJson, postData} from '../../interface/fetch';
 import { useParams,useNavigate } from "react-router-dom";
-import A_xiangqing from '../new_xq'
 
 // interface childProps {
 //     email: string;
@@ -103,7 +102,7 @@ const J_check : React.FC = (props) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [file_url,setFileUrl] = useState('')
-    const [details, setDetails] = useState('')
+    const [details, setDetails] = useState({content:'',url:''})
     //const [ID, setId] = useState('')
     //const [group_id, setGroupId] = useState('')
     const [homework_id, setHomeworkId] = useState('')
@@ -176,7 +175,7 @@ const J_check : React.FC = (props) => {
                                 <select name="choosefile" className="input" id='select' onChange={(e)=>handleChange(e)}>
                                     {/* <option value="moren">请选择</option>  */}
                                     {/* 做map遍历选项option */}
-                                    {homeworks[0]?homeworks.map((homework) =>{
+                                    {homeworks[0]?homeworks.map((homework:any) =>{
                                         return(
                                             <option key={homework.ID} value={homework.ID} >{homework.title}</option>
                                         ) 
@@ -209,7 +208,7 @@ const J_check : React.FC = (props) => {
             <div className="button" onClick={()=>toComment()}>发表评论</div>
         </div>
         <div className="pinglunqu">
-            {comments[0]?comments.map((comment) => {
+            {comments[0]?comments.map((comment:any) => {
                 return (
                     <div className='box_comment'>
                         <img className='image' src={muxi} alt="muxi" ></img>

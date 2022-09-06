@@ -88,7 +88,7 @@ const J_work = () =>{
 
 //上传文件
     function selectFile(e:React.ChangeEvent<HTMLInputElement>):any{
-        const files = e.target.files;
+        const files:any = e.target.files;
         const key = files[0].name;
         const file = files[0];
         console.log(file)
@@ -102,14 +102,14 @@ const J_work = () =>{
         //选择并上传文件到七牛云
         const observable = qiniu.upload(file, key, token, putExtra, config);
         const observer = {
-            next(res){
+            next(res:any){
               // ...
             },
-            error(err){
+            error(err:any){
               // ...
                 console.log(err)
             },
-            complete(res){
+            complete(res:any){
               // ...
               console.log('http://ossfresh-test.muxixyz.com/'+res.key)
             }
@@ -223,7 +223,7 @@ const J_work = () =>{
             <div className='one'>
                 <div className='t' >标题：</div>
                 <select className='a' id='select' onChange={(e)=>handleChange(e)}>
-                {homeworks[0]?homeworks.map((homework)=>{
+                {homeworks[0]?homeworks.map((homework:any)=>{
                     return(
                     <option key={homework.id} value={homework.id} >{homework.title}</option>
                         )

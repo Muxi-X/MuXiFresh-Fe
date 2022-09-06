@@ -216,7 +216,7 @@ const A_publish = () => {
                             <select name="choosefile" className="input" id='select' onClick={()=>toPromise()} onChange={(e)=>handleChange(e)}>
                                 {/* <option value="moren">请选择</option>  */}
                                 {/* 做map遍历选项option */}
-                                {homework[0]?homework.map((homework) =>{
+                                {homework[0]?homework.map((homework:any) =>{
                                     return(
                                         <option key={homework.ID} value={homework.ID} >{homework.title}</option>
                                     )

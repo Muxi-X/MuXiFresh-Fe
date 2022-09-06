@@ -68,7 +68,7 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
            </div>
            </div>
             )}): */}
-            {Comments.length?Comments.map((comment) => {
+            {Comments.length?Comments.map((comment:any) => {
                 return (
                 <div className="box2">
                 <img className='image' src={muxi} alt="muxi" ></img>
