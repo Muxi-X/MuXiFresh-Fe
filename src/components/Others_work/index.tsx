@@ -28,7 +28,7 @@ const J_check : React.FC = (props) => {
     useEffect(() => {
         getJson(`/homework/${email}`)
         .then (data => {
-            console.log(data.data);
+            // console.log(data.data);
             //与review一样
             setHomeworks(data.data);
             //setTitle(data.data.homework[0].title);
@@ -45,17 +45,17 @@ const J_check : React.FC = (props) => {
                 })
             getJson('/homework/review?id='+ data.data[0].ID)
             .then (data => {
-                console.log(data.data);
+                // console.log(data.data);
                 // setHomework(data.data);
                 setDetails(data.data);
-                console.log("文件："+data.data.url)
+                // console.log("文件："+data.data.url)
                 let str=data.data.url;
                 let reg="http://ossfresh-test.muxixyz.com/";
                 let res=str.replace(reg,"");
-                console.log(res);
+                // console.log(res);
                 setWordname(res);
         })
-        .catch (error => console.log(error));
+        // .catch (error => console.log(error));
     })
     },[]
     )
@@ -69,10 +69,10 @@ const J_check : React.FC = (props) => {
         //字符串转数字
         setId(Number(h_id));
         // return <A_xiangqing id={id}/>
-        console.log(h_id);
+        // console.log(h_id);
         getJson('/homework/review?id='+ h_id)
         .then (data => {
-            console.log(data.data);
+            // console.log(data.data);
             // setHomework(data.data);
             setDetails(data.data);
             setTitle(data.data.title);
@@ -81,11 +81,11 @@ const J_check : React.FC = (props) => {
             //setId(data.data.ID);
             //setGroupId(data.data.group_id)
             setHomeworkId(data.data.homework_id);//homework_id一样的，ID不一样
-            console.log("文件："+data.data.url)
+            // console.log("文件："+data.data.url)
             let str=data.data.url;
             let reg="http://ossfresh-test.muxixyz.com/";
             let res=str.replace(reg,"");
-            console.log(res);
+            // console.log(res);
             setWordname(res);
             getJson('/homework/comment?id='+h_id+'&limit=100&page=0')
             .then (data => {
@@ -96,7 +96,7 @@ const J_check : React.FC = (props) => {
                 
             })
         })
-        .catch (error => console.log(error));
+        // .catch (error => console.log(error));
         
     }
     const [title, setTitle] = useState('')
@@ -115,8 +115,8 @@ const J_check : React.FC = (props) => {
     const inputRef = React.useRef<HTMLTextAreaElement>(null);
     const getIptValue = (event: { target: { value: any } }) =>{
         SetGetSearchVal(event.target.value);
-        console.log(GetSearchVal)//会落掉最后一个字
-        console.log(inputRef.current?.value)//传这个
+        // console.log(GetSearchVal)//会落掉最后一个字
+        // console.log(inputRef.current?.value)//传这个
     }
 
 
@@ -132,17 +132,17 @@ const J_check : React.FC = (props) => {
             homework_id : id,
             content : inputRef.current?.value,
         }
-        console.log(data);
+        // console.log(data);
         postData(
             '/homework/comment',
             data,
             'POST')
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             SetGetSearchVal('');
             getJson('/homework/comment?id='+id+'&limit=100&page=0')
             .then (data => {
-                console.log(data.data);
+                // console.log(data.data);
                 setComments(data.data.comments);
                 setName(data.data.comments[0].Name);
                 setContent2(data.data.comments[0].Content);
@@ -150,7 +150,7 @@ const J_check : React.FC = (props) => {
             alert('评论成功!')
         })
         .catch(error=>{
-            console.log(error);
+            // console.log(error);
             alert('评论失败!')
         }),[]
     }

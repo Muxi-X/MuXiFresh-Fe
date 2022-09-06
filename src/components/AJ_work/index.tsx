@@ -38,8 +38,8 @@ const J_work = () =>{
                     setHomework_id(data.data[0].id);
                     setFinished(data.data[0].status);
                     //当作业已完成
-                    console.log(data.data[0].id+'id')
-                    console.log(data.data[0].status)
+                    // console.log(data.data[0].id+'id')
+                    // console.log(data.data[0].status)
                     if(data.data[0].status==1)
                     {
                         //获取作业文件
@@ -51,8 +51,8 @@ const J_work = () =>{
                                 let fname=n.replace("http://ossfresh-test.muxixyz.com/","")//去掉域名
                                 setF_name(fname);//文件名
                                 setHanded_id(data.data[0].ID)
-                                console.log(data.data[0].url)
-                                console.log(data.data[0].ID+'获取评论的id')
+                                // console.log(data.data[0].url)
+                                // console.log(data.data[0].ID+'获取评论的id')
                                 //获取评论
                                 getJson('/homework/comment?id='+data.data[0].ID+'&limit=5&page=0')
                                 .then (data => {
@@ -60,14 +60,16 @@ const J_work = () =>{
                                         setComments(data.data.comments);
                                     else
                                         setComments([]);
-                                    console.log(data.data.comments)
-                                }).catch (error => console.log(error));
+                                    // console.log(data.data.comments)
+                                })
+                                // .catch (error => console.log(error));
                             }
-                        ).catch (error => console.log(error));
+                        )
+                        // .catch (error => console.log(error));
                     }
                 }
             )
-       .catch(error=>console.log(error));
+    //    .catch(error=>console.log(error));
 
        //获取qiniu-token
        getJson('/user/qiniu_token')
@@ -91,7 +93,7 @@ const J_work = () =>{
         const files:any = e.target.files;
         const key = files[0].name;
         const file = files[0];
-        console.log(file)
+        // console.log(file)
         setFilename(key);
         const  putExtra={};
         const config={
@@ -107,11 +109,11 @@ const J_work = () =>{
             },
             error(err:any){
               // ...
-                console.log(err)
+                // console.log(err)
             },
             complete(res:any){
               // ...
-              console.log('http://ossfresh-test.muxixyz.com/'+res.key)
+            //   console.log('http://ossfresh-test.muxixyz.com/'+res.key)
             }
           }
         const subscription = observable.subscribe(observer) // 上传开始
@@ -138,7 +140,7 @@ const J_work = () =>{
                    setTitle(data.data.title);
                    setHomework_id(h_id);
                    setFinished(data.data.status);
-                   console.log(h_id+'作业id')
+                //    console.log(h_id+'作业id')
 
                    if(data.data.status==1)
                     {
@@ -151,8 +153,8 @@ const J_work = () =>{
                                 let fname=n.replace("http://ossfresh-test.muxixyz.com/","")
                                 setF_name(fname);
                                 setHanded_id(data.data[0].ID);
-                                console.log(data.data[0].url);
-                                console.log(data.data[0].ID+'获取评论的作业ID');
+                                // console.log(data.data[0].url);
+                                // console.log(data.data[0].ID+'获取评论的作业ID');
                                  //更新评论
                                  getJson('/homework/comment?id='+data.data[0].ID+'&limit=5&page=0')
                                  .then (data => {
@@ -160,11 +162,14 @@ const J_work = () =>{
                                         setComments(data.data.comments);
                                     else
                                         setComments([]);
-                                     console.log(data.data.comments)
-                                 }).catch (error => console.log(error));
-                            }).catch (error => console.log(error));
+                                    //  console.log(data.data.comments)
+                                 })
+                                //  .catch (error => console.log(error));
+                            })
+                            // .catch (error => console.log(error));
                     }
-                }).catch(error=>console.log(error)) 
+                })
+                // .catch(error=>console.log(error)) 
         }
 
     //提交作业 返回文件url等数据
@@ -181,13 +186,13 @@ const J_work = () =>{
             data,
             'POST')
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             alert('上传成功！')
              //提交完毕 显示评论区
             setComment(true);
         })
         .catch(error=>{
-            console.log(error);
+            // console.log(error);
             alert('上传失败!')
         })
     }
@@ -205,13 +210,13 @@ const J_work = () =>{
             data,
             'POST')
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             alert('上传成功！')
              //提交完毕 显示评论区
             setComment(true);
         })
         .catch(error=>{
-            console.log(error);
+            // console.log(error);
             alert('上传失败!')
         })
     }

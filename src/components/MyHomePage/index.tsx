@@ -79,7 +79,7 @@ const MyHomePage = (props: any) => {
             },
             error(err: any){
               // ...
-              console.log(err);
+            //   console.log(err);
               alert("选择失败，请再次选择头像");
             },
             complete(res: any){
@@ -116,7 +116,7 @@ const MyHomePage = (props: any) => {
                 }
         ).catch(
             error => {
-                console.log(error);
+                // console.log(error);
             }
         )
     }

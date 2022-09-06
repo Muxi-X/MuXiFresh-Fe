@@ -73,7 +73,7 @@ const LogIn = (props: any) => {
             email: email,
             password: password,
         }
-        const res = await fetch('http://119.3.2.168:2022/api/v1/user/login',{
+        const res = await fetch('/api/api/v1/user/login',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -115,19 +115,19 @@ const LogIn = (props: any) => {
                         )
                     }
                 )
-           .catch(error=>console.log(error))
+        //    .catch(error=>console.log(error))
         
             }
         ).catch(
             error => {
-                console.log(error);
+                // console.log(error);
                 alert("邮箱或密码错误")
             }
         )
     }
 
     const back = () => {
-        window.location.href = "https://muxi-tech.xyz/"
+        window.location.href = "http://muxi-tech.xyz/"
     }
 
     return(

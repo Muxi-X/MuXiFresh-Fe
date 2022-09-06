@@ -13,7 +13,7 @@ const A_publish = () => {
     function Select(e:React.MouseEvent<HTMLDivElement> ):any{
             e.preventDefault();
             const div:HTMLDivElement=e.currentTarget;
-            console.log(div.id)
+            // console.log(div.id)
             setClickedDiv(div.id);
             setGroupid(0)
     }
@@ -36,14 +36,14 @@ const A_publish = () => {
         if(group_id!=0){
             getJson('/homework/published?group_id='+group_id+'&limit=100&page=0')
         .then (data => {
-            console.log(data.data);
+            // console.log(data.data);
             setHomework(data.data.homework);
             setTitle(data.data.homework[0].title);
             setId(data.data.homework[0].ID);
             if(data.data.num>6){setOver(true)}
         })
         .catch (error =>{
-            console.log(error);
+            // console.log(error);
             alert('还未发布过作业!')
         })
         }
@@ -77,7 +77,7 @@ const A_publish = () => {
     function chooseGroup(e:React.MouseEvent<HTMLDivElement> ):any{
         // e.preventDefault();
         const div:HTMLDivElement=e.currentTarget;
-        console.log(div.id)
+        // console.log(div.id)
         setGroupid(Number(div.id))
     }
 
@@ -90,7 +90,7 @@ const A_publish = () => {
         const h_id = select.options[index].value;//sting
         //字符串转数字
         setId(h_id);
-        console.log(h_id);
+        // console.log(h_id);
     }
 
 
@@ -102,14 +102,14 @@ const A_publish = () => {
     const inputRef1 = React.useRef<HTMLInputElement>(null);
     const textareaRef1 = React.useRef<HTMLTextAreaElement>(null);
     const getIptValue1 = (event: { target: { value: any } }) =>{
-        console.log(inputRef1.current?.value)//传这个
+        // console.log(inputRef1.current?.value)//传这个
         SetGetSearchVal1(event.target.value);
-        console.log(GetSearchVal1)
+        // console.log(GetSearchVal1)
     }
     const getTexValue1 = (event: { target: { value: any } }) =>{
-        console.log(textareaRef1.current?.value)//传这个
+        // console.log(textareaRef1.current?.value)//传这个
         SetGetSearchVal2(event.target.value);
-        console.log(GetSearchVal2)
+        // console.log(GetSearchVal2)
     }
 
 
@@ -121,23 +121,23 @@ const A_publish = () => {
             group_id : group_id,//根据选择
             file_url : ''
         }
-        console.log("zuoye"+hh_id)
+        // console.log("zuoye"+hh_id)
         postData(
             `/homework/change/published/${hh_id}`,
             data,
             'POST')
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             SetGetSearchVal1('');
             SetGetSearchVal2('');
             setGroupid(0);
-            console.log(group_id);
+            // console.log(group_id);
             alert('修改成功!')
              //提交完毕 切换页面
             //setComment(true);
         })
         .catch(error=>{
-            console.log(error);
+            // console.log(error);
             alert('修改失败!')
         })
     }
@@ -151,11 +151,11 @@ const A_publish = () => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
     const getIptValue = (event: { target: { value: any } }) =>{
-        console.log(inputRef.current?.value)//传这个
+        // console.log(inputRef.current?.value)//传这个
         SetGetSearchVal11(event.target.value);
     }
     const getTexValue = (event: { target: { value: any } }) =>{
-        console.log(textareaRef.current?.value)//传这个
+        // console.log(textareaRef.current?.value)//传这个
         SetGetSearchVal22(event.target.value);
     }
 
@@ -170,13 +170,13 @@ const A_publish = () => {
             group_id : group_id,//根据选择
             file_url : ''
         }
-        console.log(data);
+        // console.log(data);
         postData(
             '/homework/publish',
             data,
             'POST')
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             SetGetSearchVal11('');
             SetGetSearchVal22('');
             alert('发布成功!')
@@ -184,7 +184,7 @@ const A_publish = () => {
             //setComment(true);
         })
         .catch(error=>{
-            console.log(error);
+            // console.log(error);
             alert('发布失败!')
         })
     }

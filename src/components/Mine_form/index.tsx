@@ -25,7 +25,7 @@ const Mine_form: React.FC = () => {
 
     useEffect(() => {
         getJson('/form/view').then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setName(res.data.name)
             setStudent_id(res.data.student_id)
             setCollege(res.data.college)

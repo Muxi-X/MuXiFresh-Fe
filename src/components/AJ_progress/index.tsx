@@ -23,7 +23,7 @@ const J_progress = () => {
                 setName(data.data.name);
             }
         )
-   .catch(error=>console.log(error))
+//    .catch(error=>console.log(error))
     },[]
     )
 

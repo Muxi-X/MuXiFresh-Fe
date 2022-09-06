@@ -146,7 +146,7 @@ const VisitorForm = () => {
           }
         }
       )
-      .catch(error => console.log(error));
+      // .catch(error => console.log(error));
     getJson('/user/info')
       .then(
         data => {
@@ -154,7 +154,7 @@ const VisitorForm = () => {
           setMail(data.data.email);
         }
       )
-      .catch(error => console.log(error));
+      // .catch(error => console.log(error));
     //获取qiniu-token
     getJson('/user/qiniu_token')
       .then(
@@ -231,7 +231,7 @@ const VisitorForm = () => {
             )
         })
         .catch(error => {
-          console.log(error);
+          // console.log(error);
           alert('上传失败!')
         })
     }
@@ -250,7 +250,6 @@ const VisitorForm = () => {
                     navigate('/visitor')
                   }
                   toVisitor()
-                  alert('visitor')
                 }
                 else if (datas.data.role === 3 || datas.data.role === 4) {
                   const toManager = () => {
@@ -262,7 +261,7 @@ const VisitorForm = () => {
             )
         })
         .catch(error => {
-          console.log(error);
+          // console.log(error);
           alert('上传失败!')
         })
 
@@ -293,7 +292,7 @@ const VisitorForm = () => {
       },
       error(err:any) {
         // ...
-        console.log(err)
+        // console.log(err)
       },
       complete(res:any) {
         // ...
@@ -375,7 +374,7 @@ const VisitorForm = () => {
         <div className="tt-5 form-group w-50">
           <label htmlFor="sel1" className={intention == '' ? 'text-danger' : 'text-body'}>心动组别:</label>
           <select className="form-control" onChange={handleIntentionChange}>
-            <option className='tt-5'>{intention == '' ? '请选择' : intention}</option>
+            <option hidden className='tt-5'>{intention == '' ? '请选择' : intention}</option>
             <option className='tt-5'>设计组</option>
             <option className='tt-5'>产品组</option>
             <option className='tt-5'>安卓组</option>

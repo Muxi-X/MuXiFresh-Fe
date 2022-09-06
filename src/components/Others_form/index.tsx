@@ -32,7 +32,7 @@ const Others_form:React.FC = ()=> {
     useEffect(()=>{
         const data={email:email}
         postData('/form/view',data,'POST').then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             setName(res.data.name)
             setStudent_id(res.data.student_id)
             setCollege(res.data.college)
@@ -49,7 +49,7 @@ const Others_form:React.FC = ()=> {
             setIf_other_organization(res.data.if_other_organization)
             setAvatar(res.data.avatar)
         })
-        .catch(error=>console.log(error))
+        // .catch(error=>console.log(error))
     },[])
 
     return (   
