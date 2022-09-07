@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate, useRoutes } from 'react-router-dom'
 import { getJson } from './interface/fetch'
 import J_layout from './components/J_layout'

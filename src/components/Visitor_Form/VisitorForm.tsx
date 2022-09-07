@@ -260,7 +260,7 @@ const VisitorForm = () => {
                     }
                     toVisitor()
                   }
-                  else if (datas.data.role === 3 || datas.data.role === 4) {
+                  else if (datas.data.role === 2 || datas.data.role === 4) {
                     const toManager = () => {
                       navigate('/manager')
                     }

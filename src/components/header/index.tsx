@@ -34,7 +34,8 @@ const Header = () => {
 
   const quit = () => {
     localStorage.removeItem('token')
-    navigate('/login')
+    window.location.replace('/login')
+    //navigate('/login')
   }
   const toHome=()=>{
     //setShowHome(true)

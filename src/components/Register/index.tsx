@@ -4,6 +4,7 @@ import "./index.less"
 import Join from '../../images/join.png'
 import { getJson } from '../../interface/fetch'
 import { useNavigate } from 'react-router-dom'
+import muxi from '../../images/muxi-logo.png'
 
 const Register = (props: any) => {
 
@@ -138,6 +139,10 @@ const Register = (props: any) => {
 
     return (
         <div className='reg-body did' >
+            <div className='reg-muxi-link' onClick={back}>
+                <img src={muxi} alt="" />
+                <div className='reg-muxi-text' >木犀</div>
+            </div>
             <img className='regbackground' src={Join} />
             <div className='register did'>
                 <div className='regform did' >
