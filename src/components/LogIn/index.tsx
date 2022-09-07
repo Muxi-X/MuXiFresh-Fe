@@ -144,7 +144,7 @@ const LogIn = (props: any) => {
                                    }
                                    toVisitor()
                                 }
-                                else if(datas.data.role===3||datas.data.role===4){
+                                else if(datas.data.role===2||datas.data.role===4){
                                     const toManager = ()=>{//manager
                                         navigate(data.data.form_status==0?'/edit':'/manager')
                                     }
