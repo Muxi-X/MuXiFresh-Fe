@@ -2,6 +2,8 @@ import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
 import "./index.less"
 import Join from '../../images/join.png'
+import { getJson } from '../../interface/fetch'
+import { useNavigate } from 'react-router-dom'
 
 const Register = (props: any) => {
 
@@ -20,6 +22,8 @@ const Register = (props: any) => {
         checkPassword: true,
         checkPasswordLen: true
     })
+
+    const navigate = useNavigate()
 
     const handleChange1 = (e: { target: { value: string } }) => {
         const isEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-]{2,})+(.[a-zA-Z]{2,3})$/
@@ -80,8 +84,34 @@ const Register = (props: any) => {
         json.then(
             data => {
                 if(data.message === "OK"){
-                    setIsLogIn(true);
                     alert("注册成功");
+
+                    async function logIn() {
+                        let usermsg = {
+                            email: email,
+                            password: password
+                        }
+
+                        const res = await fetch('http://fresh.muxixyz.com/api/v1/user/login',{
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(usermsg)
+                        })
+                        const json = res.json()
+                        json.then(
+                            data => {
+                                // console.log(data);
+                                const token = data.data.token
+                                localStorage.setItem('token',token)
+                                navigate('/edit')
+                            }
+                        ).catch(
+                            //error=>{console.log(error);}
+                        )
+                    }
+                    logIn()
                 } else {
                     // 获取注册失败信息
                     const message = data.message.toString()
@@ -116,7 +146,7 @@ const Register = (props: any) => {
                     <div className='yourPassWord did'><label className='lab' htmlFor="userId">学&emsp;&emsp;号:</label><input className='reg-put' onBlur={handleChange2} type="text" id='userId' name="userId" autoComplete="off" /></div>
                     <div className='yourPassWord did'><label className='lab' htmlFor='password'>密&emsp;&emsp;码:</label><input className='reg-put' onBlur={handleChange3} type="password" id='password' placeholder='密码不少于6位' />{check.checkPasswordLen ? "" : <div className='attention'>*格式错误</div>}</div>
                     <div className='checkPassWord did'><label className='lab' htmlFor='password1'>确认密码:</label><input className='reg-put' onBlur={handleChange4} type="password" id='password1' />{check.checkPassword ? "" : <div className='attention'>*密码不一致</div>}</div>
-                    <div className='confirm did'><button onClick={() => setIsLogIn(true)}>登录</button><button onClick={register}>注册</button><button onClick={back}>官网</button></div>
+                    <div className='confirm did'><button onClick={register}>注册</button></div>
                 </div>
             </div>
         </div>

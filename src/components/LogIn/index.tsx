@@ -22,6 +22,45 @@ const LogIn = (props: any) => {
     },[]
     )
  */
+
+    useEffect(() => {  
+        const token = localStorage.getItem('token')
+        if(!token){
+            return
+        }
+        else{
+            getJson('/schedule')
+                .then(
+                    data=>{
+                        //0表示未提交 1表示提交
+                        setForm(data.data.form_status);
+                        // console.log(data.data)
+                        // console.log('##',data.data.form_status);
+        
+                        getJson('/user/info')
+                        .then(
+                            datas => {
+                                if(datas.data.role===1){//visitor
+                                   const toVisitor = ()=>{
+                                    navigate(data.data.form_status==0?'/edit':'/visitor')
+                                   }
+                                   toVisitor()
+                                }
+                                else if(datas.data.role===2||datas.data.role===4){
+                                    const toManager = ()=>{//manager
+                                        navigate(data.data.form_status==0?'/edit':'/manager')
+                                    }
+                                    toManager()
+                                }
+                            }
+                        )
+                    }
+                )
+
+        }
+    },)
+    
+
     const {setIsLogIn} = props
 
     const [user,setUser] = useState({
