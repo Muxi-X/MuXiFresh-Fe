@@ -345,7 +345,7 @@ const VisitorForm = () => {
             </div>
             <div className='d-flex justify-content-center align-items-center'>
               <label htmlFor="comment" className={gender == '' ? 'text-danger' : 'text-body'}>性别:</label>
-              <select className="form-control w-100" onChange={handleGenderChange}>
+              <select className="form-control w-100 fix-mb" onChange={handleGenderChange}>
                 <option className='tt-5'>{gender == '' ? '请选择' : gender}</option>
                 <option className='tt-5'>男</option>
                 <option className='tt-5'>女</option>
@@ -358,7 +358,7 @@ const VisitorForm = () => {
             <div className='d-flex justify-content-center align-items-center'>
               <label htmlFor="comment" className={approach == '' || approach == '请选择' || detail == '' ? 'text-danger' : 'text-body'}>其它:</label>
               <div className='w-100 m-0 d-flex justify-content-between'>
-                <select className="form-control" id="others-select" onChange={handleApproachChange}>
+                <select className="form-control fix-mb" id="others-select" onChange={handleApproachChange}>
                   <option className='tt-5'>{approach == '' ? '请选择' : approach}</option>
                   <option className='tt-5'>QQ</option>
                   <option className='tt-5'>Tel</option>
@@ -373,7 +373,7 @@ const VisitorForm = () => {
         <Tittle tittleName='报名信息' />
         <div className="tt-5 form-group w-50">
           <label htmlFor="sel1" className={intention == '' ? 'text-danger' : 'text-body'}>心动组别:</label>
-          <select className="form-control" onChange={handleIntentionChange}>
+          <select className="form-control fix-mb" onChange={handleIntentionChange}>
             <option hidden className='tt-5'>{intention == '' ? '请选择' : intention}</option>
             <option className='tt-5'>设计组</option>
             <option className='tt-5'>产品组</option>
