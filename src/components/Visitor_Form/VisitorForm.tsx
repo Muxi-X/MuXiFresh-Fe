@@ -212,25 +212,30 @@ const VisitorForm = () => {
         data,
         'PUT')
         .then(data => {
-          alert('上传成功!');
-          getJson('/user/info')
-            .then(
-              datas => {
-                if (datas.data.role === 1) {
-                  const toVisitor = () => {
-                    navigate('/visitor')
-                  }
-                  toVisitor()
+          //这里要加code的判断
+          // data.code = 20002 指错误
+          // data.code = 0 指成功
+          if (data.code == 0) {
+            console.log("上传成功!")
+            getJson('/user/info')
+              .then(
+                datas => {
+                  if (datas.data.role === 1) {
+                    const toVisitor = () => {
+                      navigate('/visitor')
+                    }
+                    toVisitor()
 
-                }
-                else if (datas.data.role === 3 || datas.data.role === 4) {
-                  const toManager = () => {
-                    navigate('/manager')
                   }
-                  toManager()
+                  else if (datas.data.role === 3 || datas.data.role === 4) {
+                    const toManager = () => {
+                      navigate('/manager')
+                    }
+                    toManager()
+                  }
                 }
-              }
-            )
+              )
+          }
         })
         .catch(error => {
           // console.log(error);
@@ -243,24 +248,26 @@ const VisitorForm = () => {
         data,
         'POST')
         .then(data => {
-          alert('上传成功!')
-          getJson('/user/info')
-            .then(
-              datas => {
-                if (datas.data.role === 1) {
-                  const toVisitor = () => {
-                    navigate('/visitor')
+          if (data.code == 0) {
+            alert('上传成功!')
+            getJson('/user/info')
+              .then(
+                datas => {
+                  if (datas.data.role === 1) {
+                    const toVisitor = () => {
+                      navigate('/visitor')
+                    }
+                    toVisitor()
                   }
-                  toVisitor()
-                }
-                else if (datas.data.role === 3 || datas.data.role === 4) {
-                  const toManager = () => {
-                    navigate('/manager')
+                  else if (datas.data.role === 3 || datas.data.role === 4) {
+                    const toManager = () => {
+                      navigate('/manager')
+                    }
+                    toManager()
                   }
-                  toManager()
                 }
-              }
-            )
+              )
+          }
         })
         .catch(error => {
           // console.log(error);
