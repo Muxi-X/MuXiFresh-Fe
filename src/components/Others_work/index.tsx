@@ -160,7 +160,7 @@ const J_check : React.FC = (props) => {
   
     <div>
         {/* <div className="smalltitle">作业</div> */}
-        <div className="content">
+        <div className="o_content">
             <div className="module">
                 <div className={group_id=='1'?'moduletitle':"modulehide"} id='a'>设计组作业</div>
                 <div className={group_id=='2'?'moduletitle':"modulehide"} id='b'>产品组作业</div>

@@ -181,6 +181,8 @@ const J_work = () =>{
             homework_id:homework_id,//数字
             file_url:'http://ossfresh-test.muxixyz.com/'+filename
         }
+        if(title!=''&&content!=''&&homework_id!=0&&filename!='')
+    {
         postData(
             '/homework',
             data,
@@ -195,6 +197,11 @@ const J_work = () =>{
             // console.log(error);
             alert('上传失败!')
         })
+    }
+    else if(title=='')
+    alert('暂时还没有作业发布哦！');
+    else if(title!=''&&filename=='')
+    alert('请选择作业文件！');
     }
 
     //修改作业
@@ -272,9 +279,6 @@ const J_work = () =>{
             {/* 作业提交或之前已完成 显示评论区 */}
             {finished==1||comment?
                 <A_comment id={handed_id} comments={comments} />:''}
-
-           {/*  {finished==1||comment?'': */}
-           
         </div>
     )
 }

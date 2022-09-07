@@ -27,7 +27,8 @@ const A_publish = () => {
 
 
     const [homework,setHomework] = useState([]);
-    const [tilte,setTitle] = useState('')
+    const [title,setTitle] = useState('')
+    const [content,setContent] = useState('')
     const [hh_id,setId] = useState('')
     const [over,setOver] = useState(false)
 
@@ -104,11 +105,13 @@ const A_publish = () => {
     const getIptValue1 = (event: { target: { value: any } }) =>{
         // console.log(inputRef1.current?.value)//传这个
         SetGetSearchVal1(event.target.value);
+        setTitle(event.target.value)
         // console.log(GetSearchVal1)
     }
     const getTexValue1 = (event: { target: { value: any } }) =>{
         // console.log(textareaRef1.current?.value)//传这个
         SetGetSearchVal2(event.target.value);
+        setContent(event.target.value)
         // console.log(GetSearchVal2)
     }
 
@@ -122,24 +125,29 @@ const A_publish = () => {
             file_url : ''
         }
         // console.log("zuoye"+hh_id)
-        postData(
-            `/homework/change/published/${hh_id}`,
-            data,
-            'POST')
-        .then(data=>{
-            // console.log(data);
-            SetGetSearchVal1('');
-            SetGetSearchVal2('');
-            setGroupid(0);
-            // console.log(group_id);
-            alert('修改成功!')
-             //提交完毕 切换页面
-            //setComment(true);
-        })
-        .catch(error=>{
-            // console.log(error);
-            alert('修改失败!')
-        })
+        if(title!=''||content!=''||group_id!=0){
+            postData(
+                `/homework/change/published/${hh_id}`,
+                data,
+                'POST')
+            .then(data=>{
+                // console.log(data);
+                SetGetSearchVal1('');
+                SetGetSearchVal2('');
+                setGroupid(0);
+                // console.log(group_id);
+                alert('修改成功!')
+                 //提交完毕 切换页面
+                //setComment(true);
+            })
+            .catch(error=>{
+                // console.log(error);
+                alert('修改失败!')
+            })
+        }
+        else{
+            alert('请补全修改信息!')
+        }
     }
 
 
@@ -153,10 +161,12 @@ const A_publish = () => {
     const getIptValue = (event: { target: { value: any } }) =>{
         // console.log(inputRef.current?.value)//传这个
         SetGetSearchVal11(event.target.value);
+        setTitle(event.target.value)
     }
     const getTexValue = (event: { target: { value: any } }) =>{
         // console.log(textareaRef.current?.value)//传这个
         SetGetSearchVal22(event.target.value);
+        setContent(event.target.value)
     }
 
 
@@ -171,22 +181,28 @@ const A_publish = () => {
             file_url : ''
         }
         // console.log(data);
-        postData(
-            '/homework/publish',
-            data,
-            'POST')
-        .then(data=>{
-            // console.log(data);
-            SetGetSearchVal11('');
-            SetGetSearchVal22('');
-            alert('发布成功!')
-             //提交完毕 切换页面
-            //setComment(true);
-        })
-        .catch(error=>{
-            // console.log(error);
-            alert('发布失败!')
-        })
+        if(title!=''||content!=''||group_id!=0){
+            postData(
+                '/homework/publish',
+                data,
+                'POST')
+            .then(data=>{
+                // console.log(data);
+                SetGetSearchVal11('');
+                SetGetSearchVal22('');
+    
+                alert('发布成功!')
+                 //提交完毕 切换页面
+                //setComment(true);
+            })
+            .catch(error=>{
+                // console.log(error);
+                alert('发布失败!')
+            })
+        }
+        else{
+            alert('请补全发布信息!')
+        }
     }
 
   return (
