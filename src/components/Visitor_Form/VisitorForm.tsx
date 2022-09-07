@@ -146,7 +146,8 @@ const VisitorForm = () => {
           }
         }
       )
-      // .catch(error => console.log(error));
+    if (avatar == '') setAvatar(defaultFigure)
+    // .catch(error => console.log(error));
     getJson('/user/info')
       .then(
         data => {
@@ -154,7 +155,7 @@ const VisitorForm = () => {
           setMail(data.data.email);
         }
       )
-      // .catch(error => console.log(error));
+    // .catch(error => console.log(error));
     //获取qiniu-token
     getJson('/user/qiniu_token')
       .then(
@@ -185,13 +186,14 @@ const VisitorForm = () => {
     //   case '后端组': { transferredGroup = '5'; console.log("后端组 the transferred intention is " + transferredGroup); break; }
     // };
     const data = {
-      avatar: filename == '' ? avatar : 'http://ossfresh-test.muxixyz.com/' + filename,
+      //头像链接不能传空字符串（吗？）
+      avatar: filename == '' ? '' + avatar : 'http://ossfresh-test.muxixyz.com/' + filename,
+      // avatar: 'http://ossfresh-test.muxixyz.com/' + filename,
       college: school,
       contact_number: detail,
       contact_way: approach,
       gender: gender,
       grade: grade,
-      // group: transferredGroup,
       group: intention,
       if_other_organization: work,
       major: major,
@@ -201,7 +203,7 @@ const VisitorForm = () => {
       student_id: id,
       understand: grasp
     }
-
+    console.log(data)
     // 如果之前从后端获取到了数据则说明是修改表，调用编辑报名表的PUT接口
     // 如果之前为从后端获取到数据则说明是创建表，调用创建报名表的POST接口
     if (update == 1) {
@@ -271,7 +273,7 @@ const VisitorForm = () => {
 
   //上传文件
   function selectFile(e: React.ChangeEvent<HTMLInputElement>): any {
-    const files:any = e.target.files;
+    const files: any = e.target.files;
     const key = files[0].name;
     const file = files[0];
     setFilename(key);
@@ -287,14 +289,14 @@ const VisitorForm = () => {
     //选择并上传文件到七牛云
     const observable = qiniu.upload(file, key, token, putExtra, config);
     const observer = {
-      next(res:any) {
+      next(res: any) {
         // ...
       },
-      error(err:any) {
+      error(err: any) {
         // ...
         // console.log(err)
       },
-      complete(res:any) {
+      complete(res: any) {
         // ...
       }
     }
@@ -302,7 +304,7 @@ const VisitorForm = () => {
   }
 
   return (
-    <div>
+    <div className='change-for-you'>
       <div className='text-center'><b className='tt-1'>我的简历</b></div>
       <div className='d-flex flex-column justify-content-around align-items-center'>
         {/* 个人信息 */}
@@ -324,27 +326,27 @@ const VisitorForm = () => {
           </div>
           <div className="form-group w-50" id='info-group'>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={name == '' ? 'text-danger' : 'text-body'}>姓名:</label>
+              <label htmlFor="comment" className={name == '' ? 'text-warning' : 'text-body'}>姓名:</label>
               <input type="text" className="form-control" value={name} onChange={handleNameChange} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={id == '' ? 'text-danger' : 'text-body'}>学号:</label>
+              <label htmlFor="comment" className={id == '' ? 'text-warning' : 'text-body'}>学号:</label>
               <input type="text" className="form-control" value={id} onChange={handleIdChange} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={school == '' ? 'text-danger' : 'text-body'}>学院:</label>
+              <label htmlFor="comment" className={school == '' ? 'text-warning' : 'text-body'}>学院:</label>
               <input type="text" className="form-control" value={school} onChange={handleSchoolChange} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={major == '' ? 'text-danger' : 'text-body'}>专业:</label>
+              <label htmlFor="comment" className={major == '' ? 'text-warning' : 'text-body'}>专业:</label>
               <input type="text" className="form-control" value={major} onChange={handleMajorChange} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={grade == '' ? 'text-danger' : 'text-body'}>年级:</label>
+              <label htmlFor="comment" className={grade == '' ? 'text-warning' : 'text-body'}>年级:</label>
               <input type="text" className="form-control" value={grade} onChange={handleGradeChange} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={gender == '' ? 'text-danger' : 'text-body'}>性别:</label>
+              <label htmlFor="comment" className={gender == '' ? 'text-warning' : 'text-body'}>性别:</label>
               <select className="form-control w-100 fix-mb" onChange={handleGenderChange}>
                 <option className='tt-5'>{gender == '' ? '请选择' : gender}</option>
                 <option className='tt-5'>男</option>
@@ -352,11 +354,11 @@ const VisitorForm = () => {
               </select>
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={mail == '' ? 'text-danger' : 'text-body'}>邮箱:</label>
+              <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>邮箱:</label>
               <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} disabled={true} />
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={approach == '' || approach == '请选择' || detail == '' ? 'text-danger' : 'text-body'}>其它:</label>
+              <label htmlFor="comment" className={approach == '' || approach == '请选择' || detail == '' ? 'text-warning' : 'text-body'}>其它:</label>
               <div className='w-100 m-0 d-flex justify-content-between'>
                 <select className="form-control fix-mb" id="others-select" onChange={handleApproachChange}>
                   <option className='tt-5'>{approach == '' ? '请选择' : approach}</option>
@@ -372,7 +374,7 @@ const VisitorForm = () => {
         {/* 报名信息 */}
         <Tittle tittleName='报名信息' />
         <div className="tt-5 form-group w-50">
-          <label htmlFor="sel1" className={intention == '' ? 'text-danger' : 'text-body'}>心动组别:</label>
+          <label htmlFor="sel1" className={intention == '' ? 'text-warning' : 'text-body'}>心动组别:</label>
           <select className="form-control fix-mb" onChange={handleIntentionChange}>
             <option hidden className='tt-5'>{intention == '' ? '请选择' : intention}</option>
             <option className='tt-5'>设计组</option>
@@ -381,11 +383,11 @@ const VisitorForm = () => {
             <option className='tt-5'>前端组</option>
             <option className='tt-5'>后端组</option>
           </select>
-          <label htmlFor="comment" className={reason == '' ? 'text-danger' : 'text-body'}>心动理由:</label>
+          <label htmlFor="comment" className={reason == '' ? 'text-warning' : 'text-body'}>心动理由:</label>
           <textarea className="form-control self-introduction" rows={3}
             placeholder='' value={reason} onChange={handleReasonChange}>
           </textarea>
-          <label htmlFor="comment" className={grasp == '' ? 'text-danger' : 'text-body'}>对组别的了解·:</label>
+          <label htmlFor="comment" className={grasp == '' ? 'text-warning' : 'text-body'}>对组别的了解·:</label>
           <textarea className="form-control self-introduction" rows={3}
             placeholder='' value={grasp} onChange={handleGraspChange}>
           </textarea>
@@ -393,7 +395,7 @@ const VisitorForm = () => {
         {/* 自述部分 */}
         <Tittle tittleName='自述部分' />
         <div className="tt-5 form-group w-50">
-          <label htmlFor="comment" className={intro == '' ? 'text-danger' : 'text-body'}>自我介绍:</label>
+          <label htmlFor="comment" className={intro == '' ? 'text-warning' : 'text-body'}>自我介绍:</label>
           <textarea className="form-control self-introduction" rows={5}
             placeholder='进行一个自我介绍，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。'
             value={intro} onChange={handleIntroChange}>
@@ -402,7 +404,7 @@ const VisitorForm = () => {
         {/* 一些小问题 */}
         <Tittle tittleName='一些小问题' />
         <span className='tt-5'>你是否有加入/正在加入一些其他组织或担任学生工作?
-        </span><span className='text-danger tt-5'>{work == '' ? '(请填写)' : ''}</span>
+        </span><span className='text-warning tt-5'>{work == '' ? '(请填写)' : ''}</span>
         <div className='tt-5 input-group d-flex justify-content-center p-2'>
           <div className="radio mx-1">
             <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>
