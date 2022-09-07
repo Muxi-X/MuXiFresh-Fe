@@ -304,119 +304,120 @@ const VisitorForm = () => {
   }
 
   return (
-    <div className='change-for-you'>
-      <div className='text-center'><b className='tt-1'>我的简历</b></div>
-      <div className='d-flex flex-column justify-content-around align-items-center'>
-        {/* 个人信息 */}
-        <Tittle tittleName='个人信息' />
-        <div className='tt-5 formBlock d-flex flex-wrap justify-content-between w-50'>
-          <div className="upload-figure">
-            {/* <img className='left-figure-image' id="my-figure"
+    <div className='black-for-you w-100'>
+      <div className='change-for-you w-80'>
+        <div className='text-center'><b className='tt-1'>我的简历</b></div>
+        <div className='d-flex flex-column justify-content-around align-items-center'>
+          {/* 个人信息 */}
+          <Tittle tittleName='个人信息' />
+          <div className='tt-5 formBlock d-flex flex-wrap justify-content-between w-50'>
+            <div className="upload-figure">
+              {/* <img className='left-figure-image' id="my-figure"
               src={figure == 'http://ossfresh-test.muxixyz.com/' ? defaultFigure :
                 figure == '' ? defaultFigure :
                   figure == 'http://dummyimage.com/100x100' ? defaultFigure :
                     figure} /> */}
-            {/* 由于前面之前默认用户可以不上传头像提交报名表，所以为了避免后端返回的是非图片的根链接而导致的默认头像无法显示，这里进行了一些修改 */}
-            <div className='avatar center-fix'>
-              {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
-                avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
+              {/* 由于前面之前默认用户可以不上传头像提交报名表，所以为了避免后端返回的是非图片的根链接而导致的默认头像无法显示，这里进行了一些修改 */}
+              <div className='avatar center-fix'>
+                {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
+                  avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
+              </div>
+              <input type="file" id='upload' onChange={(e) => selectFile(e)} />
+              <label htmlFor="upload">点击修改头像</label>
             </div>
-            <input type="file" id='upload' onChange={(e) => selectFile(e)} />
-            <label htmlFor="upload">点击修改头像</label>
-          </div>
-          <div className="form-group w-50" id='info-group'>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={name == '' ? 'text-warning' : 'text-body'}>姓名:</label>
-              <input type="text" className="form-control" value={name} onChange={handleNameChange} />
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={id == '' ? 'text-warning' : 'text-body'}>学号:</label>
-              <input type="text" className="form-control" value={id} onChange={handleIdChange} />
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={school == '' ? 'text-warning' : 'text-body'}>学院:</label>
-              <input type="text" className="form-control" value={school} onChange={handleSchoolChange} />
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={major == '' ? 'text-warning' : 'text-body'}>专业:</label>
-              <input type="text" className="form-control" value={major} onChange={handleMajorChange} />
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={grade == '' ? 'text-warning' : 'text-body'}>年级:</label>
-              <input type="text" className="form-control" value={grade} onChange={handleGradeChange} />
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={gender == '' ? 'text-warning' : 'text-body'}>性别:</label>
-              <select className="form-control w-100 fix-mb" onChange={handleGenderChange}>
-                <option className='tt-5'>{gender == '' ? '请选择' : gender}</option>
-                <option className='tt-5'>男</option>
-                <option className='tt-5'>女</option>
-              </select>
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>邮箱:</label>
-              <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} disabled={true} />
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <label htmlFor="comment" className={approach == '' || approach == '请选择' || detail == '' ? 'text-warning' : 'text-body'}>其它:</label>
-              <div className='w-100 m-0 d-flex justify-content-between'>
-                <select className="form-control fix-mb" id="others-select" onChange={handleApproachChange}>
-                  <option className='tt-5'>{approach == '' ? '请选择' : approach}</option>
-                  <option className='tt-5'>QQ</option>
-                  <option className='tt-5'>Tel</option>
+            <div className="form-group w-50" id='info-group'>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={name == '' ? 'text-warning' : 'text-body'}>姓名:</label>
+                <input type="text" className="form-control" value={name} onChange={handleNameChange} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={id == '' ? 'text-warning' : 'text-body'}>学号:</label>
+                <input type="text" className="form-control" value={id} onChange={handleIdChange} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={school == '' ? 'text-warning' : 'text-body'}>学院:</label>
+                <input type="text" className="form-control" value={school} onChange={handleSchoolChange} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={major == '' ? 'text-warning' : 'text-body'}>专业:</label>
+                <input type="text" className="form-control" value={major} onChange={handleMajorChange} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={grade == '' ? 'text-warning' : 'text-body'}>年级:</label>
+                <input type="text" className="form-control" value={grade} onChange={handleGradeChange} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={gender == '' ? 'text-warning' : 'text-body'}>性别:</label>
+                <select className="form-control w-100 fix-mb" onChange={handleGenderChange}>
+                  <option className='tt-5'>{gender == '' ? '请选择' : gender}</option>
+                  <option className='tt-5'>男</option>
+                  <option className='tt-5'>女</option>
                 </select>
-                <input type="text" className="form-control text-center" id='others-label' value={detail} onChange={handleDetailChange} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>邮箱:</label>
+                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} disabled={true} />
+              </div>
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={approach == '' || approach == '请选择' || detail == '' ? 'text-warning' : 'text-body'}>其它:</label>
+                <div className='w-100 m-0 d-flex justify-content-between'>
+                  <select className="form-control fix-mb" id="others-select" onChange={handleApproachChange}>
+                    <option className='tt-5'>{approach == '' ? '请选择' : approach}</option>
+                    <option className='tt-5'>QQ</option>
+                    <option className='tt-5'>Tel</option>
+                  </select>
+                  <input type="text" className="form-control text-center" id='others-label' value={detail} onChange={handleDetailChange} />
 
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* 报名信息 */}
-        <Tittle tittleName='报名信息' />
-        <div className="tt-5 form-group w-50">
-          <label htmlFor="sel1" className={intention == '' ? 'text-warning' : 'text-body'}>心动组别:</label>
-          <select className="form-control fix-mb" onChange={handleIntentionChange}>
-            <option hidden className='tt-5'>{intention == '' ? '请选择' : intention}</option>
-            <option className='tt-5'>设计组</option>
-            <option className='tt-5'>产品组</option>
-            <option className='tt-5'>安卓组</option>
-            <option className='tt-5'>前端组</option>
-            <option className='tt-5'>后端组</option>
-          </select>
-          <label htmlFor="comment" className={reason == '' ? 'text-warning' : 'text-body'}>心动理由:</label>
-          <textarea className="form-control self-introduction" rows={3}
-            placeholder='' value={reason} onChange={handleReasonChange}>
-          </textarea>
-          <label htmlFor="comment" className={grasp == '' ? 'text-warning' : 'text-body'}>对组别的了解·:</label>
-          <textarea className="form-control self-introduction" rows={3}
-            placeholder='' value={grasp} onChange={handleGraspChange}>
-          </textarea>
-        </div>
-        {/* 自述部分 */}
-        <Tittle tittleName='自述部分' />
-        <div className="tt-5 form-group w-50">
-          <label htmlFor="comment" className={intro == '' ? 'text-warning' : 'text-body'}>自我介绍:</label>
-          <textarea className="form-control self-introduction" rows={5}
-            placeholder='进行一个自我介绍，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。'
-            value={intro} onChange={handleIntroChange}>
-          </textarea>
-        </div>
-        {/* 一些小问题 */}
-        <Tittle tittleName='一些小问题' />
-        <span className='tt-5'>你是否有加入/正在加入一些其他组织或担任学生工作?
-        </span><span className='text-warning tt-5'>{work == '' ? '(请填写)' : ''}</span>
-        <div className='tt-5 input-group d-flex justify-content-center p-2'>
-          <div className="radio mx-1">
-            <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>
+          {/* 报名信息 */}
+          <Tittle tittleName='报名信息' />
+          <div className="tt-5 form-group w-50">
+            <label htmlFor="sel1" className={intention == '' ? 'text-warning' : 'text-body'}>心动组别:</label>
+            <select className="form-control fix-mb" onChange={handleIntentionChange}>
+              <option hidden className='tt-5'>{intention == '' ? '请选择' : intention}</option>
+              <option className='tt-5'>设计组</option>
+              <option className='tt-5'>产品组</option>
+              <option className='tt-5'>安卓组</option>
+              <option className='tt-5'>前端组</option>
+              <option className='tt-5'>后端组</option>
+            </select>
+            <label htmlFor="comment" className={reason == '' ? 'text-warning' : 'text-body'}>心动理由:</label>
+            <textarea className="form-control self-introduction" rows={3}
+              placeholder='' value={reason} onChange={handleReasonChange}>
+            </textarea>
+            <label htmlFor="comment" className={grasp == '' ? 'text-warning' : 'text-body'}>对组别的了解·:</label>
+            <textarea className="form-control self-introduction" rows={3}
+              placeholder='' value={grasp} onChange={handleGraspChange}>
+            </textarea>
           </div>
-          <div className="radio mx-1">
-            <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
+          {/* 自述部分 */}
+          <Tittle tittleName='自述部分' />
+          <div className="tt-5 form-group w-50">
+            <label htmlFor="comment" className={intro == '' ? 'text-warning' : 'text-body'}>自我介绍:</label>
+            <textarea className="form-control self-introduction" rows={5}
+              placeholder='进行一个自我介绍，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。'
+              value={intro} onChange={handleIntroChange}>
+            </textarea>
           </div>
+          {/* 一些小问题 */}
+          <Tittle tittleName='一些小问题' />
+          <span className='tt-5'>你是否有加入/正在加入一些其他组织或担任学生工作?
+          </span><span className='text-warning tt-5'>{work == '' ? '(请填写)' : ''}</span>
+          <div className='tt-5 input-group d-flex justify-content-center p-2'>
+            <div className="radio mx-1">
+              <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>
+            </div>
+            <div className="radio mx-1">
+              <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
+            </div>
+          </div>
+          {show == 0 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
+          <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
         </div>
-        {show == 0 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
-        <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
-      </div>
-    </div>
+      </div></div>
   )
 
 }
