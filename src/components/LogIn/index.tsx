@@ -73,7 +73,7 @@ const LogIn = (props: any) => {
             email: email,
             password: password,
         }
-        const res = await fetch('/api/api/v1/user/login',{
+        const res = await fetch('http://fresh.muxixyz.com/api/v1/user/login',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

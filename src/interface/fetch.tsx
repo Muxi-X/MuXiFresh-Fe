@@ -1,7 +1,7 @@
 // Example POST method implementation:
 export  async function postData (url = '', data = {},method: 'POST'){
     // Default options are marked with *
-    const preurl='/api/api/v1';
+    const preurl='/api/v1';
     const token = localStorage.getItem('token')
     if(!token){
       return
@@ -22,7 +22,7 @@ export  async function postData (url = '', data = {},method: 'POST'){
   
   export  async function getJson (url = ''){
     // Default options are marked with *
-    const preurl='/api/api/v1';
+    const preurl='/api/v1';
     const token = localStorage.getItem('token')
     if(!token){
       return
@@ -42,7 +42,7 @@ export  async function postData (url = '', data = {},method: 'POST'){
   
   export  async function putData (url = '', data = {},method: 'PUT'){
     // Default options are marked with *
-    const preurl='/api/api/v1';
+    const preurl='/api/v1';
     const token = localStorage.getItem('token')
     if(!token){
       return

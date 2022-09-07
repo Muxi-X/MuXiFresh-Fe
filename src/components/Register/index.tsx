@@ -69,7 +69,7 @@ const Register = (props: any) => {
             password: password,
             student_id: student_id
         }
-        let res = await fetch('/api/api/v1/auth/register', {
+        let res = await fetch('http://fresh.muxixyz.com/api/v1/auth/register', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
