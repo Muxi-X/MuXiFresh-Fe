@@ -34,7 +34,7 @@ export default function A_listInfo(props: any) {
     if (props.group % 10 == 1) status = '1'
     else if (props.group % 10 == 2) status = '2'
 
-    
+
     if (props.group > 10 && props.group < 20) group = "设计组"
     else if (props.group > 20 && props.group < 30) group = "产品组"
     else if (props.group > 30 && props.group < 40) group = "安卓组"
@@ -45,7 +45,7 @@ export default function A_listInfo(props: any) {
         <div className="info_inf">
             <div className="info_info" style={{width: '1.4rem'}}>{name}</div>
             <div className="info_info" style={{width: '1.36rem'}}>{grade}</div>
-            <div className="info_info" style={{width: '1.58rem'}}>{college}</div>
+            <div className="info_info" style={{width: '1.8rem'}}>{college}</div>
             <div className="info_info" style={{width: '1.36rem'}}>{group}</div>
             <div className="info_info" style={{width: '1.4rem'}}>
                 <Link to={`form/${email}`}>点击查看</Link>
