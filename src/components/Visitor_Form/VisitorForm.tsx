@@ -216,10 +216,11 @@ const VisitorForm = () => {
           // data.code = 20002 指错误
           // data.code = 0 指成功
           if (data.code == 0) {
-            console.log("上传成功!")
+            alert("上传成功!")
             getJson('/user/info')
               .then(
                 datas => {
+                  console.log(datas)
                   if (datas.data.role === 1) {
                     const toVisitor = () => {
                       navigate('/visitor')
@@ -227,7 +228,7 @@ const VisitorForm = () => {
                     toVisitor()
 
                   }
-                  else if (datas.data.role === 3 || datas.data.role === 4) {
+                  else if (datas.data.role === 2 || datas.data.role === 4) {
                     const toManager = () => {
                       navigate('/manager')
                     }
