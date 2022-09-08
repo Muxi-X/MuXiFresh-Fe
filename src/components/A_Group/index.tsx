@@ -33,12 +33,12 @@ export default function Group(props: any) {
                     <div className={isLight == "22" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("22")
                         setLight("22")
-                    }}>初试过
+                    }}>面试过
                     </div>
                     <div className={isLight == "23" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("23")
                         setLight("23")
-                    }}>面试过
+                    }}>初试过
                     </div>
                 </div>
                 <div className={isFold == "android" ? "group_active" : "groups"}>
@@ -51,12 +51,12 @@ export default function Group(props: any) {
                     <div className={isLight == "32" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("32")
                         setLight("32")
-                    }}>初试过
+                    }}>面试过
                     </div>
                     <div className={isLight == "33" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("33")
                         setLight("33")
-                    }}>面试过
+                    }}>初试过
                     </div>
                 </div>
                 <div className={isFold == "design" ? "group_active" : "groups"}>
@@ -69,12 +69,12 @@ export default function Group(props: any) {
                     <div className={isLight == "12" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("12")
                         setLight("12")
-                    }}>初试过
+                    }}>面试过
                     </div>
                     <div className={isLight == "13" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("13")
                         setLight("13")
-                    }}>面试过
+                    }}>初试过
                     </div>
                 </div>
                 <div className={isFold == "frontend" ? "group_active" : "groups"}>
@@ -87,12 +87,12 @@ export default function Group(props: any) {
                     <div className={isLight == "42" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("42")
                         setLight("42")
-                    }}>初试过
+                    }}>面试过
                     </div>
                     <div className={isLight == "43" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("43")
                         setLight("43")
-                    }}>面试过
+                    }}>初试过
                     </div>
                 </div>
                 <div className={isFold == "backend" ? "group_active" : "groups"}>
@@ -105,12 +105,12 @@ export default function Group(props: any) {
                     <div className={isLight == "52" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("52")
                         setLight("52")
-                    }}>初试过
+                    }}>面试过
                     </div>
                     <div className={isLight == "53" ? "group_status" : "group_statu"} onClick={() => {
                         setGroup("53")
                         setLight("53")
-                    }}>面试过
+                    }}>初试过
                     </div>
                 </div>
                 {/*<div className="group_add" onClick={() => setHide(true)}>*/}
