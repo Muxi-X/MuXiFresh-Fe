@@ -43,14 +43,14 @@ export default function A_listInfo(props: any) {
 
     return (
         <div className="info_inf">
-            <div className="info_info" style={{width: '1.4rem'}}>{name}</div>
-            <div className="info_info" style={{width: '1.36rem'}}>{grade}</div>
-            <div className="info_info" style={{width: '1.8rem'}}>{college}</div>
-            <div className="info_info" style={{width: '1.36rem'}}>{group}</div>
-            <div className="info_info" style={{width: '1.4rem'}}>
+            <div className="info_info" style={{width: '1.48rem'}}>{name}</div>
+            <div className="info_info" style={{width: '1.44rem'}}>{grade}</div>
+            <div className="info_info" style={{width: '1.88rem'}}>{college}</div>
+            <div className="info_info" style={{width: '1.44rem'}}>{group}</div>
+            <div className="info_info" style={{width: '1.48rem'}}>
                 <Link to={`form/${email}`}>点击查看</Link>
             </div>
-            <div className="info_info" style={{width: '1.36rem'}}>
+            <div className="info_info" style={{width: '1.44rem'}}>
                 <Link to={`work/${email}`}>批阅</Link>
             </div>
             <div className="info_info" style={{width: '3rem'}}>
