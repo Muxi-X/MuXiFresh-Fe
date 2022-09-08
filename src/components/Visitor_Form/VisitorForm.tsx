@@ -369,11 +369,11 @@ const VisitorForm = () => {
               </div> */}
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>电话:</label>
-                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange}/>
+                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} />
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>Q Q:</label>
-                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange}/>
+                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} />
               </div>
             </div>
           </div>
@@ -410,16 +410,21 @@ const VisitorForm = () => {
           </div>
           {/* 一些小问题 */}
           <Tittle tittleName='一些小问题' />
-          <span className='tt-5'>你是否有加入/正在加入一些其他组织或担任学生工作?
+          <span className='tt-7'>你是否有加入/正在加入一些其他组织或担任学生工作?
           </span><span className='text-warning tt-5'>{(show != 0 && work == '') ? '(请填写)' : ''}</span>
-          <div className='tt-5 input-group d-flex justify-content-center p-2'>
+          <div className='tt-7 input-group d-flex justify-content-center'>
             <div className="radio mx-1">
               <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>
             </div>
             <div className="radio mx-1">
               <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
             </div>
+
           </div>
+          {work == 'False' ? '' : <div className="form-group w-50 tt-5" id='info-group'><div className='d-flex justify-content-center align-items-center'>
+            <label htmlFor="comment" className={grade == '' ? 'text-warning' : 'text-body'}>详情:</label>
+            <input type="text" className="form-control" value={grade} onChange={handleGradeChange} />
+          </div></div>}
           {show == 0 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
           <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
         </div>
