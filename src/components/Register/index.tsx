@@ -141,7 +141,7 @@ const Register = (props: any) => {
         <div className='reg-body did' >
             <div className='reg-muxi-link' onClick={back}>
                 <img src={muxi} alt="" />
-                <div className='reg-muxi-text' >木犀</div>
+                <div className='reg-muxi-text' >木犀官网</div>
             </div>
             <img className='regbackground' src={Join} />
             <div className='register did'>

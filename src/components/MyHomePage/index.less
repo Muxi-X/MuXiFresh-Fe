@@ -67,19 +67,31 @@
             .avatar-box{
                 display: flex;
                 flex-direction: column;
+                position: relative;
             }
+            
+            .img-changeAvatar {
+                position: absolute;
+                opacity: 0;
+                width: 12vh;
+                height: 14vh;
+                z-index: 999;
+                cursor: pointer;
+            }
+
             .avatar {
                 width: 12vh;
                 height: 12vh;
-                background-color: #ffffff;
                 border-radius: 50%;
                 //margin-left: 8vw;
                 margin-bottom: 2vh;
                 background-color: #c6c4c4;
                 img {
-                    width: 100%;//12vh
-                    height: 100%;
+                    position: absolute;
+                    width: 12vh;
+                    height: 12vh;
                     border-radius: 50%;
+                    z-index: 1;
                 }
             }
             .right-home{

@@ -139,10 +139,11 @@ const MyHomePage = (props: any) => {
                 <div className='home-title'>修改信息</div>
                 <div className='home-content'>
                     <div className='avatar-box'>
-                    <div className='avatar'>
-                       {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
-                avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
-                    </div>
+                        <input className='img-changeAvatar' type="file" />
+                        <div className='avatar'>
+                        {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
+                    avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
+                        </div>
                     <div className='changeAvatar'>
                     <input  type="file" id='upload' accept='/image*' onChange={(e)=>selectAvatar(e)}/>
                     <label htmlFor="upload">点击修改头像</label>

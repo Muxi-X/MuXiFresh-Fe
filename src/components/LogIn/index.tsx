@@ -174,7 +174,7 @@ const LogIn = (props: any) => {
         <div className='login-container'>
             <div className='muxi-link' onClick={back}>
                 <img src={muxi} alt="" />
-                <div className='muxi-text' >木犀</div>
+                <div className='muxi-text' >木犀官网</div>
             </div>
             <div className="pic">
                 <img className='background' src={Join}/>
