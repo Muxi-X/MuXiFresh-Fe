@@ -19,8 +19,9 @@ const J_progress = () => {
                     setForm(data.data.form_status);
                     setGroup(data.data.group);
                     setMajor(data.data.major);
-                    setWork(data.data.work);
+                    setWork(data.data.work_status);
                     setName(data.data.name);
+                    console.log(data.data.work_status)
                 }
             )
         //    .catch(error=>console.log(error))
