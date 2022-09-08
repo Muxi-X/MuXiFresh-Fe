@@ -331,8 +331,8 @@ const VisitorForm = () => {
                 {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
                   avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
               </div>
-              <input type="file" id='upload' onChange={(e) => selectFile(e)} />
-              <label htmlFor="upload">点击修改头像</label>
+              <input type="file" id='upload' className='cancanneed' onChange={(e) => selectFile(e)} />
+              {/* <label htmlFor="upload"></label> */}
             </div>
             <div className="form-group w-50" id='info-group'>
               <div className='d-flex justify-content-center align-items-center'>
@@ -359,8 +359,9 @@ const VisitorForm = () => {
                 <label htmlFor="comment" className={gender == '' ? 'text-warning' : 'text-body'}>性别:</label>
                 <select className="form-control w-100 fix-mb" onChange={handleGenderChange}>
                   {/* <option className='tt-5'>{gender == '' ? '请选择' : gender}</option> */}
-                  <option className='tt-5'>男</option>
-                  <option className='tt-5'>女</option>
+                  <option value="" disabled selected>请选择</option>
+                  <option className='tt-5' selected={gender == '男' ? true : false}>男</option>
+                  <option className='tt-5' selected={gender == '女' ? true : false}>女</option>
                 </select>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
@@ -372,8 +373,9 @@ const VisitorForm = () => {
                 <div className='w-100 m-0 d-flex justify-content-between'>
                   <select className="form-control fix-mb" id="others-select" onChange={handleApproachChange}>
                     {/* <option className='tt-5'>{approach == '' ? '请选择' : approach}</option> */}
-                    <option className='tt-5'>QQ</option>
-                    <option className='tt-5'>Tel</option>
+                    <option value="" disabled selected>请选择</option>
+                    <option className='tt-5' selected={approach == 'QQ' ? true : false}>QQ</option>
+                    <option className='tt-5' selected={approach == 'Tel' ? true : false}>Tel</option>
                   </select>
                   <input type="text" className="form-control text-center" id='others-label' value={detail} onChange={handleDetailChange} />
 
@@ -387,11 +389,12 @@ const VisitorForm = () => {
             <label htmlFor="sel1" className={intention == '' ? 'text-warning' : 'text-body'}>心动组别:</label>
             <select className="form-control fix-mb" onChange={handleIntentionChange}>
               {/* <option className='tt-5'>{intention == '' ? '请选择' : intention}</option> */}
-              <option className='tt-5'>设计组</option>
-              <option className='tt-5'>产品组</option>
-              <option className='tt-5'>安卓组</option>
-              <option className='tt-5'>前端组</option>
-              <option className='tt-5'>后端组</option>
+              <option value="" disabled selected>请选择</option>
+              <option className='tt-5' selected={intention == '设计组' ? true : false}>设计组</option>
+              <option className='tt-5' selected={intention == '产品组' ? true : false}>产品组</option>
+              <option className='tt-5' selected={intention == '安卓组' ? true : false}>安卓组</option>
+              <option className='tt-5' selected={intention == '前端组' ? true : false}>前端组</option>
+              <option className='tt-5' selected={intention == '后端组' ? true : false}>后端组</option>
             </select>
             <label htmlFor="comment" className={reason == '' ? 'text-warning' : 'text-body'}>心动理由:</label>
             <textarea className="form-control self-introduction" rows={3}
@@ -414,7 +417,7 @@ const VisitorForm = () => {
           {/* 一些小问题 */}
           <Tittle tittleName='一些小问题' />
           <span className='tt-5'>你是否有加入/正在加入一些其他组织或担任学生工作?
-          </span><span className='text-warning tt-5'>{work == '' ? '(请填写)' : ''}</span>
+          </span><span className='text-warning tt-5'>{(show != 0 && work == '') ? '(请填写)' : ''}</span>
           <div className='tt-5 input-group d-flex justify-content-center p-2'>
             <div className="radio mx-1">
               <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>

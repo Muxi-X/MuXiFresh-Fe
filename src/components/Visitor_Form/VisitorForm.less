@@ -43,8 +43,10 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 1vw;
+    position: relative;
 
     .avatar {
+
         // margin-left: 1vw;
         img {
             height: 60px;
@@ -56,18 +58,33 @@
     }
 
     input {
-        display: none;
+        // display: none;
+        opacity: 0;
+        background-color: green;
+        width: 25%;
+        height: 100%;
+        float: left;
+        position: absolute;
+        border-radius: 50%;
+        // left: 50%;
+        // top: 50%;
+        // z-index: 5;
     }
 
-    label {
-        margin-left: 3px;
-        font-weight: bold;
-        font-size: small;
-        color: #AFB0B4FF;
-        cursor: pointer;
-    }
+    // label {
+    //     margin-left: 3px;
+    //     font-weight: bold;
+    //     font-size: small;
+    //     color: red;
+    //     cursor: pointer;
+    //     width: 100px;
+    //     height: 100px;
+    //     z-index: 5;
+    //     float: left;
+    //     z-index: 5;
+    // }
 }
-
+cancan
 .info-figure {
     width: 25%;
     height: 25%;
@@ -162,10 +179,6 @@ textarea {
     box-shadow: none !important;
     // border-color: rgb(248, 236, 159);
 }
-
-// .form-control {
-//     border:none;
-// }
 
 .black-for-you {
     background-color: #152025;
