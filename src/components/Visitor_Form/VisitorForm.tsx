@@ -189,7 +189,6 @@ const VisitorForm = () => {
     const data = {
       //头像链接不能传空字符串（吗？）
       avatar: filename == '' ? '' + avatar : 'http://ossfresh-test.muxixyz.com/' + filename,
-      // avatar: 'http://ossfresh-test.muxixyz.com/' + filename,
       college: school,
       contact_number: detail,
       contact_way: approach,
@@ -364,22 +363,17 @@ const VisitorForm = () => {
                   <option className='tt-5' selected={gender == '女' ? true : false}>女</option>
                 </select>
               </div>
-              <div className='d-flex justify-content-center align-items-center'>
+              {/* <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>邮箱:</label>
                 <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} disabled={true} />
+              </div> */}
+              <div className='d-flex justify-content-center align-items-center'>
+                <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>电话:</label>
+                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange}/>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
-                <label htmlFor="comment" className={approach == '' || approach == '请选择' || detail == '' ? 'text-warning' : 'text-body'}>其它:</label>
-                <div className='w-100 m-0 d-flex justify-content-between'>
-                  <select className="form-control fix-mb" id="others-select" onChange={handleApproachChange}>
-                    {/* <option className='tt-5'>{approach == '' ? '请选择' : approach}</option> */}
-                    <option value="" disabled selected>请选择</option>
-                    <option className='tt-5' selected={approach == 'QQ' ? true : false}>QQ</option>
-                    <option className='tt-5' selected={approach == 'Tel' ? true : false}>Tel</option>
-                  </select>
-                  <input type="text" className="form-control text-center" id='others-label' value={detail} onChange={handleDetailChange} />
-
-                </div>
+                <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>Q Q:</label>
+                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange}/>
               </div>
             </div>
           </div>
