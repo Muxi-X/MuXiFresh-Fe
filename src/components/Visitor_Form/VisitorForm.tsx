@@ -8,6 +8,8 @@ import { getJson, postData, putData } from "../../interface/fetch";
 import * as qiniu from 'qiniu-js';
 import defaultFigure from '../../images/default_avatar.png'
 import { useNavigate } from 'react-router-dom';
+// 鳖载着理发店
+import theschools from './ccnudata'
 
 const VisitorForm = () => {
   const navigate = useNavigate()
@@ -26,9 +28,19 @@ const VisitorForm = () => {
     setShow(0);
   }
   // 学院
+  const [schoolnumber, setSchoolnumber] = useState(0)
+  const handleSchoolnumberChange = (event: any) => {
+    const select = event.target;
+    const index = select.selectedIndex;
+    setSchoolnumber(select.options[index].text);
+    setShow(0);
+  }
   const [school, setSchool] = useState('')
   const handleSchoolChange = (event: any) => {
-    setSchool(event.target.value);
+    const select = event.target;
+    const index = select.selectedIndex;
+    setSchool(select.options[index].text);
+    setSchoolnumber(index - 1);
     setShow(0);
   }
   // 专业
@@ -40,7 +52,9 @@ const VisitorForm = () => {
   // 年级
   const [grade, setGrade] = useState('')
   const handleGradeChange = (event: any) => {
-    setGrade(event.target.value);
+    const select = event.target;
+    const index = select.selectedIndex;
+    setGrade(select.options[index].text);
     setShow(0);
   }
   // 性别
@@ -57,18 +71,16 @@ const VisitorForm = () => {
     setMail(e.target.value);
     setShow(0);
   }
-  // 其它-选项
-  const [approach, setApproach] = useState('')
-  const handleApproachChange = (e: any) => {
-    const select = e.target;
-    const index = select.selectedIndex;
-    setApproach(select.options[index].text);
+  // Q Q
+  const [qq, setQq] = useState('')
+  const handleQqChange = (e: any) => {
+    setQq(e.target.value);
     setShow(0);
   }
-  // 其它-详情
-  const [detail, setDetail] = useState('')
-  const handleDetailChange = (e: any) => {
-    setDetail(e.target.value);
+  // 电话
+  const [tel, setTel] = useState('')
+  const handleTelChange = (e: any) => {
+    setTel(e.target.value);
     setShow(0);
   }
   // 心动组别
@@ -98,9 +110,15 @@ const VisitorForm = () => {
     setShow(0);
   }
   // 一些小问题
-  const [work, setWork] = useState('')
-  const handleWorkChange = (e: any) => {
-    setWork(e.target.value)
+  const [workif, setWorkif] = useState('')
+  const handleWorkifChange = (e: any) => {
+    setWorkif(e.target.value)
+    setShow(0);
+  }
+  // 其它组织
+  const [orgni, setOrgni] = useState('')
+  const handleOrgniChange = (e: any) => {
+    setOrgni(e.target.value);
     setShow(0);
   }
   // 头像
@@ -114,6 +132,7 @@ const VisitorForm = () => {
 
   // 获取数据
   useEffect(() => {
+    console.log(theschools)
     getJson('/form/view')
       .then(
         data => {
@@ -127,22 +146,15 @@ const VisitorForm = () => {
             setMajor(data.data.major);
             setGrade(data.data.grade);
             setGender(data.data.gender);
-            setApproach(data.data.contact_way);
-            setDetail(data.data.contact_number);
-            // 这里可以进行组和数字的转换
-            // switch (data.data.group) {
-            //   case '1': { setIntention('设计组'); break; }
-            //   case '2': { setIntention('产品组'); break; }
-            //   case '3': { setIntention('安卓组'); break; }
-            //   case '4': { setIntention('前端组'); break; }
-            //   case '5': { setIntention('后端组'); break; }
-            //   default: { setIntention(data.data.group); break; }
-            // };
+            //在这里等后端把接口新字段写出来
+            setQq(data.data.qq_number);
+            setTel(data.data.phone_number);
+            setOrgni(data.data.work);
             setIntention(data.data.group);
             setReason(data.data.reason);
             setGrasp(data.data.understand);
             setIntro(data.data.self_introduction);
-            setWork(data.data.if_other_organization);
+            setWorkif(data.data.if_other_organization);
             setAvatar(data.data.avatar);
           }
         }
@@ -168,6 +180,7 @@ const VisitorForm = () => {
   )
 
   function fullfilled() {
+    // if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && mail != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && intro != '' && work != '')
     if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && mail != '' && approach != '' && detail != '' && intention != '' && reason != '' && grasp != '' && intro != '' && work != '')
       return 1;
     else {
@@ -177,31 +190,23 @@ const VisitorForm = () => {
   }
 
   function upload(): any {
-    // 这里可以进行组和数字的转换
-    // let transferredGroup = '0';
-    // switch (intention) {
-    //   case '设计组': { transferredGroup = '1'; console.log("设计组 the transferred intention is " + transferredGroup); break; }
-    //   case '产品组': { transferredGroup = '2'; console.log("产品组 the transferred intention is " + transferredGroup); break; }
-    //   case '安卓组': { transferredGroup = '3'; console.log("安卓组 the transferred intention is " + transferredGroup); break; }
-    //   case '前端组': { transferredGroup = '4'; console.log("前端组 the transferred intention is " + transferredGroup); break; }
-    //   case '后端组': { transferredGroup = '5'; console.log("后端组 the transferred intention is " + transferredGroup); break; }
-    // };
     const data = {
-      //头像链接不能传空字符串（吗？）
+      //头像链接不能传空字符串
       avatar: filename == '' ? '' + avatar : 'http://ossfresh-test.muxixyz.com/' + filename,
       college: school,
-      contact_number: detail,
-      contact_way: approach,
       gender: gender,
       grade: grade,
       group: intention,
-      if_other_organization: work,
+      if_other_organization: workif,
       major: major,
       name: name,
       reason: reason,
       self_introduction: intro,
       student_id: id,
-      understand: grasp
+      understand: grasp,
+      phone_number: tel,
+      qq_number: qq,
+      work: orgni
     }
     console.log(data)
     // 如果之前从后端获取到了数据则说明是修改表，调用编辑报名表的PUT接口
@@ -278,7 +283,6 @@ const VisitorForm = () => {
     }
   }
 
-
   //上传文件
   function selectFile(e: React.ChangeEvent<HTMLInputElement>): any {
     const files: any = e.target.files;
@@ -316,22 +320,16 @@ const VisitorForm = () => {
       <div className='change-for-you w-80'>
         <div className='text-center'><b className='tt-1'>我的简历</b></div>
         <div className='d-flex flex-column justify-content-around align-items-center'>
+
           {/* 个人信息 */}
           <Tittle tittleName='个人信息' />
           <div className='tt-5 formBlock d-flex flex-wrap justify-content-between w-50'>
             <div className="upload-figure">
-              {/* <img className='left-figure-image' id="my-figure"
-              src={figure == 'http://ossfresh-test.muxixyz.com/' ? defaultFigure :
-                figure == '' ? defaultFigure :
-                  figure == 'http://dummyimage.com/100x100' ? defaultFigure :
-                    figure} /> */}
-              {/* 由于前面之前默认用户可以不上传头像提交报名表，所以为了避免后端返回的是非图片的根链接而导致的默认头像无法显示，这里进行了一些修改 */}
               <div className='avatar center-fix'>
                 {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
                   avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
               </div>
               <input type="file" id='upload' className='cancanneed' onChange={(e) => selectFile(e)} />
-              {/* <label htmlFor="upload"></label> */}
             </div>
             <div className="form-group w-50" id='info-group'>
               <div className='d-flex justify-content-center align-items-center'>
@@ -344,15 +342,40 @@ const VisitorForm = () => {
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={school == '' ? 'text-warning' : 'text-body'}>学院:</label>
-                <input type="text" className="form-control" value={school} onChange={handleSchoolChange} />
+                <select className="form-control fix-mb" onChange={handleSchoolChange}>
+                  <option value="" disabled selected>请选择</option>
+                  {
+                    theschools.map(function (theschool, index) {
+                      var theKey = "key" + index;
+                      return <option key={'school-' + theKey} className='tt-5' selected={school == theschool.schoolName ? true : false}>{theschool.schoolName}</option>
+                    })
+                  }
+                </select>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={major == '' ? 'text-warning' : 'text-body'}>专业:</label>
-                <input type="text" className="form-control" value={major} onChange={handleMajorChange} />
+                <select className="form-control fix-mb" onChange={handleMajorChange}>
+                  <option value="" disabled selected>请选择</option>
+                  {
+                    theschools[schoolnumber].majorName.map(function (themajor, index) {
+                      var theKey = "key" + index;
+                      return <option key={'major-' + theKey} className='tt-5' selected={major == themajor ? true : false}>{themajor}</option>
+                    })
+                  }
+                </select>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={grade == '' ? 'text-warning' : 'text-body'}>年级:</label>
-                <input type="text" className="form-control" value={grade} onChange={handleGradeChange} />
+                <select className="form-control fix-mb" onChange={handleGradeChange}>
+                  <option value="" disabled selected>请选择</option>
+                  <option className='tt-5' selected={grade == '2022-本科生' ? true : false}>2022-本科生</option>
+                  <option className='tt-5' selected={grade == '2021-本科生' ? true : false}>2021-本科生</option>
+                  <option className='tt-5' selected={grade == '2020-本科生' ? true : false}>2020-本科生</option>
+                  <option className='tt-5' selected={grade == '2019-本科生' ? true : false}>2019-本科生</option>
+                  <option className='tt-5' selected={grade == '2022-研究生' ? true : false}>2022-研究生</option>
+                  <option className='tt-5' selected={grade == '2021-研究生' ? true : false}>2021-研究生</option>
+                  <option className='tt-5' selected={grade == '2020-研究生' ? true : false}>2020-研究生</option>
+                </select>
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={gender == '' ? 'text-warning' : 'text-body'}>性别:</label>
@@ -363,20 +386,17 @@ const VisitorForm = () => {
                   <option className='tt-5' selected={gender == '女' ? true : false}>女</option>
                 </select>
               </div>
-              {/* <div className='d-flex justify-content-center align-items-center'>
-                <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>邮箱:</label>
-                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} disabled={true} />
-              </div> */}
               <div className='d-flex justify-content-center align-items-center'>
-                <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>电话:</label>
-                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} />
+                <label htmlFor="comment" className={tel == '' ? 'text-warning' : 'text-body'}>电话:</label>
+                <input type="text" className="form-control text-center" value={tel} onChange={handleTelChange} />
               </div>
               <div className='d-flex justify-content-center align-items-center'>
-                <label htmlFor="comment" className={mail == '' ? 'text-warning' : 'text-body'}>Q Q:</label>
-                <input type="text" className="form-control text-center" value={mail} onChange={handleMailChange} />
+                <label htmlFor="comment" className={qq == '' ? 'text-warning' : 'text-body'}>Q Q:</label>
+                <input type="text" className="form-control text-center" value={qq} onChange={handleQqChange} />
               </div>
             </div>
           </div>
+
           {/* 报名信息 */}
           <Tittle tittleName='报名信息' />
           <div className="tt-5 form-group w-50">
@@ -399,6 +419,7 @@ const VisitorForm = () => {
               placeholder='' value={grasp} onChange={handleGraspChange}>
             </textarea>
           </div>
+
           {/* 自述部分 */}
           <Tittle tittleName='自述部分' />
           <div className="tt-5 form-group w-50">
@@ -408,29 +429,29 @@ const VisitorForm = () => {
               value={intro} onChange={handleIntroChange}>
             </textarea>
           </div>
+
           {/* 一些小问题 */}
           <Tittle tittleName='一些小问题' />
           <span className='tt-7'>你是否有加入/正在加入一些其他组织或担任学生工作?
-          </span><span className='text-warning tt-5'>{(show != 0 && work == '') ? '(请填写)' : ''}</span>
+          </span><span className='text-warning tt-5'>{(show != 0 && workif == '') ? '(请填写)' : ''}</span>
           <div className='tt-7 input-group d-flex justify-content-center'>
             <div className="radio mx-1">
-              <label><input type="radio" name="optradio" value='True' checked={work == 'True' ? true : false} onChange={handleWorkChange} />是</label>
+              <label><input type="radio" name="optradio" value='True' checked={workif == 'True' ? true : false} onChange={handleWorkifChange} />是</label>
             </div>
             <div className="radio mx-1">
-              <label><input type="radio" name="optradio" value='False' checked={work == 'False' ? true : false} onChange={handleWorkChange} />否</label>
+              <label><input type="radio" name="optradio" value='False' checked={workif == 'False' ? true : false} onChange={handleWorkifChange} />否</label>
             </div>
 
           </div>
-          {work == 'False' ? '' : <div className="form-group w-50 tt-5" id='info-group'><div className='d-flex justify-content-center align-items-center'>
-            <label htmlFor="comment" className={grade == '' ? 'text-warning' : 'text-body'}>详情:</label>
-            <input type="text" className="form-control" value={grade} onChange={handleGradeChange} />
-          </div></div>}
+          {workif == 'True' ? <div className="form-group w-50 tt-5" id='info-group'><div className='d-flex justify-content-center align-items-center'>
+            <label htmlFor="comment" className={orgni == '' ? 'text-warning' : 'text-body'}>详情:</label>
+            <input type="text" className="form-control" value={orgni} onChange={handleOrgniChange} />
+          </div></div> : ''}
           {show == 0 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
           <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
         </div>
       </div></div>
   )
-
 }
 
 export default VisitorForm
