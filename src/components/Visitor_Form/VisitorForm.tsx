@@ -9,6 +9,7 @@ import * as qiniu from 'qiniu-js';
 import defaultFigure from '../../images/default_avatar.png'
 import { useNavigate } from 'react-router-dom';
 // 鳖载着理发店
+// 导入学院和专业的数据
 import theschools from './ccnudata'
 
 const VisitorForm = () => {
@@ -27,14 +28,9 @@ const VisitorForm = () => {
     setId(event.target.value);
     setShow(0);
   }
-  // 学院
+  // 学院对应的索引——用于找到学院下的专业
   const [schoolnumber, setSchoolnumber] = useState(0)
-  const handleSchoolnumberChange = (event: any) => {
-    const select = event.target;
-    const index = select.selectedIndex;
-    setSchoolnumber(select.options[index].text);
-    setShow(0);
-  }
+  // 学院
   const [school, setSchool] = useState('')
   const handleSchoolChange = (event: any) => {
     const select = event.target;
@@ -66,11 +62,11 @@ const VisitorForm = () => {
     setShow(0);
   }
   // 邮箱
-  const [mail, setMail] = useState('')
-  const handleMailChange = (e: any) => {
-    setMail(e.target.value);
-    setShow(0);
-  }
+  // const [mail, setMail] = useState('')
+  // const handleMailChange = (e: any) => {
+  //   setMail(e.target.value);
+  //   setShow(0);
+  // }
   // Q Q
   const [qq, setQq] = useState('')
   const handleQqChange = (e: any) => {
@@ -97,7 +93,7 @@ const VisitorForm = () => {
     setReason(e.target.value);
     setShow(0);
   }
-  // 对组别的了解
+  // 组别了解
   const [grasp, setGrasp] = useState('')
   const handleGraspChange = (e: any) => {
     setGrasp(e.target.value);
@@ -109,26 +105,26 @@ const VisitorForm = () => {
     setIntro(e.target.value);
     setShow(0);
   }
-  // 一些小问题
+  // 学生工作
   const [workif, setWorkif] = useState('')
   const handleWorkifChange = (e: any) => {
     setWorkif(e.target.value)
     setShow(0);
   }
-  // 其它组织
+  // 学生工作——详情
   const [orgni, setOrgni] = useState('')
   const handleOrgniChange = (e: any) => {
     setOrgni(e.target.value);
     setShow(0);
   }
-  // 头像
+  // 头像相关state
   const [figure, setFigure] = useState('')
+  const [filename, setFilename] = useState('');
+  const [avatar, setAvatar] = useState('')
   // 修改资料
   const [update, setUpdate] = useState(0)
   //qiniu-token
   const [token, setToken] = useState('');
-  const [filename, setFilename] = useState('');
-  const [avatar, setAvatar] = useState('')
 
   // 获取数据
   useEffect(() => {
@@ -136,8 +132,8 @@ const VisitorForm = () => {
     getJson('/form/view')
       .then(
         data => {
-          // 如果获取到了数据则update=1，表示是更新资料
-          // 如果获取到了数据则update=0，表示是上传资料
+          // 如果获取到了数据则update = 1，表示是更新资料
+          // 如果获取到了数据则update = 0，表示是上传资料
           setUpdate(data.data == null ? 0 : 1);
           if (data.data != null) {
             setName(data.data.name);
@@ -146,7 +142,6 @@ const VisitorForm = () => {
             setMajor(data.data.major);
             setGrade(data.data.grade);
             setGender(data.data.gender);
-            //在这里等后端把接口新字段写出来
             setQq(data.data.qq_number);
             setTel(data.data.phone_number);
             setOrgni(data.data.work);
@@ -160,12 +155,14 @@ const VisitorForm = () => {
         }
       )
     if (avatar == '') setAvatar(defaultFigure)
+    // 由于fetch的返回值是json()，因此正常情况下永远不会catch-error
+    // 如果要判断后端数据操作是否成功，可以通过查看response.data.code
     // .catch(error => console.log(error));
     getJson('/user/info')
       .then(
         data => {
           setFigure(data.data.avatar);
-          setMail(data.data.email);
+          // setMail(data.data.email);
         }
       )
     // .catch(error => console.log(error));
@@ -180,8 +177,7 @@ const VisitorForm = () => {
   )
 
   function fullfilled() {
-    // if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && mail != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && intro != '' && work != '')
-    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && mail != '' && approach != '' && detail != '' && intention != '' && reason != '' && grasp != '' && intro != '' && work != '')
+    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && intro != '' && (workif == 'False' || (workif == 'True' && orgni != '')))
       return 1;
     else {
       setShow(1);
@@ -217,7 +213,7 @@ const VisitorForm = () => {
         data,
         'PUT')
         .then(data => {
-          //这里要加code的判断
+          // 这里要加code的判断
           // data.code = 20002 指错误
           // data.code = 0 指成功
           if (data.code == 0) {
@@ -231,7 +227,6 @@ const VisitorForm = () => {
                       navigate('/visitor')
                     }
                     toVisitor()
-
                   }
                   else if (datas.data.role === 2 || datas.data.role === 4) {
                     const toManager = () => {
@@ -306,7 +301,6 @@ const VisitorForm = () => {
       },
       error(err: any) {
         // ...
-        // console.log(err)
       },
       complete(res: any) {
         // ...
@@ -402,7 +396,6 @@ const VisitorForm = () => {
           <div className="tt-5 form-group w-50">
             <label htmlFor="sel1" className={intention == '' ? 'text-warning' : 'text-body'}>心动组别:</label>
             <select className="form-control fix-mb" onChange={handleIntentionChange}>
-              {/* <option className='tt-5'>{intention == '' ? '请选择' : intention}</option> */}
               <option value="" disabled selected>请选择</option>
               <option className='tt-5' selected={intention == '设计组' ? true : false}>设计组</option>
               <option className='tt-5' selected={intention == '产品组' ? true : false}>产品组</option>
