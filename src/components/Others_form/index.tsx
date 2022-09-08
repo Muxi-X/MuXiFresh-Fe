@@ -69,11 +69,11 @@ const Others_form:React.FC = ()=> {
                         <div className="line">专业：<span className='circle_one'>{major}</span></div>
                         <div className="line">年级：<span className='circle_one'>{grade}</span></div>
                         <div className="line">性别：<span className='circle_two'>{gender}</span></div>
-                        <div >联系方式：<span className='circle_two'>邮箱</span>
+                        <div >联系方式：<div className='form-email'>邮箱</div>
                             <div className="circle_one line_2">{email}</div>
                             {/* QQ 手机号选填 */}
-                            <div className="circle_two line">{contact_way}</div> 
-                            <div className="circle_one">{contact_number}</div>
+                            <div className="">{contact_way}</div> 
+                            <div className="circle_one line_2">{contact_number}</div>
                         </div>
                     </div>
                 </div>
