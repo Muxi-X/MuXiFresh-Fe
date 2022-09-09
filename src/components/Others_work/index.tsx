@@ -3,7 +3,6 @@
 
 import React, { useState,useEffect, Component }from "react";
 import './index.less';
-import muxi from  '/src/images/muxi-logo.png' 
 import {getJson, postData} from '../../interface/fetch';
 import { useParams,useNavigate } from "react-router-dom";
 
@@ -17,7 +16,7 @@ const J_check : React.FC = (props) => {
     }
     const {email} = useParams()//拿到 从审阅跳转到查看作业，携带的email参数
 
-
+    const [count, setCount] = useState(0)
     const [homeworks, setHomeworks] = useState([])
     
     const [group_id, setGroupId] = useState('')
@@ -29,32 +28,38 @@ const J_check : React.FC = (props) => {
         getJson(`/homework/${email}`)
         .then (data => {
             // console.log(data.data);
-            //与review一样
-            setHomeworks(data.data);
-            //setTitle(data.data.homework[0].title);
-            setId(data.data[0].ID);
-            //console.log('ll'+data.data[0].ID)
-            setGroupId(data.data[0].group_id)
-            getJson('/homework/comment?id='+data.data[0].ID+'&limit=100&page=0')
+            // 与review一样
+            if(data.data[0]!=null){
+                setCount(1)
+                setHomeworks(data.data);
+                //setTitle(data.data.homework[0].title);
+                setId(data.data[0].ID);
+                //console.log('ll'+data.data[0].ID)
+                setGroupId(data.data[0].group_id)
+                getJson('/homework/comment?id='+data.data[0].ID+'&limit=100&page=0')
+                    .then (data => {
+                        // console.log(data.data);
+                        setComments(data.data.comments);
+                        setName(data.data.comments[0].Name);
+                        setContent(data.data.comments[0].Content);
+                        
+                    })
+                getJson('/homework/review?id='+ data.data[0].ID)
                 .then (data => {
                     // console.log(data.data);
-                    setComments(data.data.comments);
-                    setName(data.data.comments[0].Name);
-                    setContent(data.data.comments[0].Content);
-                    
-                })
-            getJson('/homework/review?id='+ data.data[0].ID)
-            .then (data => {
-                // console.log(data.data);
-                // setHomework(data.data);
-                setDetails(data.data);
-                // console.log("文件："+data.data.url)
-                let str=data.data.url;
-                let reg="http://ossfresh-test.muxixyz.com/";
-                let res=str.replace(reg,"");
-                // console.log(res);
-                setWordname(res);
-        })
+                    // setHomework(data.data);
+                    setDetails(data.data);
+                    // console.log("文件："+data.data.url)
+                    let str=data.data.url;
+                    let reg="http://ossfresh-test.muxixyz.com/";
+                    let res=str.replace(reg,"");
+                    // console.log(res);
+                    setWordname(res);
+            })
+            }
+            else{setCount(2)}
+            
+            
         // .catch (error => console.log(error));
     })
     },[]
@@ -158,10 +163,11 @@ const J_check : React.FC = (props) => {
 
   return (
   
-    <div>
+    <div className="oo_content">
         {/* <div className="smalltitle">作业</div> */}
-        <div className="o_content">
-            <div className="module">
+        {count==1?
+            <div className="o_module">
+                <div className='o_smalltitle'>作业</div>
                 <div className={group_id=='1'?'moduletitle':"modulehide"} id='a'>设计组作业</div>
                 <div className={group_id=='2'?'moduletitle':"modulehide"} id='b'>产品组作业</div>
                 <div className={group_id=='3'?'moduletitle':"modulehide"} id='c'>安卓组作业</div>
@@ -197,7 +203,7 @@ const J_check : React.FC = (props) => {
                 </table>
         
 
-       <div className='module'>
+        <div className='module'>
             <div className="moduletitle">评语</div>
             <table className='table'>
                 <tr>
@@ -211,7 +217,8 @@ const J_check : React.FC = (props) => {
             {comments[0]?comments.map((comment:any) => {
                 return (
                     <div className='box_comment'>
-                        <img className='image' src={muxi} alt="muxi" ></img>
+                        {/* <img className='image' src={muxi} alt="muxi" ></img> */}
+                        <img className='image' src={comment.Avatar} alt="muxi" ></img>
                         <div className='upper'>
                             <div className='mingzi'>{comment.Name}</div>
                             
@@ -221,10 +228,14 @@ const J_check : React.FC = (props) => {
                 )
             }):''}
         </div>
-        </div>
-        </div>
-        
+    
+    <div className="others_btn" onClick={backto}>返回</div>
+    </div>:count==2?<div>
+        <div className="others_alert">还未提交过作业哦</div>
         <div className="others_btn" onClick={backto}>返回</div>
+    </div>
+    :''}
+    
     </div>
         
   )};

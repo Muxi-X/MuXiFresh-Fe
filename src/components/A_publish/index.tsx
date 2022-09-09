@@ -208,18 +208,18 @@ const A_publish = () => {
   return (
     <div className="Box">
         <div className={flag=='a'?'zuoye_show':"zuoye_hidden"}>
-            <div className="smalltitle1">作业</div>
+            <div className="smalltitle">作业</div>
             <table className='table'>
                 <tbody>
                 <tr>
                     <td className="box5_zu">组别：</td>
                     <td className="select_zu">
                         <form className='form'>
-                            <input type="radio" name="组别" value="前端组" id="4" onClick={(e) =>chooseGroup(e)}/><label htmlFor="4">前端组</label>
-                            <input type="radio" name="组别" value="后端组" id="5" onClick={(e) =>chooseGroup(e)}/><label htmlFor="5">后端组</label>
-                            <input type="radio" name="组别" value="安卓组" id="3" onClick={(e) =>chooseGroup(e)}/><label htmlFor="3">安卓组</label>
-                            <input type="radio" name="组别" value="产品组" id="2" onClick={(e) =>chooseGroup(e)}/><label htmlFor="2">产品组</label>
-                            <input type="radio" name="组别" value="设计组" id="1" onClick={(e) =>chooseGroup(e)}/><label htmlFor="1">设计组</label>
+                            <input type="radio" name="组别" value="前端组" id="4" className="publish_li" onClick={(e) =>chooseGroup(e)}/><label htmlFor="4">前端组</label>
+                            <input type="radio" name="组别" value="后端组" id="5" className="publish_li" onClick={(e) =>chooseGroup(e)}/><label htmlFor="5">后端组</label>
+                            <input type="radio" name="组别" value="安卓组" id="3" className="publish_li" onClick={(e) =>chooseGroup(e)}/><label htmlFor="3">安卓组</label>
+                            <input type="radio" name="组别" value="产品组" id="2" className="publish_li" onClick={(e) =>chooseGroup(e)}/><label htmlFor="2">产品组</label>
+                            <input type="radio" name="组别" value="设计组" id="1" className="publish_li" onClick={(e) =>chooseGroup(e)}/><label htmlFor="1">设计组</label>
                         </form>
 
                     </td>

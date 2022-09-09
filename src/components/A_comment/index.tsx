@@ -1,7 +1,6 @@
 import React, { useEffect, useState }from "react";
 import './index.less';
-import { postData } from "../../interface/fetch";
-import muxi from  '/src/images/muxi-logo.png' 
+import { postData } from "../../interface/fetch"; 
 import {getJson} from '../../interface/fetch';
 
 const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
@@ -45,7 +44,7 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
 
   return (
 <div className="bottom">
-    <div className='module'>
+    <div className='a_module'>
     <div className="moduletitle">评语</div>
     {/* <div className="box_table">
         <div className="t">评论：</div>
@@ -71,7 +70,7 @@ const A_comment:React.FC<{id:number, comments:number[] }> = (props)=> {
             {Comments.length?Comments.map((comment:any) => {
                 return (
                 <div className="box2">
-                <img className='image' src={muxi} alt="muxi" ></img>
+                <img className='image' src={comment.Avatar} alt="muxi" ></img>
                 <div className="text">
                     <div className='user'>
                         <div className='mingzi'>{comment.Name}</div>

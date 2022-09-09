@@ -233,7 +233,7 @@ const J_work = () =>{
             <div className='title_'>作业</div>
             <div className='divide'>{group}作业</div>
             <div className='one'>
-                <div className='t' >标题：</div>
+                {/*<div className='t' >标题：</div>*/}
                 <select className='a' id='select' onChange={(e)=>handleChange(e)}>
                 {homeworks[0]?homeworks.map((homework:any)=>{
                     return(
@@ -243,11 +243,11 @@ const J_work = () =>{
                 </select>
             </div>
             <div className='two'>
-                <div className='t'>内容简介：</div>
+                {/*<div className='t'>内容简介：</div>*/}
                 <div className='m'>{content}</div>
             </div>
             <div className='three'>
-                <div className='t'>上传文件：</div>
+                {/*<div className='t'>上传文件：</div>*/}
                 {finished==1||comment?'':
                 <div className='upload'>
                   <input type="file" id="fileId" onChange={(e)=>selectFile(e)}/>点击上传
