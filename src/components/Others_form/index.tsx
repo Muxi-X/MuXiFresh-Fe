@@ -20,8 +20,8 @@ const Others_form:React.FC = ()=> {
     const [grade,setGrade]=useState('')
     const [gender,setGender]=useState('')
     //const [email,setEmail]=useState('adcd@qq.com')
-    const [contact_way,setContact_way]=useState('')
-    const [contact_number,setContact_number]=useState('')
+    const [qq_number,setQq_number]=useState('')
+    const [phone_number,setPhone_number]=useState('')
     const [group,setGroup]=useState('')
     const [reason,setReason]=useState('')
     const [understand,setUnderstand]=useState('')
@@ -40,8 +40,8 @@ const Others_form:React.FC = ()=> {
             setGrade(res.data.grade)
             setGender(res.data.gender)
             //setEmail(res.data.email)
-            setContact_way(res.data.contact_way)
-            setContact_number(res.data.contact_number)
+            setQq_number(res.data.qq_number)
+            setPhone_number(res.data.phone_number)
             setGroup(res.data.group)
             setReason(res.data.reason)
             setUnderstand(res.data.understand)
@@ -71,9 +71,11 @@ const Others_form:React.FC = ()=> {
                         <div className="line">性别：<span className='circle_two'>{gender}</span></div>
                         <div >联系方式：<div className='form-email'>邮箱</div>
                             <div className="circle_one line_2">{email}</div>
-                            {/* QQ 手机号选填 */}
-                            <div className="">{contact_way}</div> 
-                            <div className="circle_one line_2">{contact_number}</div>
+                            {/* QQ 手机号都填 */}
+                            <div className="">QQ</div> 
+                            <div className="circle_one line_2">{qq_number}</div>
+                            <div className="">手机</div> 
+                            <div className="circle_one line_2">{phone_number}</div>
                         </div>
                     </div>
                 </div>
