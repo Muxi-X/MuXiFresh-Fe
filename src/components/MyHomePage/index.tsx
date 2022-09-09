@@ -100,7 +100,7 @@ const MyHomePage = (props: any) => {
         /* console.log(username) */
         /* console.log(filename) */
         const data_ = {
-            avatar_url: "http://ossfresh-test.muxixyz.com/"+filename,
+            avatar_url: filename===""?avatar:"http://ossfresh-test.muxixyz.com/"+filename,
             name: username
         }
         /* console.log(data_+'data');
@@ -133,13 +133,13 @@ const MyHomePage = (props: any) => {
         <div className='home-body'>
             <div className='home-box'>
                 <div className='back'>
-                    <img src={back} /* onClick={()=>setShowHome(false)} *//>
+                    <img src={back} onClick={backBefore} /* onClick={()=>setShowHome(false)} *//>
                     <button className='back' onClick={backBefore}>返回</button>
                 </div>
                 <div className='home-title'>修改信息</div>
                 <div className='home-content'>
                     <div className='avatar-box'>
-                        <input className='img-changeAvatar' type="file" />
+                        <input className='img-changeAvatar' type="file" accept='/image*' onChange={(e)=>selectAvatar(e)}/>
                         <div className='avatar'>
                         {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
                     avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
