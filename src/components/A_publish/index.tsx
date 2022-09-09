@@ -208,7 +208,7 @@ const A_publish = () => {
   return (
     <div className="Box">
         <div className={flag=='a'?'zuoye_show':"zuoye_hidden"}>
-            <div className="smalltitle">作业</div>
+            <div className="smalltitle1">作业</div>
             <table className='table'>
                 <tbody>
                 <tr>
