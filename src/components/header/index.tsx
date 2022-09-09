@@ -31,6 +31,9 @@ const Header = () => {
     })
   })//[complete]
   
+  const back = () => {
+    window.location.href = "http://muxi-tech.xyz/"
+  }
 
   const quit = () => {
     localStorage.removeItem('token')
@@ -45,9 +48,9 @@ const Header = () => {
   return (
   <div>
    <div className='header'>
-      <div className='muxi'>
+      <div className='muxi' onClick={back}>
         <img src={muxi} alt="muxi" className='logo' ></img>
-        <div className='text'>木 犀</div>
+        <div className='text'>木犀官网</div>
       </div>
       <div className='avatar' onClick={forMore}>
       {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
