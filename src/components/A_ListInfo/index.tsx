@@ -44,7 +44,7 @@ export default function A_listInfo(props: any) {
     return (
         <div className="info_inf">
             <div className="info_info" style={{width: '1.48rem'}}>{name}</div>
-            <div className="info_info" style={{width: '1.44rem'}}>{grade}</div>
+            <div className="info_info" style={{width: '1.69rem'}}>{grade}</div>
             <div className="info_info" style={{width: '1.88rem'}}>{college}</div>
             <div className="info_info" style={{width: '1.44rem'}}>{group}</div>
             <div className="info_info" style={{width: '1.48rem'}}>

@@ -31,7 +31,7 @@ const ManageLists = (props: any) => {
         <div>
             <div className="lists_header">
                 <div className="lists_headers" style={{width: '1.4rem'}}>姓名</div>
-                <div className="lists_headers" style={{width: '1.36rem'}}>年级</div>
+                <div className="lists_headers" style={{width: '1.61rem'}}>年级</div>
                 <div className="lists_headers" style={{width: '1.8rem'}}>学院</div>
                 <div className="lists_headers" style={{width: '1.36rem'}}>组别</div>
                 <div className="lists_headers" style={{width: '1.4rem'}}>报名表</div>
