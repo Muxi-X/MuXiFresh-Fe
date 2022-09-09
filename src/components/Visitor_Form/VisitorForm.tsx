@@ -128,17 +128,17 @@ const VisitorForm = () => {
 
   // 获取数据
   useEffect(() => {
-    console.log(theschools)
+    // console.log(theschools)
     getJson('/form/view')
       .then(
         data => {
-          console.log(data)
-          console.log(data.data.college)
+          // console.log(data)
+          // console.log(data.data.college)
           theschools.map(function (theschool, index) {
-            console.log(theschool)
+            // console.log(theschool)
             if (theschool.schoolName == data.data.college) {
               setSchoolnumber(index)
-              console.log(index)
+              // console.log(index)
             }
           })
           // 如果获取到了数据则update = 1，表示是更新资料
@@ -213,7 +213,7 @@ const VisitorForm = () => {
       qq_number: qq,
       work: orgni
     }
-    console.log(data)
+    // console.log(data)
     // 如果之前从后端获取到了数据则说明是修改表，调用编辑报名表的PUT接口
     // 如果之前为从后端获取到数据则说明是创建表，调用创建报名表的POST接口
     if (update == 1) {
@@ -230,7 +230,7 @@ const VisitorForm = () => {
             getJson('/user/info')
               .then(
                 datas => {
-                  console.log(datas)
+                  // console.log(datas)
                   if (datas.data.role === 1) {
                     const toVisitor = () => {
                       navigate('/visitor')
