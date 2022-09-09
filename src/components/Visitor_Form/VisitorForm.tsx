@@ -337,11 +337,11 @@ const VisitorForm = () => {
             <div className="form-group w-50" id='info-group'>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={name == '' ? 'text-warning' : 'text-body'}>姓名:</label>
-                <input type="text" className="form-control" value={name} onChange={handleNameChange} />
+                <input type="text" className="form-control text-center" value={name} onChange={handleNameChange} />
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={id == '' ? 'text-warning' : 'text-body'}>学号:</label>
-                <input type="text" className="form-control" value={id} onChange={handleIdChange} />
+                <input type="text" className="form-control text-center" value={id} onChange={handleIdChange} />
               </div>
               <div className='d-flex justify-content-center align-items-center'>
                 <label htmlFor="comment" className={school == '' ? 'text-warning' : 'text-body'}>学院:</label>

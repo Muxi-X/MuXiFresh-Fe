@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Mine_form: React.FC = () => {
     const navigate = useNavigate()
+    const [detail,setDetail]=useState(false) 
+
     const [name, setName] = useState('')
     const [student_id, setStudent_id] = useState('')
     const [college, setCollege] = useState('')
@@ -21,6 +23,7 @@ const Mine_form: React.FC = () => {
     const [understand, setUnderstand] = useState('')
     const [self_introduction, setSelf_introduction] = useState('')
     const [if_other_organization, setIf_other_organization] = useState('')
+    const [work,setWork]=useState('')
     const [avatar, setAvatar] = useState(default_avatar)
 
     useEffect(() => {
@@ -40,10 +43,16 @@ const Mine_form: React.FC = () => {
             setUnderstand(res.data.understand)
             setSelf_introduction(res.data.self_introduction)
             setIf_other_organization(res.data.if_other_organization)
+            setWork(res.data.work)
             setAvatar(res.data.avatar)
-        })
+            
+            if(res.data.if_other_organization=='True'){
+                setDetail(true)
+            }
+        })        
     }, [])
 
+   
     const toEdit = () => {
         navigate('/edit')
     }
@@ -118,6 +127,8 @@ const Mine_form: React.FC = () => {
                             &nbsp;&nbsp;否
                         </span>
                     </div>
+                    {detail && <div className='form-detail'>{work}</div>}
+                    {!detail && <div></div>}
                 </div>
             </div>
             <button className='form-btn' onClick={toEdit}>修改资料</button>

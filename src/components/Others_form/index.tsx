@@ -7,6 +7,7 @@ import './index.less'
 
 const Others_form:React.FC = ()=> {
     const navigate=useNavigate()
+    const [detail,setDetail]=useState(false)
     const back=()=>{
         navigate(-1)
     }
@@ -27,6 +28,7 @@ const Others_form:React.FC = ()=> {
     const [understand,setUnderstand]=useState('')
     const [self_introduction,setSelf_introduction]=useState('')
     const [if_other_organization,setIf_other_organization]=useState('')
+    const [work,setWork]=useState('')
     const [avatar,setAvatar]=useState(default_avatar)
 
     useEffect(()=>{
@@ -47,7 +49,12 @@ const Others_form:React.FC = ()=> {
             setUnderstand(res.data.understand)
             setSelf_introduction(res.data.self_introduction)
             setIf_other_organization(res.data.if_other_organization)
+            setWork(res.data.work)
             setAvatar(res.data.avatar)
+
+            if(res.data.if_other_organization=='True'){
+                setDetail(true)
+            }
         })
         // .catch(error=>console.log(error))
     },[])
@@ -109,18 +116,20 @@ const Others_form:React.FC = ()=> {
                     <div className="qus">你是否有加入/正在加入一些其他组织或担任学生工作？</div>
                     <div className="ans">
                         <span>
-                            <span className={if_other_organization=='是'? 'yes' : 'no'}>
+                            <span className={if_other_organization == 'True' ? 'yes' : 'no'}>
                                 <span className='inCircle'></span>
                             </span>
                             &nbsp;&nbsp;是
                         </span>
                         <span>
-                            <span className={if_other_organization!='是'?'yes':'no'}>
+                            <span className={if_other_organization != 'True' ? 'yes' : 'no'}>
                                 <span className='inCircle'></span>
                             </span>
                             &nbsp;&nbsp;否
                         </span>
                     </div>
+                    {detail && <div className='form-detail'>{work}</div>}
+                    {!detail && <div></div>}
                 </div>
             </div>
             <button className='other-btn' onClick={back}>返回</button>
