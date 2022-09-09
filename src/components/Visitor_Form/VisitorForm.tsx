@@ -132,6 +132,15 @@ const VisitorForm = () => {
     getJson('/form/view')
       .then(
         data => {
+          console.log(data)
+          console.log(data.data.college)
+          theschools.map(function (theschool, index) {
+            console.log(theschool)
+            if (theschool.schoolName == data.data.college) {
+              setSchoolnumber(index)
+              console.log(index)
+            }
+          })
           // 如果获取到了数据则update = 1，表示是更新资料
           // 如果获取到了数据则update = 0，表示是上传资料
           setUpdate(data.data == null ? 0 : 1);
