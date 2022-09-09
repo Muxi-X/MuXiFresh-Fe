@@ -66,7 +66,7 @@ const Others_form:React.FC = ()=> {
                         <div className="line">姓名：<span className='circle_one'>{name}</span></div>
                         <div className="line">学号：<span className='circle_one'>{student_id}</span></div>
                         <div className="line">学院：<span className='circle_one'>{college}</span></div>
-                        <div className="line">专业：<span className='circle_one'>{major}</span></div>
+                        <div className="line">专业：<span className='circle_one line_3'>{major}</span></div>
                         <div className="line">年级：<span className='circle_one'>{grade}</span></div>
                         <div className="line">性别：<span className='circle_two'>{gender}</span></div>
                         <div >联系方式：<div className='form-email'>邮箱</div>
