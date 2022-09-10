@@ -187,7 +187,7 @@ const VisitorForm = () => {
   )
 
   function fullfilled() {
-    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && intro != '' && (workif == 'False' || (workif == 'True' && orgni != '')))
+    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && (intro != '' && intro.length <= 500) && (workif == 'False' || (workif == 'True' && orgni != '')))
       return 1;
     else {
       setShow(1);
@@ -426,9 +426,9 @@ const VisitorForm = () => {
           {/* 自述部分 */}
           <Tittle tittleName='自述部分' />
           <div className="tt-5 form-group w-50">
-            <label htmlFor="comment" className={intro == '' ? 'text-warning' : 'text-body'}>自我介绍:</label>
-            <textarea className="form-control self-introduction" rows={5}
-              placeholder='进行一个自我介绍，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。'
+            <label htmlFor="comment" className={(intro == '' || intro.length > 500) ? 'text-warning' : 'text-body'}>自我介绍:{intro.length <= 500 ? '' : '（超过字数限制）'}</label>
+            <textarea className={intro.length <= 500 ? "form-control self-introduction" : "text-danger form-control self-introduction"} rows={5}
+              placeholder='进行一个自我简述，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。(500字以内~)'
               value={intro} onChange={handleIntroChange}>
             </textarea>
           </div>
@@ -450,10 +450,10 @@ const VisitorForm = () => {
             <label htmlFor="comment" className={orgni == '' ? 'text-warning' : 'text-body'}>详情:</label>
             <input type="text" className="form-control" value={orgni} onChange={handleOrgniChange} />
           </div></div> : ''}
-          {show == 0 ? '' : <div className='alert alert-danger my-fix '>请填写完所有的内容后再提交~</div>}
+          {show == 0 ? '' : <div className='alert alert-danger my-fix '>请正确填写所有的内容后再提交~</div>}
           <button className='olol button-submit' onClick={() => { fullfilled() && upload() }}> {update == 1 ? '更新资料' : '提交资料'}</button>
         </div>
-      </div></div>
+      </div></div >
   )
 }
 
