@@ -7,6 +7,7 @@ import { getJson,putData } from '../../interface/fetch'
 import * as qiniu from 'qiniu-js'
 import { useNavigate } from 'react-router-dom'
 import defaultFigure from '../../images/default_avatar.png'
+import { nanoid } from 'nanoid';
 
 const MyHomePage = (props: any) => {
     const navigate=useNavigate()
@@ -55,7 +56,7 @@ const MyHomePage = (props: any) => {
         }//检测是否有图片
         const file = files[0]
         setFile(file)
-        const key = file.name
+        const key = file.name + nanoid(10)
         setFilename(key)
         // const key= files[0].name
         // setFilename(key);
