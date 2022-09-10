@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 // 鳖载着理发店
 // 导入学院和专业的数据
 import theschools from './ccnudata'
+import { nanoid } from 'nanoid';
 
 const VisitorForm = () => {
   const navigate = useNavigate()
@@ -290,7 +291,7 @@ const VisitorForm = () => {
   //上传文件
   function selectFile(e: React.ChangeEvent<HTMLInputElement>): any {
     const files: any = e.target.files;
-    const key = files[0].name;
+    const key = files[0].name + nanoid(10);
     const file = files[0];
     setFilename(key);
     const putExtra = {};

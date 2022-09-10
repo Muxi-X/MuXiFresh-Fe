@@ -7,6 +7,7 @@ import { getJson,putData } from '../../interface/fetch'
 import * as qiniu from 'qiniu-js'
 import { useNavigate } from 'react-router-dom'
 import defaultFigure from '../../images/default_avatar.png'
+import { nanoid } from 'nanoid';
 
 const MyHomePage = (props: any) => {
     const navigate=useNavigate()
@@ -55,7 +56,7 @@ const MyHomePage = (props: any) => {
         }//检测是否有图片
         const file = files[0]
         setFile(file)
-        const key = file.name
+        const key = file.name + nanoid(10)
         setFilename(key)
         // const key= files[0].name
         // setFilename(key);
@@ -100,7 +101,7 @@ const MyHomePage = (props: any) => {
         /* console.log(username) */
         /* console.log(filename) */
         const data_ = {
-            avatar_url: "http://ossfresh-test.muxixyz.com/"+filename,
+            avatar_url: filename===""?avatar:"http://ossfresh-test.muxixyz.com/"+filename,
             name: username
         }
         /* console.log(data_+'data');
@@ -133,13 +134,13 @@ const MyHomePage = (props: any) => {
         <div className='home-body'>
             <div className='home-box'>
                 <div className='back'>
-                    <img src={back} /* onClick={()=>setShowHome(false)} *//>
+                    <img src={back} onClick={backBefore} /* onClick={()=>setShowHome(false)} *//>
                     <button className='back' onClick={backBefore}>返回</button>
                 </div>
                 <div className='home-title'>修改信息</div>
                 <div className='home-content'>
                     <div className='avatar-box'>
-                        <input className='img-changeAvatar' type="file" />
+                        <input className='img-changeAvatar' type="file" accept='/image*' onChange={(e)=>selectAvatar(e)}/>
                         <div className='avatar'>
                         {avatar == 'http://ossfresh-test.muxixyz.com/' ? <img src={defaultFigure}></img> :
                     avatar ? <img src={avatar} alt="#" /> : <img src={defaultFigure}></img>}
