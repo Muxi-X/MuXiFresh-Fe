@@ -187,7 +187,7 @@ const VisitorForm = () => {
   )
 
   function fullfilled() {
-    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && (intro != '' && intro.length <= 500) && (workif == 'False' || (workif == 'True' && orgni != '')))
+    if (name != '' && id != '' && school != '' && major != '' && grade != '' && gender != '' && qq != '' && tel != '' && intention != '' && reason != '' && grasp != '' && (intro != '' && intro.length <= 1000) && (workif == 'False' || (workif == 'True' && orgni != '')))
       return 1;
     else {
       setShow(1);
@@ -426,9 +426,9 @@ const VisitorForm = () => {
           {/* 自述部分 */}
           <Tittle tittleName='自述部分' />
           <div className="tt-5 form-group w-50">
-            <label htmlFor="comment" className={(intro == '' || intro.length > 500) ? 'text-warning' : 'text-body'}>自我介绍:{intro.length <= 500 ? '' : '（超过字数限制）'}</label>
-            <textarea className={intro.length <= 500 ? "form-control self-introduction" : "text-danger form-control self-introduction"} rows={5}
-              placeholder='进行一个自我简述，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。(500字以内~)'
+            <label htmlFor="comment" className={(intro == '' || intro.length > 1000) ? 'text-warning' : 'text-body'}>自我介绍:{intro.length <= 1000 ? '' : '（超过字数限制）'}</label>
+            <textarea className={intro.length <= 1000 ? "form-control self-introduction" : "text-danger form-control self-introduction"} rows={5}
+              placeholder='进行一个自我简述，内容需要包含自己的性格、能力、获得过的相关的成就以及假如自己进入木犀后的想法，可加入其他内容。(1000字以内~)'
               value={intro} onChange={handleIntroChange}>
             </textarea>
           </div>
