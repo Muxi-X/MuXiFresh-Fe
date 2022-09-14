@@ -2,7 +2,7 @@
 import React,{useState,useEffect} from 'react';
 import { postData } from '../../interface/fetch';
 import default_avatar from '../../images/default_avatar.png'
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams,useNavigate,useSearchParams,useLocation } from 'react-router-dom';
 import './index.less'
 
 const Others_form:React.FC = ()=> {
@@ -12,7 +12,9 @@ const Others_form:React.FC = ()=> {
         navigate(-1)
     }
 
-    const {email}=useParams()//拿到 从审阅跳转到查看报名表，携带的email参数
+    const [search, setSearch] = useSearchParams()
+    const email = search.get('email')
+    // const {email}=useParams()//拿到 从审阅跳转到查看报名表，携带的email参数
 
     const [name,setName]=useState('')
     const [student_id,setStudent_id]=useState('')

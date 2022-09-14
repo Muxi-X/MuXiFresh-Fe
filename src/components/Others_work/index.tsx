@@ -4,7 +4,7 @@
 import React, { useState,useEffect, Component }from "react";
 import './index.less';
 import {getJson, postData} from '../../interface/fetch';
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams,useNavigate,useSearchParams } from "react-router-dom";
 
 // interface childProps {
 //     email: string;
@@ -14,7 +14,9 @@ const J_check : React.FC = (props) => {
     const backto=()=>{
         navigate(-1)
     }
-    const {email} = useParams()//拿到 从审阅跳转到查看作业，携带的email参数
+    const [search, setSearch] = useSearchParams()
+    const email = search.get('email')
+    // const {email}=useParams()//拿到 从审阅跳转到查看报名表，携带的email参数
 
     const [count, setCount] = useState(0)
     const [homeworks, setHomeworks] = useState([])

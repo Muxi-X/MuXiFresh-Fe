@@ -42,8 +42,8 @@ const router: RouteObject[] = [
             {path:"check",element:<A_check />},
             {path:"publish",element:<A_publish />},
             {path:"admin",element:<A_admin />},
-            {path:"check/form/:email",element:<Others_form />},//从审阅跳转到查看报名表，携email参数
-            {path:"check/work/:email",element:<Others_work />}//(作业同理)
+            {path:"check/form",element:<Others_form />},//从审阅跳转到查看报名表，携email参数
+            {path:"check/work",element:<Others_work />}//(作业同理)
         ]
     },
     {path:"/login",element:<First />},
