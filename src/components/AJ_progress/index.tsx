@@ -21,7 +21,6 @@ const J_progress = () => {
                     setMajor(data.data.major);
                     setWork(data.data.work_status);
                     setName(data.data.name);
-                    console.log(data.data.work_status)
                 }
             )
         //    .catch(error=>console.log(error))
