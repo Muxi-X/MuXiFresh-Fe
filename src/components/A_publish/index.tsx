@@ -124,19 +124,24 @@ const A_publish = () => {
             group_id : group_id,//根据选择
             file_url : ''
         }
-        // console.log("zuoye"+hh_id)
+         console.log("zuoye"+hh_id)
         if(title!=''||content!=''||group_id!=0){
+            console.log(title)
             postData(
                 `/homework/change/published/${hh_id}`,
                 data,
                 'POST')
             .then(data=>{
-                // console.log(data);
+                console.log(data);
+                switch(data.code)
+                {
+                    case 10002: alert('修改失败!没有权限！');break;
+                    case 200: alert('修改成功!');
+                }
                 SetGetSearchVal1('');
                 SetGetSearchVal2('');
                 setGroupid(0);
                 // console.log(group_id);
-                alert('修改成功!')
                  //提交完毕 切换页面
                 //setComment(true);
             })

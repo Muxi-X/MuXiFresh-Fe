@@ -24,8 +24,8 @@ const J_work = () =>{
     const [comments,setComments]=useState([]);
     const [handed_id,setHanded_id]=useState(0);
     const [f_name,setF_name]=useState('')//文件名
+    const [student_name,setStudent_name]=useState('');
 
-    
    
     useEffect(()=>{
     //获取作业内容
@@ -83,6 +83,7 @@ const J_work = () =>{
        .then(
         data=>{
             setGroup(data.data.group);
+            setStudent_name(data.data.student_name);
         }
        )
         },[]
@@ -91,10 +92,12 @@ const J_work = () =>{
 //上传文件
     function selectFile(e:React.ChangeEvent<HTMLInputElement>):any{
         const files:any = e.target.files;
-        const key = files[0].name;
+        var timestamp=new Date().getTime();
+        const key = files[0].name+timestamp+student_name;
+        console.log(key);
         const file = files[0];
         // console.log(file)
-        setFilename(key);
+        setFilename(files[0].name);
         const  putExtra={};
         const config={
             useCdnDomain: true,
@@ -136,7 +139,7 @@ const J_work = () =>{
         getJson(`/homework/published/details/${id}`)
             .then(
                 data=>{
-                   setContent(data.data.content);
+                    setContent(data.data.content);
                    setTitle(data.data.title);
                    setHomework_id(h_id);
                    setFinished(data.data.status);
@@ -229,6 +232,7 @@ const J_work = () =>{
     }
    
     return(
+    
         <div className='work'>
             <div className='title_'>作业</div>
             <div className='divide'>{group}作业</div>
@@ -243,7 +247,7 @@ const J_work = () =>{
                 </select>
             </div>
             <div className='two'>
-                <div className='t'>内容简介：</div>
+                <div className='t' >内容简介：</div>
                 <div className='m'>{content}</div>
             </div>
             <div className='three'>
