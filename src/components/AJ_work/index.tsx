@@ -24,7 +24,7 @@ const J_work = () =>{
     const [comments,setComments]=useState([]);
     const [handed_id,setHanded_id]=useState(0);
     const [f_name,setF_name]=useState('')//文件名
-    const [student_name,setStudent_name]=useState('');
+    const [student_id,setStudent_id]=useState('');
 
    
     useEffect(()=>{
@@ -54,7 +54,7 @@ const J_work = () =>{
                                 // console.log(data.data[0].url)
                                 // console.log(data.data[0].ID+'获取评论的id')
                                 //获取评论
-                                getJson('/homework/comment?id='+data.data[0].ID+'&limit=5&page=0')
+                                getJson('/homework/comment?id='+data.data[0].ID+'&limit=100&page=0')
                                 .then (data => {
                                     if(data.data!='')
                                         setComments(data.data.comments);
@@ -83,7 +83,7 @@ const J_work = () =>{
        .then(
         data=>{
             setGroup(data.data.group);
-            setStudent_name(data.data.student_name);
+            setStudent_id(data.data.student_id);
         }
        )
         },[]
@@ -93,7 +93,7 @@ const J_work = () =>{
     function selectFile(e:React.ChangeEvent<HTMLInputElement>):any{
         const files:any = e.target.files;
         var timestamp=new Date().getTime();
-        const key = files[0].name+timestamp+student_name;
+        const key = files[0].name+timestamp+student_id;
         console.log(key);
         const file = files[0];
         // console.log(file)
