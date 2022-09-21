@@ -49,6 +49,8 @@ const J_work = () =>{
                                 setFileurl(data.data[0].url);
                                 let n=data.data[0].url;
                                 let fname=n.replace("http://ossfresh-test.muxixyz.com/","")//去掉域名
+                               /*  console.log(t)
+                                var fname = t.slice(23); */
                                 setF_name(fname);//文件名
                                 setHanded_id(data.data[0].ID)
                                 // console.log(data.data[0].url)
@@ -93,8 +95,8 @@ const J_work = () =>{
     function selectFile(e:React.ChangeEvent<HTMLInputElement>):any{
         const files:any = e.target.files;
         var timestamp=new Date().getTime();
-        const key = files[0].name+timestamp+student_id;
-        console.log(key);
+        const key = timestamp+student_id+files[0].name;
+        /* console.log(key); */
         const file = files[0];
         // console.log(file)
         setFilename(files[0].name);
@@ -155,9 +157,10 @@ const J_work = () =>{
                                 setFileurl(data.data[0].url);
                                 let n=data.data[0].url;
                                 let fname=n.replace("http://ossfresh-test.muxixyz.com/","")
+                                /* let fname = t.slice(23); */
                                 setF_name(fname);
                                 setHanded_id(data.data[0].ID);
-                                // console.log(data.data[0].url);
+                                // console.log(data.data[0].u rl);
                                 // console.log(data.data[0].ID+'获取评论的作业ID');
                                  //更新评论
                                  getJson('/homework/comment?id='+data.data[0].ID+'&limit=5&page=0')

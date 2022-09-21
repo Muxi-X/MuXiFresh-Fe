@@ -48,14 +48,15 @@ const J_check : React.FC = (props) => {
                     })
                 getJson('/homework/review?id='+ data.data[0].ID)
                 .then (data => {
-                    // console.log(data.data);
+                    console.log(data.data.username);
                     // setHomework(data.data);
                     setDetails(data.data);
                     // console.log("文件："+data.data.url)
                     let str=data.data.url;
                     let reg="http://ossfresh-test.muxixyz.com/";
                     let res=str.replace(reg,"");
-                    // console.log(res);
+                   /*  var s1 = res.slice(0,-23); */
+                     /* console.log(s1); */
                     setWordname(res);
             })
             }
@@ -92,6 +93,7 @@ const J_check : React.FC = (props) => {
             let str=data.data.url;
             let reg="http://ossfresh-test.muxixyz.com/";
             let res=str.replace(reg,"");
+            /* var s1 = res.slice(0,-23); */
             // console.log(res);
             setWordname(res);
             getJson('/homework/comment?id='+h_id+'&limit=100&page=0')
@@ -199,7 +201,7 @@ const J_check : React.FC = (props) => {
                     <tr>
                         <td className="wenjian">文件：</td>
                         <td className="up">
-                            <a href={details.url} className="biaoti">{wordname}</a>
+                            <a href={details.url} download={wordname} className="biaoti">{wordname}</a>
                         </td>
                     </tr>
                 </table>
