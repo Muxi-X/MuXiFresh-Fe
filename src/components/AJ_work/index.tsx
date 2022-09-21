@@ -25,7 +25,7 @@ const J_work = () =>{
     const [handed_id,setHanded_id]=useState(0);
     const [f_name,setF_name]=useState('')//文件名
     const [student_id,setStudent_id]=useState('');
-
+    const [keyname,setKeyname]=useState('');
    
     useEffect(()=>{
     //获取作业内容
@@ -98,6 +98,7 @@ const J_work = () =>{
         const file = files[0];
         // console.log(file)
         setFilename(files[0].name);
+        setKeyname(key);
         const  putExtra={};
         const config={
             useCdnDomain: true,
@@ -182,7 +183,7 @@ const J_work = () =>{
             title:title,
             content:content,
             homework_id:homework_id,//数字
-            file_url:'http://ossfresh-test.muxixyz.com/'+filename
+            file_url:'http://ossfresh-test.muxixyz.com/'+keyname
         }
         if(title!=''&&content!=''&&homework_id!=0&&filename!='')
     {
@@ -213,7 +214,7 @@ const J_work = () =>{
             title:title,
             content:content,
             homework_id:handed_id,//数字
-            file_url:'http://ossfresh-test.muxixyz.com/'+filename
+            file_url:'http://ossfresh-test.muxixyz.com/'+keyname
         }
         postData(
             `/homework/change/uploaded/${handed_id}`,
