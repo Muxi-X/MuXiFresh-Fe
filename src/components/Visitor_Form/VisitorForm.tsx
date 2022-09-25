@@ -129,7 +129,7 @@ const VisitorForm = () => {
 
   // 获取数据
   useEffect(() => {
-    alert("报名已截止！")
+    // alert("报名已截止！")
     // console.log(theschools)
     getJson('/form/view')
       .then(
@@ -453,8 +453,8 @@ const VisitorForm = () => {
           </div></div> : ''}
           {show == 0 ? '' : <div className='alert alert-danger my-fix '>请正确填写所有的内容后再提交~</div>}
           <button className='olol button-submit' onClick={() => {
-            alert("报名已截止！")
-            // fullfilled() && upload() 
+            // alert("报名已截止！")
+            fullfilled() && upload() 
           }}> {update == 1 ? '更新资料' : '提交资料'}</button>
         </div>
       </div></div >

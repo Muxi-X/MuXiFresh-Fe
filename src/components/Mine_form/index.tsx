@@ -131,10 +131,10 @@ const Mine_form: React.FC = () => {
                     {!detail && <div></div>}
                 </div>
             </div>
-            <button className='form-btn' onClick={()=>{
-                alert("报名已截止！")
-                // toEdit
-                }}>修改资料</button>
+            <button className='form-btn' 
+            // onClick={()=>{alert("报名已截止！")}}
+            onClick={toEdit}
+            >修改资料</button>
         </div>
     )
 }
