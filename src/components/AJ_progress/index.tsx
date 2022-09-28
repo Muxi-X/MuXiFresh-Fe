@@ -53,7 +53,7 @@ const J_progress = () => {
                 </div>
                 <div className="div_bt" >
                     <div className="left">录取状态</div>
-                    <div className="right">{admission == 1 ? "面试过" : admission == 2 ? "已录取" : "待录取"}</div>
+                    <div className="right">{group == "产品组" || group == "设计组" ? admission == 1 ? "机试过" : admission == 2 ? "已录取" : "待录取" : admission == 1 ? "面试过" : admission == 2 ? "已录取" : "待录取"}</div>
                 </div>
             </div>
         </div>
