@@ -132,8 +132,8 @@ const Mine_form: React.FC = () => {
                 </div>
             </div>
             <button className='form-btn' 
-            // onClick={()=>{alert("报名已截止！")}}
-            onClick={toEdit}
+            onClick={()=>{alert("报名已截止！")}}
+            // onClick={toEdit}
             >修改资料</button>
         </div>
     )
